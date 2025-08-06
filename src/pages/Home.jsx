@@ -1,6 +1,7 @@
 import Layout1 from '../components/Layout1';
 import Layout2 from '../components/Layout2';
 import Layout3 from '../components/Layout3';
+import Layout4 from '../components/Layout4';
 
 export default function Home(){
     return(
@@ -16,6 +17,10 @@ export default function Home(){
          {/* Third layout */}
             
          <Layout3/>
+
+         {/* Forth layout */}
+
+         <Layout4/>
         </div>
     )
 }
