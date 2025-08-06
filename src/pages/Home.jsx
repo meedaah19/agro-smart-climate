@@ -29,7 +29,7 @@ export default function Home(){
                 <button>Lets start</button>
             </div>
             </div>
-            <div className='lg:h-[761px] lg:w-[544px] w-[500px]' >
+            <div className='lg:h-[761px] lg:w-[544px] w-[400px]' >
                 <img 
                 className=' rounded-[20px]' 
                 src={image1} 
