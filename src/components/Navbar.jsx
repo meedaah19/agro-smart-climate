@@ -9,7 +9,7 @@ function Navbar(){
 
     return(
         <nav>
-            <div className=" px-8 flex justify-between relative z-50 max-w-[1440px] mx-auto lg:pr-[160px] lg:pl-[160px]  lg:h-[87px] pt-[8px] pb-[8px] item-center">
+            <div className="bg-[#A9DCD7] px-8 flex justify-between relative z-50 max-w-[1440px] mx-auto lg:pr-[160px] lg:pl-[160px]  lg:h-[87px] pt-[8px] pb-[8px] item-center">
                  <img src={img1} alt="logo" className="h-[45px] lg:h-[70px]" />
 
                     <div className="lg:hidden pt-[8px]">

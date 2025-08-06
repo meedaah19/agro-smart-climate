@@ -5,12 +5,10 @@ import Navbar from './components/Navbar';
 function App() {
   return(
     <Router>
-      <div className="bg-gradient-to-b from-[#A9DCD7] via-[#FFFFFF] via-[] to-[#C6E4E1]">
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
-      </div>
     </Router>
   );
 }
