@@ -10,8 +10,8 @@ export default function Layout3(){
             <div className='w-full max-w-[1120px] h-auto lg:h-551px flex flex-col lg:flex-row items-center gap-[32px] '>
 
             <div className='lg:w-[544px] w-full h-auto lg:h-[551px]'>
-                <h1 className='font-[Poppins] font-[600] text-[30px] lg:text-[39.81px] '>Our Smart Solution.</h1>
-                <p className=' font-[Poppins] font-[400] text-[22px] lg:text-[27.65px] '>
+                <h1 className='font-[Poppins] font-[600] text-[28px] lg:text-[39.81px] '>Our Smart Solution.</h1>
+                <p className=' font-[Poppins] font-[400] text-[20px] lg:text-[27.65px] '>
                     ClimateSmart Agro equips farmers with: 
                     <li className='lg:pt-[30px] pt-[20px]'>Localized weather alerts</li>
                     <li>Expert advice, and</li>

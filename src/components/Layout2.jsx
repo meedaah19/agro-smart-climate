@@ -42,9 +42,9 @@ export default function Layout2() {
                     </div>
         
                     <div className='grid lg:gap-[32px] gap-[19px]  '>
-                        <h1 className='font-[Poppins] font-[600] text-[30px] lg:text-[39.81px] '>The challenges Farmers face today.</h1>
+                        <h1 className='font-[Poppins] font-[600] text-[28px] lg:text-[39.81px] '>The challenges Farmers face today.</h1>
         
-                        <p className='font-[Poppins] font-[400] text-[22px] lg:text-[27.65px]'>With access to prediction tools, Farmers across Nigeria will know what to do when battling with these results of climate change: 
+                        <p className='font-[Poppins] font-[400] text-[20px] lg:text-[27.65px]'>With access to prediction tools, Farmers across Nigeria will know what to do when battling with these results of climate change: 
                             <li className='lg:pt-[45px] pt-[20px] pl-5' >Erratic rainfall,</li>
                             <li className='pl-5'>Declining soil fertility, and </li>
                             <li className='pl-5'>Rising pest outbreaks.</li>
