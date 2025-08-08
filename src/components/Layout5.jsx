@@ -23,9 +23,9 @@ export default function Layout5(){
 
 
     return(
-        <div className="max-w-[1440px] w-full h-auto lg:h-[724px] lg:pt-[80px] lg:pr-[160px] pl-[30px] pr-[30px] pt-[30px] pb-[30px] lg:pl-[160px] lg:pb-[80px] flex gap-[10px] bg-gradient-to-b from-[#C6E4E1] via-[#E3F1F0] to-[#FFFFFF] ">
+        <div className="w-full max-w-[1440px] h-auto lg:h-[724px] lg:pr-[160px] lg:pl-[160px] pl-[30px] pr-[30px] lg:pt-[80px] pt-[30px] pb-[30px] lg:pb-[80px] flex gap-[10px] bg-gradient-to-b from-[#C6E4E1] via-[#E3F1F0] to-[#FFFFFF] ">
 
-            <div className=" w-full max-w-[1220px] h-auto lg:h-[564px] flex gap-[32px] ">
+            <div className=" lg:w-[1220px] h-auto lg:h-[564px] flex gap-[32px] ">
 
                 <div className="lg:w-[588px]   h-auto lg:h-[564px] ">
                     <h1 className="font-[Poppins] font-[600] text-[28px] lg:text-[39.81px]  ">Testimonials</h1>

@@ -1,8 +1,8 @@
 export default function Layout6(){
     return(
-        <div className=" w-full max-w-[1440px] h-auto lg:h-[346px] lg:pt-[80px] lg:pr-[160px] lg:pb-[80px] lg:pl-[160px] pl-[30px] pr-[30px] pt-[30px] pb-[30px] flex gap-[10px] bg-gradient-to-b from-[#FFFFFF] to-[#C6E4E1]">
+        <div className="w-full max-w-[1440px] h-auto lg:h-[346px] lg:pr-[160px] lg:pl-[160px] pl-[30px] pr-[30px]  lg:pt-[80px] lg:pb-[80px] pt-[30px] pb-[30px] flex gap-[10px] bg-gradient-to-b from-[#FFFFFF] to-[rgb(198,228,225)]">
 
-            <div className="w-full max-w-[1220px] h-auto lg:h-[186px] rounded-[20x] grid gap-[32px] ">
+            <div className=" lg:w-[1220px] h-auto lg:h-[186px] rounded-[20x] grid gap-[32px] ">
 
                 <div className=" lg:w-[1120px] lg:h-[93px] grid gap-[4px] ">
                 <h1 className=" font-[Poppins] font-[600] text-[28px] lg:text-[39.81px] ">Subscription</h1>
