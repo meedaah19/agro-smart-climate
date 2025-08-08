@@ -3,6 +3,7 @@ import Layout2 from '../components/Layout2';
 import Layout3 from '../components/Layout3';
 import Layout4 from '../components/Layout4';
 import Layout5 from '../components/Layout5';
+import Layout6 from '../components/Layout6';
 
 export default function Home(){
     return(
@@ -26,6 +27,10 @@ export default function Home(){
          {/* fifth layout */}
 
          <Layout5/>
+
+         {/* Sixth layout */}
+
+         <Layout6/>
         </div>
     )
 }
