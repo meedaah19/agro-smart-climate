@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo1 from '../assets/linkedin logo.png';
 import logo2 from '../assets/facebook logo.png';
-import logo3 from '../assets/instagram logo.jpg';
+import logo3 from '../assets/instagram logo.png';
 
 
 export default function Layout7(){

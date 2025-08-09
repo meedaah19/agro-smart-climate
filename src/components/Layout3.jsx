@@ -16,10 +16,11 @@ export default function Layout3(){
                     <li className='lg:pt-[30px] pt-[20px]'>Localized weather alerts</li>
                     <li>Expert advice, and</li>
                     <li>Climate-resilient farming tools.</li>
-                    <p className='lg:pt-[32px] pt-[20px]'>
+                    </p>
+                    <p className='lg:pt-[32px] pt-[20px] font-[Poppins] font-[400] text-[20px] lg:text-[27.65px]'>
                         We are using tech to bridge the gap between traditional farming and modern climate realities.
                     </p>
-                </p>
+                
             </div>
             
             <div className='lg:w-[544px] w-full h-auto lg:h-[551px] grid gap-[3px]'>
