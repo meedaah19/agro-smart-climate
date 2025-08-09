@@ -1,4 +1,4 @@
-import image1 from '../assets/91a6c2164942199e7ce3a61e72780df756577e2d.jpg';
+import image1 from '../../assets/91a6c2164942199e7ce3a61e72780df756577e2d.jpg';
 
 export default function Layout1(){
     return(

@@ -1,5 +1,5 @@
-import image1 from '../assets/6cfa44040bb6a722e442b44d773f0aa31fbd7b57.png';
-import image2 from '../assets/93ba49baff9c6fae3cbee16b5b164f9b0c97bb16.png';
+import image1 from '../../assets/6cfa44040bb6a722e442b44d773f0aa31fbd7b57.png';
+import image2 from '../../assets/93ba49baff9c6fae3cbee16b5b164f9b0c97bb16.png';
 
 
 export default function Layout4(){

@@ -1,7 +1,7 @@
-import image1 from '../assets/a79c2f9f55b76facc1c21f184e2ba22f2c982bb4.jpg';
-import image2 from '../assets/5772dbf6d83f0499fa08eac90040f99a11be1380.jpg';
-import image3 from '../assets/f5fbc5a4f44543ea95fc553cdfce6679696440c3.jpg';
-import image4 from '../assets/70ebe06e34d8eca54aec8aab244f03f2250401aa.jpg';
+import image1 from '../../assets/a79c2f9f55b76facc1c21f184e2ba22f2c982bb4.jpg';
+import image2 from '../../assets/5772dbf6d83f0499fa08eac90040f99a11be1380.jpg';
+import image3 from '../../assets/f5fbc5a4f44543ea95fc553cdfce6679696440c3.jpg';
+import image4 from '../../assets/70ebe06e34d8eca54aec8aab244f03f2250401aa.jpg';
 
 export default function Layout3(){
     return(

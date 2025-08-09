@@ -1,10 +1,10 @@
-import Layout1 from '../components/Layout1';
-import Layout2 from '../components/Layout2';
-import Layout3 from '../components/Layout3';
-import Layout4 from '../components/Layout4';
-import Layout5 from '../components/Layout5';
-import Layout6 from '../components/Layout6';
-import Layout7 from '../components/Layout7';
+import Layout1 from '../components/Home/Layout1';
+import Layout2 from '../components/Home/Layout2';
+import Layout3 from '../components/Home/Layout3';
+import Layout4 from '../components/Home/Layout4';
+import Layout5 from '../components/Home/Layout5';
+import Layout6 from '../components/Home/Layout6';
+import Layout7 from '../components/Home/Layout7';
 
 export default function Home(){
     return(
