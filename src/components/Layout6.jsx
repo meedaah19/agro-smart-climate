@@ -9,7 +9,7 @@ export default function Layout6(){
                 <p className=" font-[Poppins] font-[400] lg:text-[19.2px] text-[20px] ">Get the latest news, updates, tips and tricks in your inbox.</p>
                 </div>
 
-                <div className=" lg:w-[1120px] lg:h-[61px] rounded-[8px] border-[1px] bg-[#FFFFFF] border-[#000000] flex ">
+                <div className=" lg:w-[1120px] lg:h-[61px] w-[319px] rounded-[8px] border-[1px] bg-[#FFFFFF] border-[#000000] flex ">
                     <input className="lg:w-[957px] lg:h-[61px] rounded-tl-[8px] rounded-bl-[8px] lg:p-[10px] flex gap-[10px] text-[#443f3f] " type="email" placeholder="Enter your email..." />
                         <button className="font-[Poppins] font-[700] text-[19.2px] bg-[#FF8E28] lg:w-[163px] lg:h-[59px] rounded-tr-[8px] rounded-br-[8px] pt-[16px] pr-[16px] pb-[16px] pl-[40px] flex gap-[10px]">Subscribe</button>
                 </div>
