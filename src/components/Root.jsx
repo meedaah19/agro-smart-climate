@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import { Outlet } from "react-router-dom";
 import { ModalContext } from './store/ModalContext';
 import Signup from './Signup';
+import Signin from './Signin';
 
 function Root(){
     const modalCtx = useContext(ModalContext);
@@ -13,7 +14,8 @@ function Root(){
         <Navbar/>
         <main>
         <Outlet/>
-        {modalCtx.progress === 'modal' && <Signup />}
+        {modalCtx.modalType === 'signup' && <Signup />}
+        {modalCtx.modalType === 'signin' && <Signin />}
 
         </main>
         <Footer/>

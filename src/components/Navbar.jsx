@@ -11,7 +11,7 @@ function Navbar(){
     const modalCtx = useContext(ModalContext)
 
     function handleOpenModal(){
-        modalCtx.showModal();
+        modalCtx.showModal('signup');
     }
 
 

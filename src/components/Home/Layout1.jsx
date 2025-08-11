@@ -6,7 +6,7 @@ export default function Layout1(){
     const modalCtx = useContext(ModalContext);
 
     function handleShowModal(){
-        modalCtx.showModal();
+        modalCtx.showModal('signup');
     }
 
     return(

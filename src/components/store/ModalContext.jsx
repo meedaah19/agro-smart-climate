@@ -2,25 +2,25 @@ import { createContext,useState } from "react";
 
 
 export const ModalContext =  createContext({
-    progress: '',
+    modalType: "",
     showModal: () => {},
     hideModal: () => {},
     
 });
 
 export default function ModalContextProvider({children}) {
-    const [modal, setModal] = useState('');
+    const [modalType, setModalType] = useState('');
 
-    function showModal() {
-        setModal('modal');
+    function showModal(type) {
+        setModalType(type);
     }
 
     function hideModal(){
-        setModal('');
+        setModalType('');
     }
 
     const modalCtx = {
-        progress: modal,
+        modalType,
         showModal,
         hideModal,
     }
