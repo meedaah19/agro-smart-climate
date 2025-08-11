@@ -3,3 +3,25 @@
 body{
     overflow-x: hidden;  
 }
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  padding: 32px;
+  width: 100%;
+  max-width: 546px; 
+  height: 1072px;
+  background-color: #ffffff;
+  overflow: visible;
+  z-index: 100;
+}
+
+.modal::backdrop{
+    background-color: rgba(0, 0, 0, 0.55);
+    position: fixed;
+    inset: 0;
+    height: 100%;
+}

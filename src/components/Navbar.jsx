@@ -1,11 +1,19 @@
 import { NavLink } from "react-router-dom";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import img1 from '../assets/Frame 86.png';
 import {FaBars, FaTimes } from 'react-icons/fa';
+import { ModalContext } from "./store/ModalContext";
 
 
 function Navbar(){ 
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const modalCtx = useContext(ModalContext)
+
+    function handleOpenModal(){
+        modalCtx.showModal();
+    }
+
 
     return(
         <nav className="transition-all duration-200">
@@ -58,6 +66,8 @@ function Navbar(){
                         <li className="lg:ml-auto">
                         <button
                             className="text-[15px] lg:text-[19.2px] font-[700] text-black border border-[#FF7F18] hover:bg-[#FF8E28] rounded-[8px] lg:pl-2 px-6 lg:py-2 flex items-center justify-center h-[40px]"
+                            onClick={() => {setMenuOpen(false);
+                            handleOpenModal()}}
                         >
                             Create Account
                         </button>

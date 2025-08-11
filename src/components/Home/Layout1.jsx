@@ -1,6 +1,14 @@
 import image1 from '../../assets/91a6c2164942199e7ce3a61e72780df756577e2d.jpg';
+import { useContext } from 'react';
+import { ModalContext } from '../store/ModalContext';
 
 export default function Layout1(){
+    const modalCtx = useContext(ModalContext);
+
+    function handleShowModal(){
+        modalCtx.showModal();
+    }
+
     return(
         <div className=' max-w-[1440px] lg:h-[761px] lg:pr-[160px] lg:pl-[160px] pl-[30px] pr-[30px] bg-gradient-to-b from-[#A9DCD7] via-[#FFFFFF] to-[#C6E4E1] lg:pt-[50px] pt-[30px] flex fex-col lg:flex-row items-center  ' >
         
@@ -12,9 +20,8 @@ export default function Layout1(){
                     </h1>
                     <p className=' font-[400] text-sm md:text-xl  lg:text-[27.65px]'>Let us show you how to harvest smartly.</p>
                     </div>
-                    <div 
-                    className='lg:w-[156px] lg:h-[61px] w-[100px] h-[30px] rounded-[8px] lg:pt-[16px] lg:pr-[32px] lg:pb-[16px] lg:pl-[32px] pl-[18px] pt-[4px]  gap-[10px] bg-[#FF8E28] font-[700] text-[15px] lg:text-[19.2px] '>
-                        <button>Lets start</button>
+                    <div >
+                        <button className='lg:w-[156px] lg:h-[61px] w-[100px] h-[30px] rounded-[8px] lg:pt-[16px] lg:pr-[32px] lg:pb-[16px] lg:pl-[32px] pl-[18px] pt-[4px]  gap-[10px] bg-[#FF8E28] font-[700] text-[15px] lg:text-[19.2px] cursor-pointer' onClick={handleShowModal}  >Lets start</button>
                     </div>
                     </div>
                     <div className='lg:h-[761px] lg:w-[544px] w-[400px]' >

@@ -1,28 +1,20 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from './pages/Home';
-import Navbar from './components/Navbar';
+import Signup  from './components/Signup';
+import Root from './components/Root';
 
-function App() {
-  return(
-    <Router>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
-  );
-}
+    const router = createBrowserRouter([
+      {
+        path: '/',
+        element: <Root/>,
+        children: [
+          { index: true, element: <Home/>},
+          { path: 'signup', element: <Home showSignupModal /> } 
 
-export default App;
-// return (
-//     <Router>
-//       <Navbar />
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         {/* <Route path="/about" element={<About />} />
-//         <Route path="/climate-tools" element={<ClimateTools />} />
-//         <Route path="/export-hub" element={<ExportHub />} /> 
-//         <Route path="/smart-farming" element={<SmartFarming />} /> */}
-//       </Routes>
-//     </Router>
-//   );
+    ]}
+    ])
+
+  export default function App() {
+    return (
+        <RouterProvider router={router} />
+    )}
