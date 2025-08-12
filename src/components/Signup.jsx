@@ -8,6 +8,7 @@ import Input from './UI/Input';
 import Modal from './UI/Modal';
 import { useContext, useActionState } from 'react';
 import { ModalContext } from './store/ModalContext';
+import { FaTimes } from 'react-icons/fa';
 
 export default function Signup() {
     const modalCtx = useContext(ModalContext);
@@ -73,6 +74,13 @@ export default function Signup() {
     >
 
         <div className='lg:w-[485px] h-auto lg:h-[1007px] gap-[32px] grid '>
+
+            <button 
+            onClick={handleCloseModal} 
+            className="absolute top-4 h-[34px] w-[34px] border-1 rounded-full right-4 text-xl pl-1.5   text-black hover:text-gray-600"
+            >
+            <FaTimes />
+            </button>
 
         <div className="lg:w-[485px] h-auto lg:h-[943px] grid lg:gap-[64px] gap-[32px] ">
 
