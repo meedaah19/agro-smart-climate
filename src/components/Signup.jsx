@@ -77,7 +77,8 @@ export default function Signup() {
         <div className="lg:w-[485px] h-auto lg:h-[943px] grid lg:gap-[64px] gap-[32px] ">
 
         <form action={formAction} className='lg:w-[485px] h-[900px] lg:h-[781px] grid lg:gap-[64px]'>
-        <div className='lg:w-[485px] lg:h-[144px] text-center grid gap-[10px]  '>
+
+                    <div className='lg:w-[485px] lg:h-[144px] text-center grid gap-[10px]  '>
                         <h3 className="font-[Poppins] font-[400] text-[25px] lg:text-[27.65px] ">
                             Hello there
                         </h3>
@@ -86,16 +87,43 @@ export default function Signup() {
                     </div>
 
                     <div className="lg:w-[485px] h-[483px] w-[200px] grid gap-[32px]">
-                        <Input label='Enter name' id='name' type="text" defaultValue={formState.enteredValue?.name} />
-                        <Input label='Enter email address' id='email' type="text" defaultValue={formState.enteredValue?.email} placeholer='johnjoe@gmail.com' />
+                        <Input 
+                        label='Enter name' 
+                        id='name' 
+                        type="text" 
+                        defaultValue={formState.enteredValue?.name} />
+
+                        <Input 
+                        label='Enter email address' 
+                        id='email' 
+                        type="text" 
+                        defaultValue={formState.enteredValue?.email}
+                        placeholer='johnjoe@gmail.com' />
+
                         <div className='flex'>
-                            <Input label='Enter password' id='password' type="password" defaultValue={formState.enteredValue?.password} placeholer='..........' />
-                            <img className='w-[29px] h-[29px] '  src={image5} alt="eye image" />
+                            <Input 
+                            label='Enter password' 
+                            id='password' 
+                            type="password" 
+                            defaultValue={formState.enteredValue?.password}
+                            placeholer='..........' />
+                            <img 
+                            className='w-[29px] h-[29px] '  
+                            src={image5} 
+                            alt="eye image" />
                         </div>
                         
                         <div className='flex'>
-                            <Input label='Confirm password' id='confirmPassword' type="password" defaultValue={formState.enteredValue?.confirmPassword} placeholer='..........' /> 
-                            <img className='w-[29px] h-[29px] '  src={image5} alt="eye image" />
+                            <Input 
+                            label='Confirm password' 
+                            id='confirmPassword' 
+                            type="password" 
+                            defaultValue={formState.enteredValue?.confirmPassword}
+                            placeholer='..........' /> 
+                            <img 
+                            className='w-[29px] h-[29px] '  
+                            src={image5} 
+                            alt="eye image" />
                         </div>
 
                         {formState.errors && (
@@ -117,23 +145,35 @@ export default function Signup() {
                         <img className='lg:w-[485px] w-[250px] h-[23px] ' src={image} alt="or option" />
 
                         <div className='lg:w-[485px] w-[250px] lg:h-[101px] flex-col text-center '>
+
                             <div className='lg:w-[485px] h-[50px] flex gap-[64px] items-center justify-center '>
+
                             <Link>
-                            <img className='w-[32px] h-[32px] '
-                            src={image3} alt="google logo" />
+                            <img 
+                            className='w-[32px] h-[32px] '
+                            src={image3} 
+                            alt="google logo" />
                             </Link>
+
                             <Link>
-                            <img className='w-[32px] h-[32px] '
-                            src={image4} alt="facebook logo" />
+                            <img 
+                            className='w-[32px] h-[32px] '
+                            src={image4} 
+                            alt="facebook logo" />
                             </Link>
+
                             <Link>
-                            <img className='w-[32px] h-[32px] '
-                            src={image2} alt="Apple logo" />
+                            <img 
+                            className='w-[32px] h-[32px] '
+                            src={image2} 
+                            alt="Apple logo" />
                             </Link>
+
                             </div>
 
                             <div className='font-[lora] font-[400] pt-9'>
-                                <p>Have an account? <button
+                                <p>Have an account? 
+                                    <button
                                 onClick={handleSignIn}
                                 className='cursor-pointer'
                                 >Login!</button></ p>

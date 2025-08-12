@@ -39,29 +39,49 @@ function Navbar(){
                     lg:static lg:flex lg:gap-[40px] lg:flex-row lg:w-auto lg:bg-transparent lg:py-0 lg:px-0`}
                     > 
                         <li>
-                            <NavLink className={({isActive}) => ` lg:pl-6 pl-2 p-[10px] rounded-xl ${
+                            <NavLink 
+                            className={({isActive}) => ` lg:pl-6 pl-2 p-[10px] rounded-xl ${
                                 isActive ? 'bg-[#FF8E28]' : 'hover:bg-[#FF8E28]'
-                            }`} to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
+                            }`} 
+                            to="/" 
+                            onClick={() => setMenuOpen(false)}>Home
+                            </NavLink>
                         </li>
                         <li>
-                            <NavLink className={({isActive}) => ` lg:pl-5 pl-2  p-[10px] rounded-xl ${
+                            <NavLink 
+                            className={({isActive}) => ` lg:pl-5 pl-2  p-[10px] rounded-xl ${
                                 isActive ? 'bg-[#FF8E28]' : 'hover:bg-[#FF8E28]'
-                            }`} to="/about" onClick={() => setMenuOpen(false)}>About Us</NavLink>
+                            }`} 
+                            to="/about" 
+                            onClick={() => setMenuOpen(false)}>About Us
+                            </NavLink>
                         </li>
                         <li>
-                            <NavLink className={({isActive}) => ` lg:pl-4 pl-2  p-[10px] rounded-xl ${
+                            <NavLink 
+                            className={({isActive}) => ` lg:pl-4 pl-2  p-[10px] rounded-xl ${
                                 isActive ? 'bg-[#FF8E28]' : 'hover:bg-[#FF8E28]'
-                            }`} to="/climate-tools" onClick={() => setMenuOpen(false)}>Climate Tools</NavLink>
+                            }`} 
+                            to="/climate-tools" 
+                            onClick={() => setMenuOpen(false)}>Climate Tools
+                            </NavLink>
                         </li>
                         <li>
-                            <NavLink className={({isActive}) => ` lg:pl-5 pl-2  p-[10px] rounded-xl ${
+                            <NavLink 
+                            className={({isActive}) => ` lg:pl-5 pl-2  p-[10px] rounded-xl ${
                                 isActive ? 'bg-[#FF8E28]' : 'hover:bg-[#FF8E28]'
-                            }`} to="/export-hub" onClick={() => setMenuOpen(false)}>Export Hub</NavLink>
+                            }`} 
+                            to="/export-hub" 
+                            onClick={() => setMenuOpen(false)}>Export Hub
+                            </NavLink>
                         </li>
                         <li>
-                            <NavLink className={({isActive}) =>  ` lg:pl-5 pl-2  p-[10px] rounded-xl ${
+                            <NavLink 
+                            className={({isActive}) =>  ` lg:pl-5 pl-2  p-[10px] rounded-xl ${
                                 isActive ? 'bg-[#FF8E28]' : 'hover:bg-[#FF8E28]'
-                            }`} to="/smart-farming" onClick={() => setMenuOpen(false)}>Smart Farming</NavLink>
+                            }`} 
+                            to="/smart-farming" 
+                            onClick={() => setMenuOpen(false)}>Smart Farming
+                            </NavLink>
                         </li>
                         <li className="lg:ml-auto">
                         <button

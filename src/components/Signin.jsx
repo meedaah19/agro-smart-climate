@@ -71,13 +71,30 @@ export default function Signin() {
                     </div>
 
                     <div className="lg:w-[485px] h-[313px] w-[200px] grid gap-[32px]">
-                        <Input label='Enter email address' id='email' type="text" defaultValue={formState.enteredValue?.name}  placeholer='johnjoe@gmail.com' />
+
+                        <Input 
+                        label='Enter email address' 
+                        id='email' 
+                        type="text" 
+                        defaultValue={formState.enteredValue?.name}  
+                        placeholer='johnjoe@gmail.com' />
+
                         <div className='flex'>
-                            <Input label='Enter password' id='password' type="password" defaultValue={formState.enteredValue?.password}  placeholer='..........' />
-                            <img className='w-[29px] h-[29px] '  src={image5} alt="eye image" />
+                            <Input 
+                            label='Enter password' 
+                            id='password' 
+                            type="password" 
+                            defaultValue={formState.enteredValue?.password}  
+                            placeholer='..........' />
+                            <img 
+                            className='w-[29px] h-[29px] '  
+                            src={image5} 
+                            alt="eye image" />
                         </div>
+
                         <button className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] ">login</button>
                     </div>
+
                     </form>
 
                     {formState.errors && (
@@ -88,21 +105,32 @@ export default function Signin() {
                         </ul>   
                         )}
                     
-                        <img className='lg:w-[485px] w-[250px] h-[23px] ' src={image} alt="or option" />
+                        <img 
+                        className='lg:w-[485px] w-[250px] h-[23px] ' 
+                        src={image} 
+                        alt="or option" />
 
                         <div className='lg:w-[485px] w-[250px] lg:h-[101px] flex-col text-center '>
+
                             <div className='lg:w-[485px] h-[50px] flex gap-[64px] items-center justify-center '>
+
                             <Link>
-                            <img className='w-[32px] h-[32px] '
-                            src={image3} alt="google logo" />
+                            <img 
+                            className='w-[32px] h-[32px] '
+                            src={image3} 
+                            alt="google logo" />
                             </Link>
                             <Link>
-                            <img className='w-[32px] h-[32px] '
-                            src={image4} alt="facebook logo" />
+                            <img 
+                            className='w-[32px] h-[32px] '
+                            src={image4} 
+                            alt="facebook logo" />
                             </Link>
                             <Link>
-                            <img className='w-[32px] h-[32px] '
-                            src={image2} alt="Apple logo" />
+                            <img 
+                            className='w-[32px] h-[32px] '
+                            src={image2} 
+                            alt="Apple logo" />
                             </Link>
                             </div>
 

@@ -5,6 +5,8 @@ import logo3 from '../assets/instagram logo.png';
 
 
 export default function Layout7(){
+const year = new Date().getFullYear();
+
     return(
         <footer className="w-full max-w-[1440px] h-auto lg:h-[400px] lg:pt-[40px] lg:pr-[160px] lg:pb-[100px] lg:pl-[160px] pt-[30px] pb-[30px] pr-[30px] pl-[30px] grid lg:gap-[100px] gap-[30px]  bg-gradient-to-t from-[#FFFFFF] to-[#C6E4E1] ">
 
@@ -38,13 +40,22 @@ export default function Layout7(){
 
                  <div className="w-[249px] h-[199px] grid pt-5 lg:pt-0 lg:gap-[16px]">
                     <h2 className="font-[Poppins] font-[700] text-[19.2px] ">Social Media</h2>
-                    <Link><img className="w-[32px] h-[32px] " src={logo1} alt="linkedin logo" /></Link>
-                    <Link><img className="w-[32px] h-[32px]" src={logo2} alt="facebook logo" /></Link>
-                    <Link><img className="w-[32px] h-[32px]" src={logo3} alt="instagram logo" /></Link>
+                    <Link><img 
+                    className="w-[32px] h-[32px] " 
+                    src={logo1} 
+                    alt="linkedin logo" /></Link>
+                    <Link><img 
+                    className="w-[32px] h-[32px]" 
+                    src={logo2} 
+                    alt="facebook logo" /></Link>
+                    <Link><img 
+                    className="w-[32px] h-[32px]" 
+                    src={logo3} 
+                    alt="instagram logo" /></Link>
                 </div>
             </div>
             <div className="lg:w-[1220px] lg:h-[17px] lg:pr-[160px] lg:flex justify-between font-[400] text-[13.33px] ">
-                    <p>Copyright ClimateSmart Agro   @ 2025</p>
+                    <p>Copyright ClimateSmart Agro   @ {year}</p>
                     <p>Terms & Condition, Privacy Policy</p>
                 </div>
 
