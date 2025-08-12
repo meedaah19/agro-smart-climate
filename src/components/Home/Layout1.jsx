@@ -20,9 +20,15 @@ export default function Layout1(){
                     </h1>
                     <p className=' font-[400] text-sm md:text-xl  lg:text-[27.65px]'>Let us show you how to harvest smartly.</p>
                     </div>
+
                     <div >
-                        <button className='lg:w-[156px] lg:h-[61px] w-[100px] h-[30px] rounded-[8px] lg:pt-[16px] lg:pr-[32px] lg:pb-[16px] lg:pl-[32px] pl-[18px] pt-[4px]  gap-[10px] bg-[#FF8E28] font-[700] text-[15px] lg:text-[19.2px] cursor-pointer' onClick={handleShowModal}  >Lets start</button>
+                        <button 
+                        className='lg:w-[156px] lg:h-[61px] w-[100px] h-[30px] rounded-[8px] lg:pt-[16px] lg:pr-[32px] lg:pb-[16px] lg:pl-[32px] pl-[18px] pt-[4px]  gap-[10px] bg-[#FF8E28] font-[700] text-[15px] lg:text-[19.2px] cursor-pointer' 
+                        onClick={handleShowModal}  >
+                            Lets start
+                        </button>
                     </div>
+
                     </div>
                     <div className='lg:h-[761px] lg:w-[544px] w-[400px]' >
                         <img 

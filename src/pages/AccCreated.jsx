@@ -1,6 +1,13 @@
+import { useContext } from 'react';
 import img from '../assets/d3d2ae34-fb31-4976-8a4b-d68b8e3755c0.jpg';
+import { ModalContext } from '../components/store/ModalContext';
 
 export default function AccCreated() {
+    const modalCtx = useContext(ModalContext);
+
+    function handleClick() {
+        modalCtx.showModal('kyc');
+    }
 
     return (
             <div className='lg:w-[1440px]  h-auto lg:h-[451px] bg-gradient-to-b from-[#C6E4E1] via-[#FFFFFF] to-[#C6E4E1]  '>
@@ -20,7 +27,9 @@ export default function AccCreated() {
                         <button className='lg:w-[196px] h-auto lg:h-[61px] w-[150px] rounded-[8px] border-[1px] py-[16px] px-[8px] justify-center flex gap-[10px] bg-[#FFFFFF] cursor-pointer ' 
                         // onClick={dashboard}
                         >Skip</button>
-                        <button className='lg:w-[196px] w-[150px] h-auto lg:h-[61px] rounded-[8px] border-[1px] py-[16px] px-[8px] justify-center flex gap-[10px] bg-[#FF8E28] cursor-pointer '>Fill a form</button>
+                        <button 
+                        onClick={handleClick}
+                        className='lg:w-[196px] w-[150px] h-auto lg:h-[61px] rounded-[8px] border-[1px] py-[16px] px-[8px] justify-center flex gap-[10px] bg-[#FF8E28] cursor-pointer '>Fill a form</button>
                     </div>
                 </div>
             </div>
