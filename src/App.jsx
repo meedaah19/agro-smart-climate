@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from './pages/Home';
-import Signup  from './components/Signup';
 import Root from './components/Root';
+import AccCreated from "./components/AccCreated";
 
     const router = createBrowserRouter([
       {
@@ -9,7 +9,8 @@ import Root from './components/Root';
         element: <Root/>,
         children: [
           { index: true, element: <Home/>},
-          { path: 'signup', element: <Home showSignupModal /> } 
+          { path: 'signup', element: <Home/> },
+          {path: 'accountCreated', element: <AccCreated/>}
 
     ]}
     ])

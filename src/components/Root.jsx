@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { ModalContext } from './store/ModalContext';
 import Signup from './Signup';
 import Signin from './Signin';
+import AccCreated from './AccCreated';
 
 function Root(){
     const modalCtx = useContext(ModalContext);
@@ -16,7 +17,6 @@ function Root(){
         <Outlet/>
         {modalCtx.modalType === 'signup' && <Signup />}
         {modalCtx.modalType === 'signin' && <Signin />}
-
         </main>
         <Footer/>
         </>

@@ -10,11 +10,8 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 20px;
-  padding: 32px;
-  width: 100%;
-  max-width: 546px; 
-  background-color: #ffffff;
-  overflow: visible;
+  padding: 32px; 
+  overflow-x: hidden;
   z-index: 100;
 }
 

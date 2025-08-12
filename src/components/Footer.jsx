@@ -6,7 +6,7 @@ import logo3 from '../assets/instagram logo.png';
 
 export default function Layout7(){
     return(
-        <div className="w-full max-w-[1440px] h-auto lg:h-[400px] lg:pt-[40px] lg:pr-[160px] lg:pb-[100px] lg:pl-[160px] pt-[30px] pb-[30px] pr-[30px] pl-[30px] grid lg:gap-[100px] gap-[30px]  bg-gradient-to-t from-[#FFFFFF] to-[#C6E4E1] ">
+        <footer className="w-full max-w-[1440px] h-auto lg:h-[400px] lg:pt-[40px] lg:pr-[160px] lg:pb-[100px] lg:pl-[160px] pt-[30px] pb-[30px] pr-[30px] pl-[30px] grid lg:gap-[100px] gap-[30px]  bg-gradient-to-t from-[#FFFFFF] to-[#C6E4E1] ">
 
             <div className="w-full max-w-[1170px] h-auto lg:h-[199px]  justify-between lg:flex ">
 
@@ -48,6 +48,6 @@ export default function Layout7(){
                     <p>Terms & Condition, Privacy Policy</p>
                 </div>
 
-        </div>
+        </footer>
     )
 }
