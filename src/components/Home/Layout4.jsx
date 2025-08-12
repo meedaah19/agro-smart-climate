@@ -9,18 +9,28 @@ export default function Layout4(){
             <div className="lg:w-[1120px] h-auto lg:h-[437px] lg:flex gap-[32px] pt-14 lg:pt-0 ">
 
             <div className="lg:w-[718px] h-auto lg:h-[437px] flex gap-[30px] ">
+
                 <div className="lg:w-[389px] h-auto lg:h-[437px] ">
-                    <img className=" rounded-tl-[64px] rounded-tr-[8px] rounded-br-[8px] rounded-bl-[160px] " src={image1} alt="An old woman with a phone" />
+                    <img 
+                    className=" rounded-tl-[64px] rounded-tr-[8px] rounded-br-[8px] rounded-bl-[160px] " 
+                    src={image1} 
+                    alt="An old woman with a phone" />
                 </div>
+
                 <div className="lg:w-[281px] h-auto lg:h-[360px]">
-                    <img className="rounded-tl-[8px] rounded-tr-[16px] rounded-br-[115px] rounded-bl-[8px] " src={image2} alt="A man on a system" />
+                    <img 
+                    className="rounded-tl-[8px] rounded-tr-[16px] rounded-br-[115px] rounded-bl-[8px] " 
+                    src={image2} 
+                    alt="A man on a system" />
                 </div>
+
             </div>
 
             <div className='lg:w-[370px] h-auto lg:h-[437px]  '>
                 <h1 className='font-[Poppins] font-[600] text-[28px] lg:text-[39.81px] pt-6 lg:pt-0'>Built for Every Farmer, Backed by Community.</h1>
                 <p className='pt-5 font-[Poppins] font-[400] text-[20px] lg:text-[27.65px] '>Whether you are a smallholder farmer or part of a rural community, it is built for you with: </p>
             </div>
+
             </div>
 
         </div>

@@ -25,33 +25,40 @@ export default function Layout3(){
             
             <div className='lg:w-[544px] w-full h-auto lg:h-[551px] grid gap-[3px]'>
                 <div className='flex gap-[25px] lg:gap-[32.7px] '>
+
                 <div>
                     <img 
                     className=' lg:w-[263px] lg:h-[292px] rounded-tr-[16.35px] rounded-tl-[65.41px] rounded-br-[16.35px] rounded-bl-[16.35px] ' 
                     src={image1} 
                     alt="irrigation image" />
                     </div>
+
                 <div>
                     <img 
                     className='lg:w-[248.3px] lg:h-[292.29px] rounded-tr-[100.16px] rounded-tl-[16.35px] rounded-br-[16.35px] rounded-bl-[16.35px]' 
                     src={image2} 
                     alt="people planting" />
                     </div>
+
                 </div>
+
                 <div 
                 className='lg:h-[202.36px] lg:w-[511px] flex gap-[25px] lg:gap-[32.7px] '> 
+
                 <div>
                     <img 
                     className='lg:w-[263.68px] lg:h-[225.65px] rounded-tr-[8px]  w-[150px] rounded-tl-[16] rounded-bl-[16px] rounded-br-[8px] ' 
                     src={image3} 
                     alt="weather teaching" />
                     </div>
+
                 <div>
                     <img 
                     className='lg:w-[211px] lg:h-[226px] rounded-tr-[16.35px]  w-[230px] pt-3 lg:pt-0 rounded-tl-[16.35px] rounded-bl-[16.35px] rounded-br-[65.41px] ' 
                     src={image4} 
                     alt="A man with a phone" />
                     </div>
+                    
                 </div>
                 
             </div>

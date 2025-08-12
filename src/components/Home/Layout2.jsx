@@ -10,6 +10,7 @@ export default function Layout2() {
                     <div className=' w-full max-w-[1120px] mx-auto h-auto lg:h-[527.35px] flex flex-col lg:flex-row  gap-[32px] '>
         
                     <div className='grid gap-[32.7px] w-full'>
+                        
                         <div className='flex gap-[25px] lg:gap-[36.79px] '>
                         <div>
                             <img 
@@ -17,6 +18,7 @@ export default function Layout2() {
                             src={image1} 
                             alt="soil and grass image" />
                             </div>
+
                         <div>
                             <img 
                             className='lg:w-[159.43px] lg:h-[292.29px] rounded-tl-[16.35px] rounded-tr-[65.41px] rounded-br-[16.35px] rounded-bl-[16.35px]' 
@@ -24,6 +26,7 @@ export default function Layout2() {
                             alt="A man in the rain" />
                             </div>
                         </div>
+
                         <div 
                         className='lg:h-[202.36px] lg:w-[511px] flex gap-[25px] lg:gap-[36.79px] '> 
                         <div>
@@ -32,6 +35,7 @@ export default function Layout2() {
                             src={image3} 
                             alt="corn infected by earthworms" />
                             </div>
+
                         <div>
                             <img 
                             className='lg:w-[263.68px] lg:h-[202.36px] rounded-tl-[16.35px]  w-[200px] rounded-tr-[16.35px] rounded-br-[65.41px] rounded-bl-[16.35px] ' 
@@ -39,6 +43,7 @@ export default function Layout2() {
                             alt="A man in the desert" />
                             </div>
                         </div>
+                        
                     </div>
         
                     <div className='grid lg:gap-[32px] gap-[19px]  '>
