@@ -106,7 +106,7 @@ export default function Signup() {
                         id='email' 
                         type="text" 
                         defaultValue={formState.enteredValue?.email}
-                        placeholer='johnjoe@gmail.com' />
+                        placeholder='johnjoe@gmail.com' />
 
                         <div className='flex'>
                             <Input 
@@ -114,7 +114,7 @@ export default function Signup() {
                             id='password' 
                             type="password" 
                             defaultValue={formState.enteredValue?.password}
-                            placeholer='..........' />
+                            placeholder='..........' />
                             <img 
                             className='w-[29px] h-[29px] '  
                             src={image5} 
@@ -127,7 +127,7 @@ export default function Signup() {
                             id='confirmPassword' 
                             type="password" 
                             defaultValue={formState.enteredValue?.confirmPassword}
-                            placeholer='..........' /> 
+                            placeholder='..........' /> 
                             <img 
                             className='w-[29px] h-[29px] '  
                             src={image5} 

@@ -85,7 +85,7 @@ export default function Signin() {
                         id='email' 
                         type="text" 
                         defaultValue={formState.enteredValue?.name}  
-                        placeholer='johnjoe@gmail.com' />
+                        placeholder='johnjoe@gmail.com' />
 
                         <div className='flex'>
                             <Input 
@@ -93,7 +93,7 @@ export default function Signin() {
                             id='password' 
                             type="password" 
                             defaultValue={formState.enteredValue?.password}  
-                            placeholer='..........' />
+                            placeholder='..........' />
                             <img 
                             className='w-[29px] h-[29px] '  
                             src={image5} 
