@@ -26,21 +26,21 @@ export default function Kyc() {
             <FaTimes />
             </button>
 
-            <div className="lg:w-[504px] h-auto lg:h-[697px] flex-col gap-[10px] font-[Poppins] font-[400] ">
+            <div className="lg:w-[504px] h-auto lg:h-[697px] grid gap-[10px] font-[Poppins] font-[400] ">
 
-                <div className="lg:w-[508px] h-auto lg:h-[197px] flex-col gap-[8px]">
+                <div className="lg:w-[508px] h-auto lg:h-[197px] grid gap-[8px]">
                     <h1 className=" text-[19.2px] ">Language Preference </h1>
 
-                    <div className="lg:w-[508px] h-auto lg:h-[160px] flex-col gap-[16px]">
+                    <div className="lg:w-[508px] h-auto lg:h-[160px] grid gap-[16px]">
 
-                    <div className="lg:w-[508px] h-auto lg:h-[72px] flex-col gap-[4px]">
+                    <div className="lg:w-[508px] h-auto lg:h-[72px] grid gap-[4px]">
                     <label  htmlFor="language">In what language do you like to be communicated with?</label>
                     <select 
                     name="language" 
                     id="language"
-                    p
+                    className="lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] p-[16px] flex gap-[10px] border-[#000000] text-gray-500"
                     >
-                    <option 
+                    <option className="text-[16px]"
                     value="" disabled>
                         e.g, English
                     </option> 
@@ -63,11 +63,12 @@ export default function Kyc() {
                     </select>
                     </div>
 
-                     <div className="lg:w-[508px] h-auto lg:h-[72px] flex-col gap-[4px]">
+                     <div className="lg:w-[508px] h-auto lg:h-[72px] grid gap-[4px]">
                     <label htmlFor="language">Would you like to enable voice activation?</label>
                     <select 
                     name="voiceActivation" 
-                    id="voiceActivation">
+                    id="voiceActivation"
+                    className="lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] p-[16px] flex gap-[10px] border-[#000000] text-gray-500">
                     <option 
                     value="" disabled>
                         Yes
@@ -86,17 +87,17 @@ export default function Kyc() {
                     </div>
                 </div>
 
-                <div className="lg:w-[508px] h-auto lg:h-[197px] flex-col gap-[8px]">
+                <div className="lg:w-[485px] h-auto lg:h-[197px] grid gap-[8px]">
                     <h1 className=" text-[19.2px] " >Function and equipment </h1>
 
-                    <div className="lg:w-[508px] h-auto lg:h-[160px] flex-col gap-[16px]">
+                    <div className="lg:w-[485px] h-auto lg:h-[160px] grid gap-[16px]">
 
-                    <div className="lg:w-[508px] h-auto lg:h-[72px] flex-col gap-[4px]">
+                    <div className="lg:w-[485px] h-auto lg:h-[72px] grid gap-[4px]">
                     <label htmlFor="role">What is you role for this Climate journey?</label>
                     <select 
                     name="role" 
                     id="role"
-                    p
+                    className="lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] p-[16px] flex gap-[10px] border-[#000000] text-gray-500"
                     >
                     <option 
                     value="" disabled>
@@ -117,29 +118,31 @@ export default function Kyc() {
                     </select>
                     </div>
 
-                     <div className="lg:w-[508px] h-auto lg:h-[72px] flex-col gap-[4px]">
+                     <div className="lg:w-[485px] h-auto lg:h-[72px] grid gap-[4px]">
                     <Input 
                     label='Mention the tools you work with in general?'
                     id='tool' 
                     type="text" 
-                    placeholder='e.g Cutlass, hoe, rake...'  />
+                    placeholder='e.g Cutlass, hoe, rake...'  
+                    className="lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] px-[16px] flex gap-[10px]  "
+                    />
                     </div>
 
                     </div>
                 </div>
 
-                  <div className="lg:w-[508px] h-auto lg:h-[197px] flex-col gap-[8px]">
+                  <div className="lg:w-[485px] h-auto lg:h-[197px] grid gap-[8px]">
                     <h1 className=" text-[19.2px] " >Crop registration (1) </h1>
 
-                    <div className="lg:w-[508px] h-auto lg:h-[160px] flex-col gap-[16px]">
+                    <div className="lg:w-[485px] h-auto lg:h-[160px] grid gap-[16px]">
 
-                    <div className="lg:w-[508px] h-auto lg:h-[72px] flex-col gap-[4px]">
+                    <div className="lg:w-[485px] h-auto lg:h-[72px] grid gap-[4px]">
                     <label htmlFor="location">What is the specific location of your farm?</label>
                     <select 
-                    className="lg:w-[508px] h-auto lg:h-[48px] rounded-[4px] border-[1px] p-[16px] flex gap-[10px] "
+                    className="lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] p-[16px] flex gap-[10px] text-gray-500"
                     name="location" 
                     id="location"
-                    p
+                    
                     >
                     <option 
                     value="" disabled>
@@ -160,12 +163,14 @@ export default function Kyc() {
                     </select>
                     </div>
 
-                     <div className="lg:w-[508px] h-auto lg:h-[72px] flex-col gap-[4px]">
+                     <div className="lg:w-[485px] h-auto lg:h-[72px] grid gap-[4px]">
                     <Input 
                     label='What crops is at the specific location mentioned above?'
                     id='crop' 
                     type="text" 
-                    placeholder='e.g Rice, yam'  />
+                    placeholder='e.g Rice, yam'
+                    className="lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] px-[16px] flex gap-[10px]  "
+                    />
                     </div>
                     
                     </div>
@@ -173,7 +178,7 @@ export default function Kyc() {
 
             </div>  
 
-            <button className="bg-[#FF8E2880] lg:w-[506px] h-auto lg:h-[61px] flex-col gap-[32px] font-[700] font-[Poppins] text-[19.2px] text-center ">Continue</button>          
+            <button className="bg-[#FF8E2880] lg:w-[485px] h-auto lg:h-[61px] flex-col gap-[32px] font-[700] font-[Poppins] text-[19.2px] text-center ">Continue</button>          
             </div>
 
         </Modal>
