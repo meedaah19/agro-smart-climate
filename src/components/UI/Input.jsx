@@ -1,4 +1,4 @@
-export default function Input({label, id, type, defaultValue, placeholder, className=""}) {
+export default function Input({label, id, type, onChange, value, placeholder, className=""}) {
 
     return(
         <p >
@@ -8,7 +8,8 @@ export default function Input({label, id, type, defaultValue, placeholder, class
         type={type} 
         name={id}  
         placeholder={placeholder}  
-        defaultValue={defaultValue}/>
+        value={value}
+        onChange={onChange}/>
         </p> 
     )
 }
