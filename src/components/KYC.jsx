@@ -1,7 +1,7 @@
 import { useActionState, useContext, useState, useEffect } from "react";
 import { ModalContext } from "./store/ModalContext";
 import Modal from "./UI/Modal";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaTrash } from "react-icons/fa";
 import Input from "./UI/Input";
 
 export default function Kyc() {
@@ -58,12 +58,40 @@ export default function Kyc() {
 
     const [formState, formAction] = useActionState(validInput, { errors: null });
 
+    const [crops, setCrops] = useState([""]);
+
+    function handleCropChange (index, value) {
+        const newCrops = [...crops];
+        newCrops[index] = value;
+        setCrops(newCrops);
+        setLiveFormValues({
+            ...liveFormValues,
+            crop: newCrops.join(", ") 
+        });
+    };
+
+    function addCropField ()  {
+        setCrops([...crops, ""]);
+    };
+
+    function removeCropField(index) {
+    const newCrops = crops.filter((_, i) => i !== index);
+    setCrops(newCrops);
+
+    setLiveFormValues(prev => ({
+        ...prev,
+        crop: newCrops.join(", ")
+    }));
+}
+
+
+
     return (
         <Modal
             open={modalCtx.modalType === 'kyc'}
             onClose={handleCloseModal}
         >
-            <form action={formAction} className="lg:w-[572px] h-auto lg:h-[858px] rounded-[30px] p-[32px] flex-col gap-[64px]">
+            <form action={formAction} className="lg:w-[572px] h-auto  rounded-[30px] p-[32px] flex-col gap-[64px]">
 
                 <button
                     onClick={handleCloseModal}
@@ -72,19 +100,19 @@ export default function Kyc() {
                     <FaTimes />
                 </button>
 
-                <div className="lg:w-[504px] h-auto lg:h-[697px] grid gap-[10px] font-[Poppins] font-[400]">
+                <div className="lg:w-[504px] h-auto grid gap-[10px] font-[Poppins] font-[400]">
 
-                    <div className="lg:w-[508px] h-auto lg:h-[197px] grid gap-[8px]">
+                    <div className="lg:w-[508px] h-auto  grid gap-[8px]">
                         <h1 className="text-[19.2px]">Language Preference</h1>
 
-                        <div className="lg:w-[508px] h-auto lg:h-[160px] grid gap-[16px]">
+                        <div className="lg:w-[508px] h-auto  grid gap-[16px]">
 
-                            <div className="lg:w-[508px] h-auto lg:h-[72px] grid gap-[4px]">
+                            <div className="lg:w-[508px] h-auto grid gap-[4px]">
                                 <label htmlFor="language">In what language do you like to be communicated with?</label>
                                 <select
                                     name="language"
                                     id="language"
-                                    className={`lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
+                                    className={`lg:w-[485px] h-auto  rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
                                     value={liveFormValues.language}
                                     onChange={handleChange}
                                 >
@@ -96,12 +124,12 @@ export default function Kyc() {
                                 </select>
                             </div>
 
-                            <div className="lg:w-[508px] h-auto lg:h-[72px] grid gap-[4px]">
+                            <div className="lg:w-[508px] h-auto  grid gap-[4px]">
                                 <label htmlFor="voiceActivation">Would you like to enable voice activation?</label>
                                 <select
                                     name="voiceActivation"
                                     id="voiceActivation"
-                                    className={`lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
+                                    className={`lg:w-[485px] h-auto rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
                                     value={liveFormValues.voiceActivation}
                                     onChange={handleChange}
                                 >
@@ -113,17 +141,17 @@ export default function Kyc() {
                         </div>
                     </div>
 
-                    <div className="lg:w-[485px] h-auto lg:h-[197px] grid gap-[8px]">
+                    <div className="lg:w-[485px] h-auto  grid gap-[8px]">
                         <h1 className="text-[19.2px]">Function and equipment</h1>
 
-                        <div className="lg:w-[485px] h-auto lg:h-[160px] grid gap-[16px]">
+                        <div className="lg:w-[485px] h-auto  grid gap-[16px]">
 
-                            <div className="lg:w-[485px] h-auto lg:h-[72px] grid gap-[4px]">
+                            <div className="lg:w-[485px] h-auto  grid gap-[4px]">
                                 <label htmlFor="role">What is your role for this Climate journey?</label>
                                 <select
                                     name="role"
                                     id="role"
-                                    className={`lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
+                                    className={`lg:w-[485px] h-auto rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
                                     value={liveFormValues.role}
                                     onChange={handleChange}
                                 >
@@ -134,7 +162,7 @@ export default function Kyc() {
                                 </select>
                             </div>
 
-                            <div className="lg:w-[485px] h-auto lg:h-[72px] grid gap-[4px]">
+                            <div className="lg:w-[485px] h-auto  grid gap-[4px]">
                                 <Input
                                     label="Mention the tools you work with in general?"
                                     id="tool"
@@ -149,17 +177,29 @@ export default function Kyc() {
                         </div>
                     </div>
 
-                    <div className="lg:w-[485px] h-auto lg:h-[197px] grid gap-[8px]">
+                    <div className="lg:w-[485px] h-auto  grid gap-[8px]">
+
+                        <div className="flex  justify-between ">
                         <h1 className="text-[19.2px]">Crop registration (1)</h1>
 
-                        <div className="lg:w-[485px] h-auto lg:h-[160px] grid gap-[16px]">
+                        {/* Add More Button */}
+                        <button
+                            type="button"
+                            onClick={addCropField}
+                            className="text-gray-500 hover:underline mt-2 text-left"
+                        >
+                            Add More +
+                        </button>
+                        </div>
 
-                            <div className="lg:w-[485px] h-auto lg:h-[72px] grid gap-[4px]">
+                        <div className="lg:w-[485px] h-auto  grid gap-[16px]">
+
+                            <div className="lg:w-[485px] h-auto  grid gap-[4px]">
                                 <label htmlFor="location">What is the specific location of your farm?</label>
                                 <select
                                     name="location"
                                     id="location"
-                                    className={`lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
+                                    className={`lg:w-[485px] h-auto  rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
                                     value={liveFormValues.location}
                                     onChange={handleChange}
                                 >
@@ -170,25 +210,43 @@ export default function Kyc() {
                                 </select>
                             </div>
 
-                            <div className="lg:w-[485px] h-auto lg:h-[72px] grid gap-[4px]">
+                             {crops.map((cropValue, index) => (
+                            <div key={index} className="lg:w-[485px] h-auto grid gap-[4px]">
                                 <Input
-                                    label="What crops is at the specific location mentioned above?"
-                                    id="crop"
-                                    name="crop"
+                                    label={index === 0 ? "What crops is at the specific location mentioned above?" : ""}
+                                    id={`crop-${index}`}
+                                    name={`crop-${index}`}
                                     type="text"
                                     placeholder="e.g Rice, yam"
-                                    className="lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] px-[16px] flex gap-[10px] "
-                                    value={liveFormValues.crop}
-                                    onChange={handleChange}
+                                    className="lg:w-[485px] h-auto  rounded-[4px] border-[1px] px-[16px] flex gap-[10px]"
+                                    value={cropValue}
+                                    onChange={(e) => handleCropChange(index, e.target.value)}
                                 />
+                                {crops.length > 1 && (
+                            <div className="flex justify-end mr-25  ">
+                        <button
+                            type="button"
+                            onClick={() => removeCropField(index)}                     // <-- idx in scope
+                            className="text-gray-500 cursor-pointer h-[100px] w-[100px] hover:text-black font-bold"
+                        >
+                            <div className="flex gap-8 w-[200px] h-[50px] py-3 px-8  hover:bg-red-600 ">Delete crop <FaTrash size={18} /> </div>
+                        </button>
+                        </div>
+                        )}
                             </div>
+                            
+                        ))}
+
+                        
+                        
+
                         </div>
                     </div>
                 </div>
 
                 <button
                     disabled={!formComplete}
-                    className={`lg:w-[485px] h-auto lg:h-[61px] mt-5 lg:mt-0 flex-col gap-[32px] font-[700] font-[Poppins] text-[19.2px] text-center transition-colors duration-200 ${formComplete ? "bg-[#FF8E28]" : "bg-[#FF8E2880]  cursor-not-allowed"} rounded-[8px] py-[8px] px-[16px]`}
+                    className={`lg:w-[485px] h-auto lg:h-[61px] mt-5  flex-col gap-[32px] font-[700] font-[Poppins] text-[19.2px] text-center transition-colors duration-200 ${formComplete ? "bg-[#FF8E28]" : "bg-[#FF8E2880]  cursor-not-allowed"} rounded-[8px] py-[8px] px-[16px]`}
                 >
                     Continue
                 </button>
