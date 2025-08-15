@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from './pages/Home';
 import Root from './pages/Root';
 import AccCreated from "./pages/AccCreated";
+import About from "./pages/About";
 
     const router = createBrowserRouter([
       {
@@ -10,7 +11,8 @@ import AccCreated from "./pages/AccCreated";
         children: [
           { index: true, element: <Home/>},
           { path: 'signup', element: <Home/> },
-          {path: 'accountCreated', element: <AccCreated/>}
+          {path: 'accountCreated', element: <AccCreated/>},
+          {path: 'about', element: <About/>}
 
     ]}
     ])

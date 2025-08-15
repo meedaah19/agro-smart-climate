@@ -4,7 +4,7 @@ import logo2 from '../assets/facebook logo.png';
 import logo3 from '../assets/instagram logo.png';
 
 
-export default function Layout7(){
+export default function Footer(){
 const year = new Date().getFullYear();
 
     return(

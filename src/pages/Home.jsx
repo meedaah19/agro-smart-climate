@@ -33,9 +33,6 @@ export default function Home(){
 
          <Layout6/>
 
-         {/* seventh layout */}
-
-         <Layout7/>
         </div>
     )
 }
