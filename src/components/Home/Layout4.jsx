@@ -1,7 +1,7 @@
 import image1 from '../../assets/6cfa44040bb6a722e442b44d773f0aa31fbd7b57.png'
 
 
-export default function Layout3() {
+export default function Layout4() {
     return(
         <div className='bg-gradient-to-b from-[#FFFFFF] via-[#C6E4E1] to-[#C6E4E1] lg:w-[1440px] h-auto lg:h-[666px]  lg:p-[32px] grid gap-[10px] px-[16px] py-[16px] text-center'>  
 

@@ -10,7 +10,7 @@ const images = [
   image2
 ];
 
-export default function Layout3() {
+export default function Layout5() {
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
