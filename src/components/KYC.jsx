@@ -196,18 +196,15 @@ export default function Kyc() {
 
                             <div className="lg:w-[485px] h-auto  grid gap-[4px]">
                                 <label htmlFor="location">What is the specific location of your farm?</label>
-                                <select
-                                    name="location"
+                                <Input
                                     id="location"
-                                    className={`lg:w-[485px] h-auto  rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
+                                    name="location"
+                                    type="text"
+                                    placeholder="e.g, Lagos, Nigeria"
+                                    className="lg:w-[485px] h-auto lg:h-[52px] rounded-[4px] border-[1px] px-[16px] flex gap-[10px]"
                                     value={liveFormValues.location}
                                     onChange={handleChange}
-                                >
-                                    <option value="" disabled>e.g, Ishiagu, Ebonyi State ...</option>
-                                    <option value="Kwara">Kwara state</option>
-                                    <option value="Ebonyi">Ebonyi state</option>
-                                    <option value="Enugu">Enugu state</option>
-                                </select>
+                                />
                             </div>
 
                              {crops.map((cropValue, index) => (

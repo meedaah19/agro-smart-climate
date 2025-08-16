@@ -10,32 +10,33 @@ export default function Layout1(){
     }
 
     return(
-        <div className=' max-w-[1440px] lg:h-[761px] lg:px-[160px] px-[30px] bg-gradient-to-b from-[#A9DCD7] via-[#FFFFFF] to-[#C6E4E1] lg:pt-[50px] pt-[30px] grid lg:grid-cols-2 grid-cols-1 items-center  ' >
-        
-                    <div className='lg:w-[544px] font-[poppins] flex flex-col lg:gap-8 gap-3'>
-        
-                    <div className='flex flex-col gap-4'>
-                    <h1 className=' font-[700] lg:text-[47.78px] text-[28px]'>
+        <div 
+            className='relative max-w-[1440px] lg:h-[761px] lg:px-[160px] lg:pt-[50px] pt-[30px] pb-[30px] grid items-center bg-center '
+            style={{ backgroundImage: `url(${image1})` }}
+        >
+            {/* Dark overlay BEHIND the text */}
+            <div className="absolute inset-0 bg-black/60 z-0"></div>
+
+            {/* Content on top */}
+            <div className='relative z-10 lg:w-[1120px] h-auto lg:h-[325px] pt-[10px] lg:pr-[160px] grid gap-[32px]'>
+                <div className='lg:w-[1120px] h-auto lg:h-[232px] grid gap-[16px] text-center '>
+                    <h1 className='font-[700] lg:text-[64px] text-[32px] text-white'>
                         Grow More, Lose Less.
                     </h1>
-                    <p className=' font-[400] text-xl  lg:text-[27.65px]'>Let us show you how to harvest smartly.</p>
-                    </div>
+                    <p className='font-[500] text-xl lg:text-[40px] text-white'>
+                        Let us show you how to <br /> harvest smartly.
+                    </p>
+                </div>
 
-                    <div >
-                        <button 
-                        className='lg:w-[156px] lg:h-[61px] w-[100px] h-[30px] rounded-[8px] lg:pt-[16px] lg:pr-[32px] lg:pb-[16px] lg:pl-[32px] py-1.5  gap-[10px] bg-[#FF8E28] font-[700] text-[15px] lg:text-[19.2px] cursor-pointer' 
-                        onClick={handleShowModal}  >
-                            Lets start
-                        </button>
-                    </div>
-
-                    </div>
-                    <div className=' pt-7 lg:pt-0 lg:h-[761px] lg:w-[544px] w-[300px]' >
-                        <img 
-                        className=' rounded-[20px]' 
-                        src={image1} 
-                        alt="A man and some woman with some farm pictures" />
-                    </div>
-                    </div>
-    )
+                <div className='flex justify-center'>
+                    <button 
+                        className='lg:w-[156px] lg:h-[61px] w-[100px] h-[30px] rounded-[8px] lg:pt-[16px] lg:pr-[32px] lg:pb-[16px] lg:pl-[32px] py-1.5 gap-[10px] bg-[#FF8E28] font-[700] text-[15px] lg:text-[19.2px] cursor-pointer' 
+                        onClick={handleShowModal}
+                    >
+                        Lets start
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
 }
