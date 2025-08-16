@@ -51,7 +51,10 @@ export default function About(){
 
                 <div className='lg:w-[500px] h-auto lg:h-[600px] flex flex-col gap-[64px]  '>
 
-                    <img className='lg:w-[574px] lg:h-[500px] h-auto rounded-[20px] ' src={image} alt="soil measurement" />
+                    <img 
+                    className='lg:w-[574px] lg:h-[500px] h-auto rounded-[20px] ' 
+                    src={image} 
+                    alt="soil measurement" />
 
                     <div className='lg:w-[500px] h-auto lg:h-[45px] font-[700] text-[19.2px] flex lg:gap-[32px] gap-[20px]'>
                         <button
