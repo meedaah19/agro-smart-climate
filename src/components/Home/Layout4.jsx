@@ -10,7 +10,7 @@ export default function Layout3() {
                     <div className='flex flex-col h-auto lg:h-[215px] lg:gap-[32px] gap-[19px] justify-center items-center'>
                         <h1 className='font-[Poppins] font-[600] text-[28px] lg:text-[39.81px] '>Built for Every Farmer, Backed by Community.</h1>
         
-                        <p className='lg:w-[1123px] font-[Poppins] font-[400] text-[20px] lg:text-[27.65px] text-center'>Whether you are a smallholder farmer or part of a rural community, it`s built for everyone. <br /> Our platform is designed to be accessible, user-friendly, and adaptable to the unique <br /> needs of farmers across Nigeria.
+                        <p className='lg:w-[1123px] font-[Poppins] font-[400] text-[20px] lg:text-[27.65px] text-center'>Whether you are a smallholder farmer or part of a rural community, it`s built for everyone. Our platform is designed to be accessible, user-friendly, and adaptable to the unique <br /> needs of farmers across Nigeria.
                         </p>
         
                  </div>
