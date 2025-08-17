@@ -13,7 +13,7 @@ export default function Layout6() {
           </p>
         </div>
 
-        <div className="w-full rounded-[8px] border border-[#000000] bg-[#FFFFFF] flex flex-col h-[80px] sm:flex-row overflow-hidden">
+        <div className="w-full rounded-[8px] border border-[#000000] bg-[#FFFFFF] flex flex-col h-[80px] lg:h-[60px] sm:flex-row overflow-hidden">
 
           <input
             className="flex-1 lg:h-[61px] px-4 text-[#443f3f] outline-none"

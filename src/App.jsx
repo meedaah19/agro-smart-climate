@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Climate from "./pages/Climate";
 import ExportHub from "./pages/ExportHub";
 import SmartFarmimg from "./pages/SmartFarming";
+import Dashboard from "./pages/Dashboard";
 
     const router = createBrowserRouter([
       {
@@ -18,7 +19,8 @@ import SmartFarmimg from "./pages/SmartFarming";
           {path: 'about', element: <About/>},
           {path: 'climate-tools', element: <Climate/>},
           {path: 'export-hub', element: <ExportHub/>},
-          {path: 'smart-farming', element: <SmartFarmimg/>}
+          {path: 'smart-farming', element: <SmartFarmimg/>},
+          {path: 'dashboard', element: <Dashboard/>}
 
     ]}
     ])
