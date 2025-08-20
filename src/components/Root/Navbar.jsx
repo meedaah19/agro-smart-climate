@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { useContext, useState } from 'react';
-import img1 from '../assets/Frame 86.png';
+import img1 from '../../assets/Frame 86.png';
 import {FaBars, FaTimes } from 'react-icons/fa';
-import { ModalContext } from "./store/ModalContext";
+import { ModalContext } from "../store/ModalContext";
 
 
 function Navbar(){ 

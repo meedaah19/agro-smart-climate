@@ -1,8 +1,8 @@
 import { useActionState, useContext, useState, useEffect } from "react";
-import { ModalContext } from "./store/ModalContext";
-import Modal from "./UI/Modal";
+import { ModalContext } from "../store/ModalContext";
+import Modal from "../UI/Modal";
 import { FaTimes, FaTrash } from "react-icons/fa";
-import Input from "./UI/Input";
+import Input from "../UI/Input";
 
 export default function Kyc() {
     const modalCtx = useContext(ModalContext);

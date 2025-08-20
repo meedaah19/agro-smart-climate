@@ -4,7 +4,6 @@ import Layout3 from '../components/Home/Layout3';
 import Layout4 from '../components/Home/Layout4';
 import Layout5 from '../components/Home/Layout5';
 import Layout6 from '../components/Home/Layout6';
-import Layout7 from '../components/Footer';
 
 export default function Home(){
     return(

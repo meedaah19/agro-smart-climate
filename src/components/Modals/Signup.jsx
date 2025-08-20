@@ -1,13 +1,13 @@
-import image from '../assets/33bc12b4-3f40-4f92-8889-e524eccd0839.jpg'
-import image2 from '../assets/ad1bf210-ca89-4d77-a4c2-26c06338fcd2.jpg';
-import image3 from '../assets/6db1f554-7f73-41cd-845b-1572062b48e4.jpg';
-import image4 from '../assets/4ac7c386-857e-4361-95d2-9b04966521bb.jpg';
-import image5 from '../assets/1d566dfd-cbc7-4117-b61d-fd85fd6bb5bb.jpg';
+import image from '../../assets/33bc12b4-3f40-4f92-8889-e524eccd0839.jpg'
+import image2 from '../../assets/ad1bf210-ca89-4d77-a4c2-26c06338fcd2.jpg';
+import image3 from '../../assets/6db1f554-7f73-41cd-845b-1572062b48e4.jpg';
+import image4 from '../../assets/4ac7c386-857e-4361-95d2-9b04966521bb.jpg';
+import image5 from '../../assets/1d566dfd-cbc7-4117-b61d-fd85fd6bb5bb.jpg';
 import { Link, useNavigate } from 'react-router-dom';
-import Input from './UI/Input';
-import Modal from './UI/Modal';
+import Input from '../UI/Input';
+import Modal from '../UI/Modal';
 import { useContext, useActionState } from 'react';
-import { ModalContext } from './store/ModalContext';
+import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 
 export default function Signup() {
