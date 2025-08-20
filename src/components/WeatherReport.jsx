@@ -43,9 +43,9 @@ export default function WeatherReport(){
 
 
     return(
-        <div className='lg:w-[1000px] h-auto lg:h-[536px] flex flex-col gap-[8px]'>
+        <div className='lg:w-[1000px] h-auto lg:h-[536px]  flex flex-col gap-[8px]'>
 
-            <div className="lg:w-[1030px] h-auto lg:h-[35px] flex justify-between gap-[10px] ">
+            <div className="lg:w-[1030px] h-auto lg:h-[35px] w-[300px] flex justify-between gap-[10px] ">
                 <h1 className="font-[Poppins] text-[23.04px]">Weather report</h1>
                 <button 
                 onClick={handleClick}>
@@ -53,15 +53,15 @@ export default function WeatherReport(){
                 </button>                
             </div>
 
-            <div className="lg:w-[1130px] h-auto lg:h-[493px]">
+            <div className="lg:w-[1130px] h-auto lg:h-[493px] ">
 
-                <div className="lg:w-[1020px] h-auto lg:h-[253px] rounded-[30px] flex justify-between p-[32px] bg-gradient-to-l from-[#FFFFFF]/96 via-[#FFFFFF]/0 to-[#FFFFFF]/96  relative overflow-hidden shadow-lg">
+                <div className="lg:w-[1020px] h-auto lg:h-[253px] rounded-[30px] flex  lg:flex-row md:flex-row flex-col justify-between p-[32px] bg-gradient-to-l from-[#FFFFFF]/96 via-[#FFFFFF]/0 to-[#FFFFFF]/96  relative overflow-hidden shadow-lg">
 
                      <div className="absolute inset-0 flex items-center justify-center">
                         <img
                         src={image1}
                         alt="Rain effect"
-                        className="w-80  object-cover opacity-100 rotate-160"
+                        className="w-80 hidden md:block object-cover opacity-100 rotate-160"
                         style={{
                         WebkitMaskImage: "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
                         WebkitMaskRepeat: "no-repeat",
@@ -113,29 +113,31 @@ export default function WeatherReport(){
 
             </div>
 
-            <div className="lg:w-[1020px] h-auto lg:h-[200px] flex flex-col gap-[16px] ">
+           <div className="w-full h-auto flex flex-col gap-4 lg:w-[1020px] lg:h-[200px]">
+    
+    {/* Time Row */}
+    <div className="w-full h-auto flex gap-4 overflow-x-auto lg:overflow-visible lg:justify-between lg:h-[90px]">
+        {time.map((item, index) => (
+            <WeatherTime
+                key={index}
+                time={item.time}
+                degree={item.degree}
+            />
+        ))}
+    </div>
 
-                <div className="lg:w-[1020px] h-auto lg:h-[90px] flex justify-between">
-                    {time.map((item, index) => [
-                        <WeatherTime
-                        key={index}
-                        time={item.time}
-                        degree={item.degree}
-                        />
-                    ])}                    
-                </div>
-
-                <div className="lg:w-[1020px] h-auto lg:h-[90px] flex justify-between">
-                    {week.map((item, index) => (
-                        <WeatherDate
-                        key={index}
-                        day={item.day}
-                        degree={item.degree}
-                        isActive={item.day === today} 
-                        />
-                    ))}
-                </div>
-            </div>
+    {/* Week Row */}
+    <div className="w-full h-auto flex gap-4 overflow-x-auto lg:overflow-visible lg:justify-between lg:h-[90px]">
+        {week.map((item, index) => (
+            <WeatherDate
+                key={index}
+                day={item.day}
+                degree={item.degree}
+                isActive={item.day === today}
+            />
+        ))}
+    </div>
+</div>
          </div>
     )
 }
