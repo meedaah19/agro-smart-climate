@@ -3,7 +3,7 @@ import image2 from '../../assets/ad1bf210-ca89-4d77-a4c2-26c06338fcd2.jpg';
 import image3 from '../../assets/6db1f554-7f73-41cd-845b-1572062b48e4.jpg';
 import image4 from '../../assets/4ac7c386-857e-4361-95d2-9b04966521bb.jpg';
 import image5 from '../../assets/1d566dfd-cbc7-4117-b61d-fd85fd6bb5bb.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Modal from '../UI/Modal';
 import { useContext, useActionState } from 'react';
@@ -11,6 +11,7 @@ import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 
 export default function Signin() {
+    const navigate = useNavigate();
     const modalCtx = useContext(ModalContext);
 
     function handleCloseModal(){
@@ -83,7 +84,7 @@ export default function Signin() {
                         <Input 
                         label='Enter email address' 
                         id='email' 
-                        type="text" 
+                        type='email'
                         defaultValue={formState.enteredValue?.name}  
                         placeholder='johnjoe@gmail.com' />
 
@@ -100,7 +101,8 @@ export default function Signin() {
                             alt="eye image" />
                         </div>
 
-                        <button className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] ">login</button>
+                        <button
+                        onClick={() => {navigate('dashboard'); modalCtx.hideModal()}} className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] ">login</button>
                     </div>
 
                     </form>

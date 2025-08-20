@@ -3,8 +3,10 @@ import { ModalContext } from "../store/ModalContext";
 import Modal from "../UI/Modal";
 import { FaTimes, FaTrash } from "react-icons/fa";
 import Input from "../UI/Input";
+import { useNavigate } from "react-router-dom";
 
 export default function Kyc() {
+    const navigate = useNavigate();
     const modalCtx = useContext(ModalContext);
 
     function handleCloseModal() {
@@ -242,6 +244,7 @@ export default function Kyc() {
                 </div>
 
                 <button
+                    onClick={() =>{ (navigate('dashboard')); modalCtx.hideModal()}}
                     disabled={!formComplete}
                     className={`lg:w-[485px] h-auto lg:h-[61px] mt-5  flex-col gap-[32px] font-[700] font-[Poppins] text-[19.2px] text-center transition-colors duration-200 ${formComplete ? "bg-[#FF8E28]" : "bg-[#FF8E2880]  cursor-not-allowed"} rounded-[8px] py-[8px] px-[16px]`}
                 >

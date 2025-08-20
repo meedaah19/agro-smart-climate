@@ -104,7 +104,7 @@ export default function Signup() {
                         <Input 
                         label='Enter email address' 
                         id='email' 
-                        type="text" 
+                        type="email" 
                         defaultValue={formState.enteredValue?.email}
                         placeholder='johnjoe@gmail.com' />
 
