@@ -29,6 +29,7 @@ export default function Sidebar(){
                         >Dashboard
                         <MdDashboard className='w-[25px]'/>
                         </NavLink>
+
                          <NavLink
                          to='User-profile'
                         className={({isActive}) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] flex lg:gap-23 ${
@@ -37,6 +38,7 @@ export default function Sidebar(){
                         >My Profile
                         <FaUserCircle className='w-[25px]'/>
                         </NavLink>
+
                          <NavLink
                          to='/Expert'
                         className={({isActive}) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] flex lg:gap-30 ${
@@ -45,6 +47,7 @@ export default function Sidebar(){
                         >Expert
                         <GiGraduateCap className='w-[25px]'/>
                         </NavLink>
+
                          <NavLink
                          to='market'
                         className={({isActive}) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] flex lg:gap-29 ${
@@ -53,6 +56,7 @@ export default function Sidebar(){
                         >Market
                         <FaShoppingBasket className='w-[25px]'/>
                         </NavLink>
+
                          <NavLink
                          to='tools'
                         className={({isActive}) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] flex lg:gap-32 ${
@@ -61,6 +65,7 @@ export default function Sidebar(){
                         >Tools
                         <GiHammerNails className='w-[25px]'/>
                         </NavLink>
+
                          <NavLink
                          to= 'report'
                         className={({isActive}) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] flex lg:gap-29 ${
@@ -69,6 +74,7 @@ export default function Sidebar(){
                         >Report
                         <MdInsertChart className='w-[25px]'/>
                         </NavLink>
+
                          <NavLink
                          to='alert'
                         className={({isActive}) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] flex lg:gap-32 ${
@@ -77,6 +83,7 @@ export default function Sidebar(){
                         >Alert
                         <IoNotifications />
                         </NavLink>
+
                          <NavLink
                          to='faq'
                         className={({isActive}) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] flex lg:gap-32 ${
@@ -85,6 +92,7 @@ export default function Sidebar(){
                         >FAQ
                         <FaRegQuestionCircle className='w-[25px]'/>
                         </NavLink>
+                        
                          <NavLink 
                          to='settings'
                         className={({isActive}) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] flex lg:gap-27 ${
