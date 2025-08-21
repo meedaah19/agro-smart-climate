@@ -11,7 +11,7 @@ export default function Layout1(){
 
     return(
         <div 
-            className='relative max-w-[1440px] lg:h-[761px] h-[60vh] lg:px-[160px] lg:pt-[50px] pt-[30px] pb-[30px] grid items-center bg-center '
+            className='relative max-w-[1440px] lg:h-[761px] h-[80vh] lg:px-[160px] lg:pt-[50px] pt-[30px] pb-[30px] grid items-center bg-center '
             style={{ backgroundImage: `url(${image1})` }}
         >
             {/* Dark overlay BEHIND the text */}
