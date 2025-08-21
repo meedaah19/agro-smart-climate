@@ -34,7 +34,7 @@ function Navbar(){
         
                 <ul className={`${
                     menuOpen ? "flex" : "hidden"
-                    } absolute top-full left-0 w-full h-[50vh] bg-[#A9DCD7] flex-col items-start px-6 lg:pt-5
+                    } absolute top-full left-0 w-full h-[60vh] bg-[#A9DCD7] flex-col items-start px-6 lg:pt-5
                     py-4 gap-10 font-[700] font-[Poppins] lg:text-[15px] text-xl
                     lg:static lg:flex lg:gap-[40px] lg:flex-row lg:w-auto lg:bg-transparent lg:py-0 lg:px-0`}
                     > 
