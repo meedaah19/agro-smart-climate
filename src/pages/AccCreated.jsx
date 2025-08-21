@@ -30,13 +30,13 @@ export default function AccCreated() {
                     </div>
 
                     <div className='lg:w-[424px] h-auto h-lg:[61px] flex lg:gap-[32px] justify-around gap-[16px] font-[Poppins] font-[700] text-[19.2px] '>
-                        <button className='lg:w-[196px] h-auto lg:h-[61px] w-[150px] rounded-[8px] border-[1px] py-[16px] px-[8px] justify-center flex gap-[10px] bg-[#FFFFFF] cursor-pointer ' 
+                        <button className='lg:w-[196px] h-auto lg:h-[61px] w-[150px] rounded-[8px] border-[1px] py-[16px] px-[8px] justify-center flex gap-[10px] border-[#FF8E28] bg-[#FFFFFF] cursor-pointer ' 
                         onClick={() =>{ (navigate('/minidashboard')); modalCtx.hideModal()}}
                         >Skip</button>
 
                         <button 
                         onClick={handleClick}
-                        className='lg:w-[196px] w-[150px] h-auto lg:h-[61px] rounded-[8px] border-[1px] py-[16px] px-[8px] justify-center flex gap-[10px] bg-[#FF8E28] cursor-pointer '>Fill a form</button>
+                        className='lg:w-[196px] w-[150px] h-auto lg:h-[61px] rounded-[8px] border-[1px] py-[16px] px-[8px] justify-center flex gap-[10px] border-[#FF8E28] bg-[#FF8E28] cursor-pointer '>Fill a form</button>
                     </div>
                     
                 </div>
