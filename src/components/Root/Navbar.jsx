@@ -18,16 +18,16 @@ function Navbar(){
     return(
         <nav className="transition-all duration-200">
             <div 
-            className="bg-[#A9DCD7] px-8 flex justify-between relative z-50  mx-auto lg:pr-[160px] lg:pl-[160px]  lg:h-[87px] pt-[8px] pb-[8px] item-center">
+            className="bg-[#A9DCD7] px-8 flex justify-between relative z-50  mx-auto lg:pr-[160px] lg:pl-[160px] h-[100px]  lg:h-[87px] lg:pt-[8px] lg:pb-[8px]  item-center">
                  <img 
                  src={img1} 
                  alt="logo" 
-                 className="h-[45px] lg:h-[70px]" />
+                 className="h-25 py-3 lg:py-0 lg:h-[70px]  w-25" />
 
                     <div className="lg:hidden pt-[8px]">
                         <button 
                         onClick={() => setMenuOpen(!menuOpen)} 
-                        className="text-xl text-black">
+                        className="text-xl py-7 lg:py-0 text-black">
                         {menuOpen ? <FaTimes /> : <FaBars />}
                         </button>
                     </div>
