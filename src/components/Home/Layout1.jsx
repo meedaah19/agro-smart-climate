@@ -20,17 +20,17 @@ export default function Layout1(){
             {/* Content on top */}
             <div className='relative z-10 lg:w-[1120px] h-auto lg:h-[325px] pt-[10px] lg:pr-[160px] grid gap-25 lg:gap-[32px]'>
                 <div className='lg:w-[1120px] h-auto lg:h-[232px] grid gap-[16px] text-center '>
-                    <h1 className='font-[700] lg:text-[64px] text-[32px] text-white'>
+                    <h1 className='font-[700] lg:text-[64px] text-[53px] text-white'>
                         Grow More, Lose Less.
                     </h1>
-                    <p className='font-[500] text-xl lg:text-[40px] text-white'>
+                    <p className='font-[500] text-2xl lg:text-[40px] text-white'>
                         Let us show you how to <br /> harvest smartly.
                     </p>
                 </div>
 
                 <div className='flex justify-center'>
                     <button 
-                        className='lg:w-[156px] lg:h-[61px] w-[100px] h-[50px] rounded-[8px] lg:py-[16px] lg:px-[32px]   py-3 gap-[10px] bg-[#FF8E28] font-[700] text-[18px] lg:text-[19.2px] cursor-pointer' 
+                        className='lg:w-[156px] lg:h-[61px] w-[120px] h-[50px] rounded-[8px] lg:py-[16px] lg:px-[32px]   py-3 gap-[10px] bg-[#FF8E28] font-[700] text-[19px] lg:text-[19.2px] cursor-pointer' 
                         onClick={handleShowModal}
                     >
                         Lets start
