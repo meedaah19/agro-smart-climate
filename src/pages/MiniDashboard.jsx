@@ -26,7 +26,7 @@ export default function MiniDashboard(){
 
                             <button 
                             onClick={() => modalCtx.showModal('kyc')}
-                            className='lg:w-[150px] w-[100px] h-auto lg:h-[61px] rounded-[8px] border-[1px] py-[16px] px-[8px] justify-center flex gap-[10px] bg-[#FF8E28] border-[#FF8E28] cursor-pointer font-[Poppins] font-[700] text-[19.2px] '
+                            className='lg:w-[150px] w-[200px] h-auto lg:h-[61px] rounded-[8px] border-[1px] py-[16px] px-[8px] justify-center flex gap-[10px] bg-[#FF8E28] border-[#FF8E28] cursor-pointer font-[Poppins] font-[700] lg:text-[19.2px] '
                             >Register here
                             </button>
                     </div>
