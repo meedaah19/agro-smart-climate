@@ -7,6 +7,7 @@ import Climate from "./pages/Climate";
 import ExportHub from "./pages/ExportHub";
 import SmartFarmimg from "./pages/SmartFarming";
 import Dashboard from "./pages/Dashboard";
+import MiniDashboard from "./pages/MiniDashboard";
 
     const router = createBrowserRouter([
       {
@@ -20,7 +21,8 @@ import Dashboard from "./pages/Dashboard";
           {path: 'climate-tools', element: <Climate/>},
           {path: 'export-hub', element: <ExportHub/>},
           {path: 'smart-farming', element: <SmartFarmimg/>},
-          {path: 'dashboard', element: <Dashboard/>}
+          {path: 'dashboard', element: <Dashboard/>},
+          {path: 'miniDashboard', element: <MiniDashboard/>},
 
     ]}
     ])
