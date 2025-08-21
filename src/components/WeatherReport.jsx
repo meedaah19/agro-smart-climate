@@ -115,29 +115,29 @@ export default function WeatherReport(){
 
            <div className="w-full h-auto flex flex-col gap-4 lg:w-[1020px] lg:h-[200px]">
     
-    {/* Time Row */}
-    <div className="w-full h-auto flex gap-4 overflow-x-auto lg:overflow-visible lg:justify-between lg:h-[90px]">
-        {time.map((item, index) => (
-            <WeatherTime
-                key={index}
-                time={item.time}
-                degree={item.degree}
-            />
-        ))}
-    </div>
+            {/* Time Row */}
+            <div className="w-full h-auto flex gap-4 overflow-x-auto lg:overflow-visible lg:justify-between lg:h-[90px]">
+                {time.map((item, index) => (
+                    <WeatherTime
+                        key={index}
+                        time={item.time}
+                        degree={item.degree}
+                    />
+                ))}
+            </div>
 
-    {/* Week Row */}
-    <div className="w-full h-auto flex gap-4 overflow-x-auto lg:overflow-visible lg:justify-between lg:h-[90px]">
-        {week.map((item, index) => (
-            <WeatherDate
-                key={index}
-                day={item.day}
-                degree={item.degree}
-                isActive={item.day === today}
-            />
-        ))}
-    </div>
-</div>
+        {/* Week Row */}
+            <div className="w-full h-auto flex gap-4 overflow-x-auto lg:overflow-visible lg:justify-between lg:h-[90px]">
+                {week.map((item, index) => (
+                    <WeatherDate
+                        key={index}
+                        day={item.day}
+                        degree={item.degree}
+                        isActive={item.day === today}
+                    />
+                ))}
+            </div>
+        </div>
          </div>
     )
 }

@@ -8,7 +8,7 @@ export default function Dashboard(){
 
             <Sidebar/>
 
-            <div className='lg:w-[1157px] h-auto w-[350px] md:w-[800px] pr-3  lg:h-[1024px] flex flex-col gap-[32px] py-[16px]'>
+            <div className='lg:w-[1157px] h-auto w-[320px] md:w-[800px] pr-3  lg:h-[1024px] flex flex-col gap-[32px] py-[20px]'>
 
                 <WeatherReport/>
 

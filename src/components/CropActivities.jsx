@@ -6,11 +6,11 @@ import cassava from '../assets/cassava.jpg';
 
 export default function CropActivities(){
     return(
-         <div className="lg:w-[1020px] h-auto lg:h-[400px] overflow-y overflow-x-auto ">
+         <div className="lg:w-[1020px] w-full h-auto lg:h-[400px] overflow-y overflow-x-auto ">
             <h5 className="font-[Poppins] text-[23.04px] font-[400]"
             >Crop Activities</h5>
 
-            <div className="lg:w-[1020px] h-auto py-[16px] flex gap-[32px] lg:h-[450px]  ">
+            <div className="lg:w-[1020px] w-full h-auto py-[16px] flex lg:flex-row flex-col gap-[32px] lg:h-[450px]  ">
 
                 <Activities 
                 period='Planting Period' 

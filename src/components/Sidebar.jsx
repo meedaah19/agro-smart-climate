@@ -11,7 +11,7 @@ export default function Sidebar() {
 
     return (
         <div>
-            <div className="lg:hidden pt-[8px] px-2">
+            <div className="lg:hidden pt-[10px] px-2">
                 <button
                     onClick={() => setMenuOpen(!menuOpen)}
                     className="text-xl text-black"
@@ -22,7 +22,7 @@ export default function Sidebar() {
 
             <div
                 className={`lg:w-[251px] h-auto lg:h-[1024px] py-[32px] flex flex-col gap-[128px] bg-[#ffffff] 
-                fixed top-30 left-0 z-50 p-4 transition-transform duration-300
+                fixed top-35 left-0 z-50 p-4 transition-transform duration-300
                 ${menuOpen ? "translate-x-0" : "-translate-x-full"}
                 lg:static lg:translate-x-0`}
             >
