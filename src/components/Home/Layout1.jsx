@@ -11,14 +11,14 @@ export default function Layout1(){
 
     return(
         <div 
-            className='relative max-w-[1440px] lg:h-[761px] lg:px-[160px] lg:pt-[50px] pt-[30px] pb-[30px] grid items-center bg-center '
+            className='relative max-w-[1440px] lg:h-[761px] h-[60vh] lg:px-[160px] lg:pt-[50px] pt-[30px] pb-[30px] grid items-center bg-center '
             style={{ backgroundImage: `url(${image1})` }}
         >
             {/* Dark overlay BEHIND the text */}
             <div className="absolute inset-0 bg-black/60 z-0"></div>
 
             {/* Content on top */}
-            <div className='relative z-10 lg:w-[1120px] h-auto lg:h-[325px] pt-[10px] lg:pr-[160px] grid gap-[32px]'>
+            <div className='relative z-10 lg:w-[1120px] h-auto lg:h-[325px] pt-[10px] lg:pr-[160px] grid gap-25 lg:gap-[32px]'>
                 <div className='lg:w-[1120px] h-auto lg:h-[232px] grid gap-[16px] text-center '>
                     <h1 className='font-[700] lg:text-[64px] text-[32px] text-white'>
                         Grow More, Lose Less.
@@ -30,7 +30,7 @@ export default function Layout1(){
 
                 <div className='flex justify-center'>
                     <button 
-                        className='lg:w-[156px] lg:h-[61px] w-[100px] h-[30px] rounded-[8px] lg:pt-[16px] lg:pr-[32px] lg:pb-[16px] lg:pl-[32px] py-1.5 gap-[10px] bg-[#FF8E28] font-[700] text-[15px] lg:text-[19.2px] cursor-pointer' 
+                        className='lg:w-[156px] lg:h-[61px] w-[100px] h-[50px] rounded-[8px] lg:py-[16px] lg:px-[32px]   py-3 gap-[10px] bg-[#FF8E28] font-[700] text-[18px] lg:text-[19.2px] cursor-pointer' 
                         onClick={handleShowModal}
                     >
                         Lets start

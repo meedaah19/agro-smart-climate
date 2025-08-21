@@ -34,8 +34,8 @@ function Navbar(){
         
                 <ul className={`${
                     menuOpen ? "flex" : "hidden"
-                    } absolute top-full left-0 w-full bg-[#A9DCD7] flex-col items-start px-6 lg:pt-5
-                    py-4 gap-[8px] font-[700] font-[Poppins] text-[15px] 
+                    } absolute top-full left-0 w-full h-[50vh] bg-[#A9DCD7] flex-col items-start px-6 lg:pt-5
+                    py-4 gap-10 font-[700] font-[Poppins] lg:text-[15px] text-xl
                     lg:static lg:flex lg:gap-[40px] lg:flex-row lg:w-auto lg:bg-transparent lg:py-0 lg:px-0`}
                     > 
                         <li>
@@ -85,7 +85,7 @@ function Navbar(){
                         </li>
                         <li className="lg:ml-auto">
                         <button
-                            className="text-[15px] lg:text-[19.2px] font-[700] text-black border border-[#FF7F18] hover:bg-[#FF8E28] rounded-[8px] lg:pl-2 px-6 lg:py-2 flex items-center justify-center h-[40px]"
+                            className="text-xl lg:text-[19.2px] font-[700] text-black border border-[#FF7F18] hover:bg-[#FF8E28] rounded-[8px] lg:pl-2 px-6 lg:py-2 flex items-center justify-center h-[40px]"
                             onClick={() => {setMenuOpen(false);
                             handleOpenModal()}}
                         >

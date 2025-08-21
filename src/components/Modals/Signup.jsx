@@ -82,11 +82,11 @@ export default function Signup() {
             <FaTimes />
             </button>
 
-        <div className="lg:w-[485px] h-auto lg:h-[943px] grid lg:gap-[64px] gap-[32px] ">
+        <div className="lg:w-[485px] h-auto lg:h-[943px] flex flex-col lg:gap-[64px] gap-10 ">
 
-        <form action={formAction} className='lg:w-[485px] h-[900px] lg:h-[781px] grid lg:gap-[64px]'>
+        <form action={formAction} className='lg:w-[485px] h-[740px] lg:h-[781px] flex flex-col gap-10 lg:gap-[64px]'>
 
-                    <div className='lg:w-[485px] lg:h-[144px] text-center grid gap-[10px]  '>
+                    <div className='lg:w-[485px] lg:h-[144px] text-center flex flex-col   '>
                         <h3 className="font-[Poppins] font-[400] text-[25px] lg:text-[27.65px] ">
                             Hello there
                         </h3>

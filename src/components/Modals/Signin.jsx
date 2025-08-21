@@ -43,10 +43,9 @@ export default function Signin() {
             } };
                 }
 
-            // if(name && password && email && confirmPassword){
-            //     modalCtx.showModal('accountCreated')
-            // }
-                console.log( password, email,)
+            navigate('dashboard'); 
+            modalCtx.hideModal()
+            console.log( password, email,)
             return {errors : null}
             
     }
@@ -60,7 +59,7 @@ export default function Signin() {
     onClose={handleCloseModal}
     >
 
-        <div className='lg:w-[485px] h-auto lg:h-[809px] gap-[32px] grid '>
+        <div className='lg:w-[485px] h-auto lg:h-[809px] gap-[32px] flex flex-col '>
 
             <button 
             onClick={handleCloseModal} 
@@ -69,9 +68,9 @@ export default function Signin() {
             <FaTimes />
             </button>
 
-        <div className="lg:w-[485px] h-auto lg:h-[745px] grid gap-[64px] ">
+        <div className="lg:w-[485px] h-auto lg:h-[745px] flex flex-col gap-[64px] ">
 
-        <form action={formAction} className='lg:w-[485px] h-auto lg:h-[488px] grid gap-[64px] '>
+        <form action={formAction} className='lg:w-[485px] h-auto lg:h-[488px] flex flex-col gap-10 lg:gap-[64px] '>
         <div className='lg:w-[485px] h-auto lg:h-[111px] text-center grid gap-[10px]  '>
                         <h3 className="font-[Poppins] font-[400] text-[25px] lg:text-[27.65px] ">
                             Welcome Back!
@@ -101,22 +100,22 @@ export default function Signin() {
                             alt="eye image" />
                         </div>
 
-                        <button
-                        onClick={() => {navigate('dashboard'); modalCtx.hideModal()}} className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] ">login</button>
-                    </div>
-
-                    </form>
-
-                    {formState.errors && (
+                         {formState.errors && (
                            <ul className='bg-red-200 '>
                             {formState.errors.map((error) => (
                             <li key={error}>{error}</li>
                             ))}
                         </ul>   
                         )}
+
+                        <button
+                         className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] ">login</button>
+                    </div>
+
+                    </form>
                     
                         <img 
-                        className='lg:w-[485px] w-[250px] h-[23px] ' 
+                        className='lg:w-[485px] w-[250px] pt-10 h-[63px] ' 
                         src={image} 
                         alt="or option" />
 
