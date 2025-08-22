@@ -38,19 +38,19 @@ export default function Sidebar() {
                         <h2 className="font-[700]">Private farmer</h2>
                     </div>
 
-                    <nav className='lg-w-[251px] h-auto lg:h-[537px] flex flex-col justify-between font-[lora] text-[16px]'>
+                    <nav className='lg-w-[251px] h-auto lg:h-[537px] flex flex-col gap-5 justify-between font-[lora] text-[16px]'>
 
                         <NavLink
                             to="/dashboard"
-                            className={({ isActive }) => ` lg:w-[230px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] px-5 flex lg:gap-24 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
+                            className={({ isActive }) => ` lg:w-[230px] h-auto lg:h-[64px] py-[16px] lg:px-[20px] px-5 flex lg:gap-23 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
                                 }`}
                         >Dashboard
                             <MdDashboard className='w-[25px]' />
                         </NavLink>
 
                         <NavLink
-                            to='User-profile'
-                            className={({ isActive }) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] px-5 flex lg:gap-23 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
+                            to='/user-profile'
+                            className={({ isActive }) => ` lg:w-[230px] h-auto lg:h-[64px] py-[16px] lg:px-[20px] px-5 flex lg:gap-23 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
                                 }`}
                         >My Profile
                             <FaUserCircle className='w-[25px]' />
@@ -58,7 +58,7 @@ export default function Sidebar() {
 
                         <NavLink
                             to='/'
-                            className={({ isActive }) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] px-5 flex lg:gap-30 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
+                            className={({ isActive }) => ` lg:w-[230px] h-auto lg:h-[64px] py-[16px] lg:px-[20px] px-5 flex lg:gap-30 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
                                 }`}
                         >Expert
                             <GiGraduateCap className='w-[25px]' />
@@ -66,7 +66,7 @@ export default function Sidebar() {
 
                         <NavLink
                             to='/'
-                            className={({ isActive }) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] px-5 flex lg:gap-29 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
+                            className={({ isActive }) => ` lg:w-[230px] h-auto lg:h-[64px] py-[16px] lg:px-[20px] px-5 flex lg:gap-29 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
                                 }`}
                         >Market
                             <FaShoppingBasket className='w-[25px]' />
@@ -74,7 +74,7 @@ export default function Sidebar() {
 
                         <NavLink
                             to='/'
-                            className={({ isActive }) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] px-5 flex lg:gap-32 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
+                            className={({ isActive }) => ` lg:w-[230px] h-auto lg:h-[64px] py-[16px] lg:px-[20px] px-5 flex lg:gap-32 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
                                 }`}
                         >Tools
                             <GiHammerNails className='w-[25px]' />
@@ -82,7 +82,7 @@ export default function Sidebar() {
 
                         <NavLink
                             to='/'
-                            className={({ isActive }) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] px-5 flex lg:gap-29 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
+                            className={({ isActive }) => ` lg:w-[230px] h-auto lg:h-[64px] py-[16px] lg:px-[20px] px-5 flex lg:gap-29 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
                                 }`}
                         >Report
                             <MdInsertChart className='w-[25px]' />
@@ -90,7 +90,7 @@ export default function Sidebar() {
 
                         <NavLink
                             to='/'
-                            className={({ isActive }) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] px-5 flex lg:gap-32 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
+                            className={({ isActive }) => ` lg:w-[230px] h-auto lg:h-[64px] py-[16px] lg:px-[20px] px-5 flex lg:gap-32 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
                                 }`}
                         >Alert
                             <IoNotifications />
@@ -98,7 +98,7 @@ export default function Sidebar() {
 
                         <NavLink
                             to='/'
-                            className={({ isActive }) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] px-5 flex lg:gap-32 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
+                            className={({ isActive }) => ` lg:w-[230px] h-auto lg:h-[64px] py-[16px] lg:px-[20px] px-5 flex lg:gap-32 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
                                 }`}
                         >FAQ
                             <FaRegQuestionCircle className='w-[25px]' />
@@ -106,7 +106,7 @@ export default function Sidebar() {
 
                         <NavLink
                             to='/settings'
-                            className={({ isActive }) => ` lg:w-[251px] h-auto lg:h-[64px] py-[16px] lg:px-[32px] px-5 flex lg:gap-27 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
+                            className={({ isActive }) => ` lg:w-[230px] h-auto lg:h-[64px] py-[16px] lg:px-[20px] px-5 flex lg:gap-27 ${isActive ? 'bg-[#C6E4E1]' : 'hover:bg-[#C6E4E1]'
                                 }`}
                         >Settings
                             <IoSettings className='w-[25px]' />

@@ -8,6 +8,8 @@ import ExportHub from "./pages/ExportHub";
 import SmartFarmimg from "./pages/SmartFarming";
 import Dashboard from "./pages/Dashboard";
 import MiniDashboard from "./pages/MiniDashboard";
+import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
 
     const router = createBrowserRouter([
       {
@@ -23,6 +25,8 @@ import MiniDashboard from "./pages/MiniDashboard";
           {path: 'smart-farming', element: <SmartFarmimg/>},
           {path: 'dashboard', element: <Dashboard/>},
           {path: 'miniDashboard', element: <MiniDashboard/>},
+          // {path: 'user-profile', element: <Profile/>},
+          // {path: 'editProfile', element: <EditProfile/>}
 
     ]}
     ])
