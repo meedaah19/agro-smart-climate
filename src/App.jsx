@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import MiniDashboard from "./pages/MiniDashboard";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
+import Settings from "./pages/Settings";
 
     const router = createBrowserRouter([
       {
@@ -31,6 +32,7 @@ import EditProfile from "./pages/EditProfile";
               {path: 'editProfile', element: <EditProfile/>}
             ]
           },
+          {path: 'settings', element:<Settings/>}
           
 
     ]}
