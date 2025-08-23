@@ -25,8 +25,13 @@ import EditProfile from "./pages/EditProfile";
           {path: 'smart-farming', element: <SmartFarmimg/>},
           {path: 'dashboard', element: <Dashboard/>},
           {path: 'miniDashboard', element: <MiniDashboard/>},
-          // {path: 'user-profile', element: <Profile/>},
-          // {path: 'editProfile', element: <EditProfile/>}
+          {path: 'user-profile', 
+            children:[
+              {index:true, element: <Profile/>},
+              {path: 'editProfile', element: <EditProfile/>}
+            ]
+          },
+          
 
     ]}
     ])

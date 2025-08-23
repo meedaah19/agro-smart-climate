@@ -43,11 +43,12 @@ export default function WeatherReport(){
 
 
     return(
-        <div className='lg:w-[1000px] h-auto lg:h-[536px]  flex flex-col gap-[25px]'>
+        <div className='lg:w-[1030px] h-auto lg:h-[536px]  flex flex-col gap-[25px]'>
 
             <div className="lg:w-[1030px] h-auto lg:h-[35px] w-[300px] flex justify-between gap-[25px] ">
-                <h1 className="font-[Poppins] text-[23.04px]">Weather report</h1>
-                <button 
+                <h1 className=" font-[Poppins] text-[23.04px]">Weather report</h1>
+                <button
+                className="cursor-pointer" 
                 onClick={handleClick}>
                     {volume ? <FaVolumeUp/> : <FaVolumeMute/>}
                 </button>                
