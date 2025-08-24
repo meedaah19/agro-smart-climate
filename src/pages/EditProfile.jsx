@@ -51,6 +51,7 @@ export default function EditProfile(){
                                         title='name'
                                         value='Hameedat'
                                         onChange={handleChange}/>
+
                                         <p className='font-[Lora] font-[400] text-[13.33px] pt-3 '>Email Address</p>
                                         <input className='font-[700] font-[Lora] text-[16px] h-[52px] lg:w-[400px] rounded-[8px] px-3 bg-[#A9DCD7]' 
                                         id='email'
@@ -58,6 +59,7 @@ export default function EditProfile(){
                                         title='email'
                                         value='hameedat@gmail.com'
                                         onChange={handleChange}/>
+
                                         <p className='font-[Lora] font-[400] text-[13.33px] pt-3 '>Add Phone Number</p>
                                         <input className='font-[700] font-[Lora] text-[16px] h-[52px] lg:w-[400px] rounded-[8px] px-3 bg-[#A9DCD7]' 
                                         id='phone-number'
@@ -67,6 +69,7 @@ export default function EditProfile(){
                                         onChange={handleChange}/>  
                                     </div>
                                 </div>
+
                                  <div className='lg:w-[480px] h-auto lg:h-[187px] flex flex-col gap-[16px] '>
                                     <h6 className='font-[Poppins] font-[400] text-[19.2px]'>Function and equipment</h6>
                                 <div className='lg:w-[400px] h-auto lg:h-[214px] flex flex-col gap-[5px] lg:gap-[10px]'>
@@ -77,6 +80,7 @@ export default function EditProfile(){
                                         title='role'
                                         value='Private farmer'
                                         onChange={handleChange}/>
+
                                         <p className='font-[Lora] font-[400] text-[13.33px] pt-3 '>General tools I work with</p>
                                         <input className='font-[700] font-[Lora] text-[16px] h-[52px] lg:w-[400px] rounded-[8px] px-3 bg-[#A9DCD7]' 
                                         id='tools'
@@ -84,6 +88,7 @@ export default function EditProfile(){
                                         title='tools' 
                                         value='Cutlass. heo, rake'
                                         onChange={handleChange}/>
+
                                     </div>
                                 </div>
                             </div>
@@ -108,6 +113,7 @@ export default function EditProfile(){
                                         title='location'
                                         value='Ishiagu, Ebonyi State'
                                         onChange={handleChange}/>
+                                        
                                         <p className='font-[Lora] font-[400] text-[13.33px]  '>Crop at this location</p>
                                         <input className='font-[700] font-[Lora] text-[16px] h-[52px] lg:w-[400px] rounded-[8px] px-3 bg-[#A9DCD7]' 
                                         id='crops'
