@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 import img1 from '../../assets/Frame 86.png';
 import {FaBars, FaTimes } from 'react-icons/fa';
 import { ModalContext } from "../store/ModalContext";
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 
 function Navbar(){ 
@@ -24,11 +25,11 @@ function Navbar(){
                  alt="logo" 
                  className="h-25 py-3 lg:py-0 lg:h-[70px]  w-25" />
 
-                    <div className="lg:hidden pt-[8px]">
+                    <div className="lg:hidden pt-[8px] ">
                         <button 
                         onClick={() => setMenuOpen(!menuOpen)} 
                         className="text-4xl py-7 lg:py-0 text-black">
-                        {menuOpen ? <FaTimes /> : <FaBars />}
+                        {menuOpen ? <FaTimes /> : <BsThreeDotsVertical />}
                         </button>
                     </div>
         

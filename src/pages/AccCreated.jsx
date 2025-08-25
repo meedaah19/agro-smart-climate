@@ -12,9 +12,9 @@ export default function AccCreated() {
     }
 
     return (
-            <div className='lg:w-[1440px]  h-auto lg:h-[451px] bg-gradient-to-b from-[#C6E4E1] via-[#FFFFFF] to-[#C6E4E1]  '>
+            <div className='lg:w-[1440px]  h-[100vh]  bg-gradient-to-b from-[#C6E4E1] via-[#FFFFFF] to-[#C6E4E1]  '>
 
-                <div className="lg:w-[424px]  h-auto lg:h-[140px] grid pt-[40px] gap-[32px] lg:pl-[450px] ">
+                <div className="lg:w-[424px]  h-auto lg:h-[140px] grid pt-[150px] lg:gap-10 gap-20 lg:pl-[450px] ">
 
                     <div className='lg:w-[424px] h-auto lg:h-[238px] text-center rounded-[30px] flex-col justify-center items-center gap-[8px]'>
 

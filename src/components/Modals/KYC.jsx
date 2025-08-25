@@ -4,6 +4,8 @@ import Modal from "../UI/Modal";
 import { FaTimes, FaTrash } from "react-icons/fa";
 import Input from "../UI/Input";
 import { useNavigate } from "react-router-dom";
+import { FaChevronDown } from "react-icons/fa";
+
 
 export default function Kyc() {
     const navigate = useNavigate();
@@ -110,12 +112,12 @@ export default function Kyc() {
 
                         <div className="lg:w-[508px] h-auto  grid gap-[16px]">
 
-                            <div className="lg:w-[508px] h-auto grid gap-[4px]">
+                            <div className="lg:w-[508px] h-auto grid gap-[4px] relative">
                                 <label htmlFor="language">In what language do you like to be communicated with?</label>
                                 <select
                                     name="language"
                                     id="language"
-                                    className={`lg:w-[485px] h-auto  rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
+                                    className={`lg:w-[485px] h-auto pl-  rounded-[4px] border-[1px] p-[16px] flex gap-[10px] appearance-none ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
                                     value={liveFormValues.language}
                                     onChange={handleChange}
                                 >
@@ -125,14 +127,18 @@ export default function Kyc() {
                                     <option value="igbo">Igbo</option>
                                     <option value="yoruba">Yoruba</option>
                                 </select>
+
+                                <FaChevronDown 
+                                    className="absolute lg:right-16 right-6 lg:top-12 top-18  transform text-gray-500 pointer-events-none"
+                                />
                             </div>
 
-                            <div className="lg:w-[508px] h-auto  grid gap-[4px]">
+                            <div className="lg:w-[508px] h-auto  grid gap-[4px] relative">
                                 <label htmlFor="voiceActivation">Would you like to enable voice activation?</label>
                                 <select
                                     name="voiceActivation"
                                     id="voiceActivation"
-                                    className={`lg:w-[485px] h-auto rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
+                                    className={`lg:w-[485px] h-auto rounded-[4px] border-[1px] p-[16px] flex gap-[10px] appearance-none ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
                                     value={liveFormValues.voiceActivation}
                                     onChange={handleChange}
                                 >
@@ -140,21 +146,25 @@ export default function Kyc() {
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
                                 </select>
+
+                                <FaChevronDown 
+                                    className="absolute lg:right-16 right-6 lg:top-12 top-18  transform text-gray-500 pointer-events-none"
+                                />
                             </div>
                         </div>
                     </div>
 
-                    <div className="lg:w-[485px] h-auto  grid gap-[8px]">
+                    <div className="lg:w-[485px] h-auto  grid gap-[8px] relative">
                         <h1 className="text-[19.2px]">Function and equipment</h1>
 
                         <div className="lg:w-[485px] h-auto  grid gap-[16px]">
 
-                            <div className="lg:w-[485px] h-auto  grid gap-[4px]">
+                            <div className="lg:w-[485px] h-auto  grid gap-[4px] relative">
                                 <label htmlFor="role">What is your role for this Climate journey?</label>
                                 <select
                                     name="role"
                                     id="role"
-                                    className={`lg:w-[485px] h-auto rounded-[4px] border-[1px] p-[16px] flex gap-[10px] ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
+                                    className={`lg:w-[485px] h-auto rounded-[4px] border-[1px] p-[16px] flex gap-[10px] appearance-none ${liveFormValues.language ? "text-black" : "text-gray-500"}`}
                                     value={liveFormValues.role}
                                     onChange={handleChange}
                                 >
@@ -163,6 +173,10 @@ export default function Kyc() {
                                     <option value="private">Private farmer</option>
                                     <option value="seller">Seller</option>
                                 </select>
+
+                                <FaChevronDown 
+                                    className="absolute lg:right-10 right-6 lg:top-12 top-18  transform text-gray-500 pointer-events-none"
+                                />
                             </div>
 
                             <div className="lg:w-[485px] h-auto  grid gap-[4px]">
@@ -189,7 +203,7 @@ export default function Kyc() {
                         <button
                             type="button"
                             onClick={addCropField}
-                            className="text-gray-500 hover:underline mt-2 text-left"
+                            className="text-black bg-[#FF8E28] hover:bg-[#c2610c] lg:pl-8 pl-4 w-[140px] h-[50px] rounded-xl mt-2 text-left"
                         >
                             Add More +
                         </button>

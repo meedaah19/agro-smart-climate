@@ -2,15 +2,17 @@ import image from '../../assets/33bc12b4-3f40-4f92-8889-e524eccd0839.jpg'
 import image2 from '../../assets/ad1bf210-ca89-4d77-a4c2-26c06338fcd2.jpg';
 import image3 from '../../assets/6db1f554-7f73-41cd-845b-1572062b48e4.jpg';
 import image4 from '../../assets/4ac7c386-857e-4361-95d2-9b04966521bb.jpg';
-import image5 from '../../assets/1d566dfd-cbc7-4117-b61d-fd85fd6bb5bb.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Modal from '../UI/Modal';
-import { useContext, useActionState } from 'react';
+import { useContext, useActionState, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 
 export default function Signin() {
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const modalCtx = useContext(ModalContext);
 
@@ -81,23 +83,27 @@ export default function Signin() {
                     <div className="lg:w-[485px] h-[313px] w-[200px] grid gap-[32px]">
 
                         <Input 
+                        className='p-3'
                         label='Enter email address' 
                         id='email' 
                         type='email'
                         defaultValue={formState.enteredValue?.name}  
                         placeholder='johnjoe@gmail.com' />
 
-                        <div className='flex'>
+                        <div className='relative '>
                             <Input 
+                            className='p-3'
                             label='Enter password' 
                             id='password' 
-                            type="password" 
+                            type={showPassword ? "text" : "password"}
                             defaultValue={formState.enteredValue?.password}  
                             placeholder='..........' />
-                            <img 
-                            className='w-[29px] h-[29px] '  
-                            src={image5} 
-                            alt="eye image" />
+                           <span
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute pt-8 right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600"
+                            >
+                                {showPassword ? <FaEye /> : <FaEyeSlash />}
+                            </span>
                         </div>
 
                          {formState.errors && (

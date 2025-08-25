@@ -83,7 +83,7 @@ export default function ExportHub(){
                 className="lg:w-[603px] h-auto lg:h-[348px] rounded-[20px] "
                  src={image3} alt="ship and cars pictures" />
 
-                 <div className='h-auto lg:h-[45px] font-[700] text-[15px] lg:text-[19.2px] flex lg:gap-[55px] gap-[20px]'>
+                 <div className='h-auto lg:h-[45px] font-[700] text-[15px] lg:text-[19.2px] pt-10 lg:pt-0 flex lg:gap-[55px] gap-[20px]'>
                         <button
                         onClick={handleClick}
                         className='lg:w-[250px] h-[45px] w-[150px] rounded-[8px] border-[1px] border-[#FF8E28] hover:bg-[#b86014]  lg:px-[16px] px-13.5 py-[8px]'>Back</button>

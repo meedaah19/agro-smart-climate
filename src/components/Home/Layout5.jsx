@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import image1 from '../../assets/ce304655acddaca8ae6856632f562cb5ff951802.png';
+import image1 from '../../assets/yam seller.jpg';
 import image2 from '../../assets/peper-seller.png';
 import image3 from '../../assets/small-production.png';
 
