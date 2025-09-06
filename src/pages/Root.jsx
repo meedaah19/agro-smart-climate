@@ -6,6 +6,8 @@ import { ModalContext } from '../components/store/ModalContext';
 import Signup from '../components/Modals/Signup';
 import Signin from '../components/Modals/Signin';
 import Kyc from '../components/Modals/KYC';
+import ResetPassword from '../components/Modals/resetPassword';
+import ForgotPassword from '../components/Modals/FogotPassword';
 
 function Root(){
     const modalCtx = useContext(ModalContext);
@@ -18,6 +20,9 @@ function Root(){
         {modalCtx.modalType === 'signup' && <Signup />}
         {modalCtx.modalType === 'signin' && <Signin />}
         {modalCtx.modalType === 'kyc' && <Kyc/>}
+        {modalCtx.modalType === 'resetPassword' && <ResetPassword/> }
+        {modalCtx.modalType === 'forgotPassword' && <ForgotPassword/> }
+
         </main>
         <Footer/>
         </>

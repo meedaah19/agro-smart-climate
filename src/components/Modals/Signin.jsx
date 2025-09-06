@@ -9,6 +9,7 @@ import { useContext, useActionState, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { forgotPassword } from '../http';
 
 
 export default function Signin() {
@@ -24,7 +25,11 @@ export default function Signin() {
         modalCtx.showModal('signup');
     }
 
-    function validInput(prevFormState, formData) {
+    function forgotPassword(){
+        modalCtx.showModal('forgotPassword')
+    }
+
+     async function validInput(prevFormState, formData) {
         const email = formData.get('email');
         const password = formData.get('password');
 
@@ -45,10 +50,18 @@ export default function Signin() {
             } };
                 }
 
-            navigate('dashboard'); 
-            modalCtx.hideModal()
-            console.log( password, email,)
-            return {errors : null}
+            try {
+                const res = await signinUpdate( email, password );
+
+                console.log("Signin successful:", res);
+                modalCtx.hideModal();
+                navigate('dashboard');
+
+                return { errors: null };
+            } catch (err) {
+                return { errors: [err.message] };
+            }
+                
             
     }
 
@@ -105,6 +118,9 @@ export default function Signin() {
                                 {showPassword ? <FaEye /> : <FaEyeSlash />}
                             </span>
                         </div>
+                        <button
+                        className='cursor-pointer'
+                        onClick={forgotPassword}>Forgot password?</button>
 
                          {formState.errors && (
                            <ul className='bg-red-200 '>

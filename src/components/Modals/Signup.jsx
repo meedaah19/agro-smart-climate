@@ -10,70 +10,78 @@ import { useContext, useActionState, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { signupUpdate } from '../http';
 
 
 export default function Signup() {
     const [showPassword, setShowPassword] = useState(false);
     const modalCtx = useContext(ModalContext);
     const navigate = useNavigate();
+    const [fetching, setFetching] = useState(false);
+    const [errors, setErrors] = useState([]);
+    const [enteredValue, setEnteredValue] = useState({});
 
-    function handleCloseModal(){
-        modalCtx.hideModal();
+    function handleCloseModal() {
+    modalCtx.hideModal();
     }
 
     function handleSignIn() {
-        modalCtx.showModal('signin');
+    modalCtx.showModal('signin');
     }
 
-   function validInput(prevFormState, formData) {
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const password = formData.get('password');
-        const confirmPassword = formData.get('confirmPassword');
+    async function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
 
-        let errors = [];
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const password = formData.get('password');
+    const cpassword = formData.get('cpassword');
 
-        if(!name.trim()){
-            errors.push('Please provide you name,');
-        }
+    let newErrors = [];
 
-        if(!email.includes('@')){
-            errors.push('Invalid email address');
-        }
+    if (!name.trim()) {
+        newErrors.push('Please provide your name');
+    }
 
-        if(password.length < 6){
-            errors.push('You must provide a password with at least six characters.');
-        }
+    if (!email.includes('@')) {
+        newErrors.push('Invalid email address');
+    }
 
-        if(confirmPassword !== password){
-            errors.push ('password do not match');
-        }
+    if (password.length < 6) {
+        newErrors.push('You must provide a password with at least six characters.');
+    }
 
-        if(errors.length > 0) {
-            return { errors, enteredValue: {
-                name,
-                email,
-                password,
-                confirmPassword,
-            } };
-                }
+    if (cpassword !== password) {
+        newErrors.push('Passwords do not match');
+    }
 
-            if(name && password && email && confirmPassword){
-                handleCloseModal();
-                navigate('/accountCreated')
-            }
-                console.log(name, password, email, confirmPassword )
-            return {errors : null}
+    if (newErrors.length > 0) {
+        setErrors(newErrors);
+        setEnteredValue({ name, email, password, cpassword });
+        return;
+    }
+
+    try {
+        setFetching(true);
+        const res = await signupUpdate(name, email, password, cpassword);
+
+        console.log("Signup successful:", res);
+        handleCloseModal();
+        navigate("/accountCreated");
+    } catch (err) {
+        setErrors([err.message]);
+    } finally {
+        setFetching(false);
+    }
             
-    }
-
-    const [formState, formAction] = useActionState(validInput, {errors:null});
+        }
 
     return(
     <Modal
     open={modalCtx.modalType === 'signup'}
     onClose={handleCloseModal}
-    
+
     >
 
         <div className='lg:w-[485px] h-auto lg:h-[1007px] gap-[32px] grid '>
@@ -87,8 +95,7 @@ export default function Signup() {
 
         <div className="lg:w-[485px] h-auto lg:h-[943px] flex flex-col lg:gap-[64px] gap-10 ">
 
-        <form action={formAction} className='lg:w-[485px] h-[740px] lg:h-[781px] flex flex-col gap-10 lg:gap-[64px]'>
-
+        <form onSubmit={handleSubmit} className='lg:w-[485px] h-[740px] lg:h-[781px] flex flex-col gap-10 lg:gap-[64px]'>
                     <div className='lg:w-[485px] lg:h-[144px] text-center flex flex-col   '>
                         <h3 className="font-[Poppins] font-[400] text-[25px] lg:text-[27.65px] ">
                             Hello there
@@ -103,14 +110,14 @@ export default function Signup() {
                         label='Enter name' 
                         id='name' 
                         type="text" 
-                        defaultValue={formState.enteredValue?.name} />
+                        defaultValue={enteredValue?.name} />
 
                         <Input
                         className='p-3' 
                         label='Enter email address' 
                         id='email' 
                         type="email" 
-                        defaultValue={formState.enteredValue?.email}
+                        defaultValue={enteredValue?.email}
                         placeholder='johnjoe@gmail.com' />
 
                         <div className='relative'>
@@ -119,7 +126,7 @@ export default function Signup() {
                             label='Enter password' 
                             id='password' 
                             type={showPassword ? "text" : "password"}
-                            defaultValue={formState.enteredValue?.password}
+                            defaultValue={enteredValue?.password}
                             placeholder='..........' />
                             <span
                                 onClick={() => setShowPassword(!showPassword)}
@@ -133,9 +140,9 @@ export default function Signup() {
                             <Input 
                             className='p-3' 
                             label='Confirm password' 
-                            id='confirmPassword' 
+                            id='cpassword' 
                             type={showPassword ? "text" : "password"}
-                            defaultValue={formState.enteredValue?.confirmPassword}
+                            defaultValue={enteredValue?.cpassword}
                             placeholder='..........' /> 
                             <span
                                 onClick={() => setShowPassword(!showPassword)}
@@ -145,9 +152,9 @@ export default function Signup() {
                             </span>
                         </div>
 
-                        {formState.errors && (
+                        {errors && (
                            <ul className='bg-red-200 '>
-                            {formState.errors.map((error) => (
+                            {errors.map((error) => (
                             <li key={error}>{error}</li>
                             ))}
                         </ul>   
@@ -155,8 +162,9 @@ export default function Signup() {
                         
                         <button 
                         className="bg-[#FF8E28] lg:w-[485px] h-[56px] rounded-[8px] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] cursor-pointer "
-                        type='submit'>
-                            Create Account
+                        type='submit'
+                        disabled={fetching}>
+                            {fetching ? 'Creating Account...' : 'Create Account'}
                             </button>
                     </div>
                     </form>
