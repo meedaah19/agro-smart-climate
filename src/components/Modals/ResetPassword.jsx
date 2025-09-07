@@ -1,23 +1,28 @@
-import {useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Modal from '../UI/Modal';
-import { useContext, useActionState, useState } from 'react';
+import { useContext, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { resetPassword } from '../http';
+import {  resetPassword } from '../http';
 
 
 export default function ResetPassword() {
     const [showPassword, setShowPassword] = useState(false);
-    const navigate = useNavigate();
     const modalCtx = useContext(ModalContext);
+    const [fetching, setFetching] = useState(false);
+    const [errors, setErrors] = useState([]);
+    const [enteredValue, setEnteredValue] = useState({});
 
     function handleCloseModal(){
         modalCtx.hideModal();
     }
 
-     async function validInput(prevFormState, formData) {
+
+     async function handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
         const token = formData.get('token');
         const newPassword = formData.get('newPassword');
 
@@ -27,29 +32,31 @@ export default function ResetPassword() {
             errors.push('You must provide a password with at least six characters.');
         }
 
-        if(errors.length > 0) {
-            return { errors, enteredValue: {
-                newPassword,
-            } };
-                }
+        if (errors.length > 0) {
+        setErrors(errors);
+        setEnteredValue({ token, newPassword });
+        return;
+    }
 
             try {
+                setFetching(true);
+                console.log("Sending reset-password:", { token, newPassword });
+
                 const res = await resetPassword( token, newPassword );
 
-                console.log("reset password successful:", res);
-                modalCtx.hideModal();
-                navigate('resetPassword');
-
+                console.log("password reset successful:", res);
+                alert('password reset successful. Login with your new password.')
+                handleCloseModal();
+                modalCtx.showModal('signin');
                 return { errors: null };
             } catch (err) {
                 return { errors: [err.message] };
+            } finally { 
+                setFetching(false);
             }
                 
             
     }
-
-    const [formState, formAction] = useActionState(validInput, {errors:null});
-
 
     return(
     <Modal
@@ -68,12 +75,10 @@ export default function ResetPassword() {
 
         <div className="lg:w-[485px] h-auto lg:h-[745px] flex flex-col gap-[64px] ">
 
-        <form action={formAction} className='lg:w-[485px] h-auto lg:h-[488px] flex flex-col gap-10 lg:gap-[64px] '>
-        <div className='lg:w-[485px] h-auto lg:h-[111px] text-center grid gap-[10px]  '>
+        <form onSubmit={handleSubmit} className='lg:w-[485px] h-auto lg:h-[488px] flex flex-col gap-10 lg:gap-[64px] '>
                         <h3 className="font-[Poppins] font-[400] text-[25px] lg:text-[27.65px] ">
-                            Reset Password
+                            Enter Token and reset password
                         </h3>
-                    </div>
 
                     <div className="lg:w-[485px] h-[313px] w-[200px] grid gap-[32px]">
 
@@ -82,38 +87,42 @@ export default function ResetPassword() {
                         label='Token' 
                         id='token' 
                         type='token'
-                        defaultValue={formState.enteredValue?.name}  
-                        placeholder='Token' />
+                        defaultValue={enteredValue?.token}  
+                        placeholder='.........' />
 
-                        <div className='relative '>
+                         <div className='relative '>
                             <Input 
                             className='p-3'
-                            label='Enter New password' 
+                            label='Enter your new password' 
                             id='newPassword' 
-                            type={showPassword ? "text" : "newPassword"}
-                            defaultValue={formState.enteredValue?.password}  
+                            type={showPassword ? "text" : "password"}
+                            defaultValue={enteredValue?.newPassword}  
                             placeholder='..........' />
-                           <span
+                            <span
                                 onClick={() => setShowPassword(!showPassword)}
                                 className="absolute pt-8 right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600"
                             >
                                 {showPassword ? <FaEye /> : <FaEyeSlash />}
                             </span>
                         </div>
-                         {formState.errors && (
+
+                         {errors && (
                            <ul className='bg-red-200 '>
-                            {formState.errors.map((error) => (
+                            {errors.map((error) => (
                             <li key={error}>{error}</li>
                             ))}
                         </ul>   
                         )}
 
                         <button
-                         className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] ">Reset Password</button>
+                         className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] "
+                         type='submit'
+                         disabled={fetching}
+                         >{fetching ? 'resetting...' : 'Reset password'}</button>
                     </div>
 
-                    </form>                        
-                    </div> 
+                    </form>
+                        </div> 
                     </div>
     </Modal>
 

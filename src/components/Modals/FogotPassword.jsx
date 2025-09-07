@@ -1,21 +1,24 @@
-import {useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Modal from '../UI/Modal';
-import { useContext, useActionState, useState } from 'react';
+import { useContext, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 import { forgotPassword} from '../http';
 
 
 export default function ForgotPassword() {
-    const navigate = useNavigate();
     const modalCtx = useContext(ModalContext);
+    const [errors, setErrors] = useState([]);
+    const [enteredValue, setEnteredValue] = useState({});
+    const [fetching, setFetching] = useState(false);
 
     function handleCloseModal(){
         modalCtx.hideModal();
     }
 
-     async function validInput(prevFormState, formData) {
+     async function handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
         const email = formData.get('email');
 
         let errors = [];
@@ -24,29 +27,39 @@ export default function ForgotPassword() {
             errors.push('Invalid email address');
         }
 
-        if(errors.length > 0) {
-            return { errors, enteredValue: {
-                newPassword,
-            } };
-                }
+        if (errors.length > 0) {
+            setErrors(errors);
+            setEnteredValue({email});
+            return;
+        };
 
-            try{
-                const res = await forgotPassword(email);
-        
-                        console.log("forgot password:", res);
-                        handleCloseModal();
-                        navigate('resetPassword');
-        
-                        return { errors: null };
-                    } catch (err) {
-                        return { errors: [err.message] };
-                    }
-                
-            
+
+        try{
+            setFetching(true);
+            const res = await forgotPassword(email);
+
+            console.log("forgot password:", res);
+            handleCloseModal();
+            modalCtx.showModal('resetPassword');
+
+            return { errors: null };
+        } catch (err) {
+             console.warn("Forgot password error:", err.message);
+
+            if (
+            err.message.includes("already") ||
+            err.message.includes("Internal Server Error")
+        ) {
+            handleCloseModal();
+            modalCtx.showModal('resetPassword');
+        } else {
+            setErrors([err.message]);
+        }
+        return { errors: [err.message] };
+        } finally {
+            setFetching(false);
+        }
     }
-
-    const [formState, formAction] = useActionState(validInput, {errors:null});
-
 
     return(
     <Modal
@@ -65,7 +78,7 @@ export default function ForgotPassword() {
 
         <div className="lg:w-[485px] h-auto lg:h-[745px] flex flex-col gap-[64px] ">
 
-        <form action={formAction} className='lg:w-[485px] h-auto lg:h-[488px] flex flex-col gap-10 lg:gap-[64px] '>
+        <form onSubmit={handleSubmit} className='lg:w-[485px] h-auto lg:h-[488px] flex flex-col gap-10 lg:gap-[64px] '>
 
                     <div className="lg:w-[485px] h-[313px] w-[200px] grid gap-[32px]">
 
@@ -74,20 +87,24 @@ export default function ForgotPassword() {
                         label='Enter your Email' 
                         id='email' 
                         type='email'
-                        defaultValue={formState.enteredValue?.name}  
+                        defaultValue={enteredValue?.name}  
                         placeholder='johnjoe@gmail.com' />
 
-                         {formState.errors && (
-                           <ul className='bg-red-200 '>
-                            {formState.errors.map((error) => (
-                            <li key={error}>{error}</li>
-                            ))}
-                        </ul>   
-                        )}
+                         {errors.length > 0 && (
+                            <ul className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded">
+                                {errors.map((error, index) => (
+                                <li key={index}>{error}</li>
+                                ))}
+                            </ul>
+                            )}
+
                         <p>Press enter, a token will be sent to your email</p>
 
                         <button
-                         className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] ">Enter</button>
+                         className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] cursor-pointer"
+                         type='submit'
+                         disabled={fetching}
+                         >{fetching ? 'Loading...' : 'Enter'}</button>
                     </div>
 
                     </form>                        

@@ -1,4 +1,4 @@
-export async function signupUpdate(name, email, password, cpassword) {
+export async function Register(name, email, password, cpassword) {
   const formData = new FormData();
   formData.append("name", name);
   formData.append("email", email);
@@ -22,73 +22,72 @@ export async function signupUpdate(name, email, password, cpassword) {
 }
 
 
-export async function signinUpdate(email, password) {
+export async function login(email, password) {
+  const formData = new FormData();
+  formData.append("email", email);
+  formData.append("password", password);
+
   const response = await fetch("https://agrosmart-api.onrender.com/api/auth/login", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      email,
-      password,
-    }).toString(),
+    body: formData,
   });
 
-  const resData = await response.json();
+  const resText = await response.text();
+    console.log("Response Text:", resText);
 
-  if (!response.ok) {
-    throw new Error(resData.message || 'Failed to signin');
-  }
+    if (!response.ok) {
+    throw new Error(resText || "Failed to sign in");
+    }
 
-  console.log("Response Data:", resData);
-  return resData;
+    return resText;
+  
 }
 
     
 
 
 export async function forgotPassword(email) {
+  const formData = new FormData();
+  formData.append("email", email);
+
   const response = await fetch("https://agrosmart-api.onrender.com/api/forgot-password", {
     method: 'POST',
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      email,
-    }).toString(),
+    body: formData,
   });
 
-  const resData = await response.json();
+  const resText = await response.text();
+      console.log("Response Text:", resText);
+
 
   if (!response.ok) {
-    throw new Error(resData.message || 'Failed, try again later');
-  }
-
-  console.log("Response Data:", resData);
-  return resData;
+    throw new Error(resText || 'Something went wrong. If you already requested a reset, check your email.');
+  } 
+  alert("Password reset link sent! Check your email.");
+  return resText;
 }
 
 export async function resetPassword(token, newPassword) {
+  const formData = new FormData();
+  formData.append("newPassword", newPassword);
+  formData.append("token", token);
+
   const response = await fetch("https://agrosmart-api.onrender.com/api/reset-password", {
     method: 'POST',
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      token,
-      newPassword
-    }).toString(),
+    body: formData,
   });
 
-  const resData = await response.json();
+  const resText = await response.text();
+      console.log("Response Text:", resText);
+
 
   if (!response.ok) {
-    throw new Error(resData.message || 'Failed to reset password');
+    throw new Error(resText || 'Invalid or expired token');
   }
-
-  console.log("Response Data:", resData);
-  return resData;
+  
+  return resText;
 }
+
+  
 
 
 export async function KycUpdate(token, newPassword) {

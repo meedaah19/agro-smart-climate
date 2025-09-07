@@ -9,13 +9,16 @@ import { useContext, useActionState, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { forgotPassword } from '../http';
+import { login } from '../http';
 
 
 export default function Signin() {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const modalCtx = useContext(ModalContext);
+    const [fetching, setFetching] = useState(false);
+    const [errors, setErrors] = useState([]);
+    const [enteredValue, setEnteredValue] = useState({});
 
     function handleCloseModal(){
         modalCtx.hideModal();
@@ -29,7 +32,9 @@ export default function Signin() {
         modalCtx.showModal('forgotPassword')
     }
 
-     async function validInput(prevFormState, formData) {
+     async function handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
         const email = formData.get('email');
         const password = formData.get('password');
 
@@ -43,30 +48,30 @@ export default function Signin() {
             errors.push('You must provide a password with at least six characters.');
         }
 
-        if(errors.length > 0) {
-            return { errors, enteredValue: {
-                email,
-                password,
-            } };
-                }
+        if (errors.length > 0) {
+        setErrors(errors);
+        setEnteredValue({ email, password });
+        return;
+    }
 
             try {
-                const res = await signinUpdate( email, password );
+                setFetching(true);
+                const res = await login( email, password );
 
                 console.log("Signin successful:", res);
+                alert('Signin successful')
                 modalCtx.hideModal();
                 navigate('dashboard');
 
                 return { errors: null };
             } catch (err) {
                 return { errors: [err.message] };
+            } finally { 
+                setFetching(false);
             }
                 
             
     }
-
-    const [formState, formAction] = useActionState(validInput, {errors:null});
-
 
     return(
     <Modal
@@ -85,7 +90,7 @@ export default function Signin() {
 
         <div className="lg:w-[485px] h-auto lg:h-[745px] flex flex-col gap-[64px] ">
 
-        <form action={formAction} className='lg:w-[485px] h-auto lg:h-[488px] flex flex-col gap-10 lg:gap-[64px] '>
+        <form onSubmit={handleSubmit} className='lg:w-[485px] h-auto lg:h-[488px] flex flex-col gap-10 lg:gap-[64px] '>
         <div className='lg:w-[485px] h-auto lg:h-[111px] text-center grid gap-[10px]  '>
                         <h3 className="font-[Poppins] font-[400] text-[25px] lg:text-[27.65px] ">
                             Welcome Back!
@@ -100,7 +105,7 @@ export default function Signin() {
                         label='Enter email address' 
                         id='email' 
                         type='email'
-                        defaultValue={formState.enteredValue?.name}  
+                        defaultValue={enteredValue?.name}  
                         placeholder='johnjoe@gmail.com' />
 
                         <div className='relative '>
@@ -109,7 +114,7 @@ export default function Signin() {
                             label='Enter password' 
                             id='password' 
                             type={showPassword ? "text" : "password"}
-                            defaultValue={formState.enteredValue?.password}  
+                            defaultValue={enteredValue?.password}  
                             placeholder='..........' />
                            <span
                                 onClick={() => setShowPassword(!showPassword)}
@@ -122,16 +127,19 @@ export default function Signin() {
                         className='cursor-pointer'
                         onClick={forgotPassword}>Forgot password?</button>
 
-                         {formState.errors && (
+                         {errors && (
                            <ul className='bg-red-200 '>
-                            {formState.errors.map((error) => (
+                            {errors.map((error) => (
                             <li key={error}>{error}</li>
                             ))}
                         </ul>   
                         )}
 
                         <button
-                         className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] ">login</button>
+                         className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] cursor-pointer "
+                         type='submit'
+                         disabled={fetching}
+                         >{fetching ? 'Logging in...' : 'Login'}</button>
                     </div>
 
                     </form>
