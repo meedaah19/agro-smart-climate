@@ -5,7 +5,6 @@ import { useContext, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import {  resetPassword } from '../http';
 
 
 export default function ResetPassword() {
@@ -20,7 +19,7 @@ export default function ResetPassword() {
     }
 
 
-     async function handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         const token = formData.get('token');
@@ -37,25 +36,8 @@ export default function ResetPassword() {
         setEnteredValue({ token, newPassword });
         return;
     }
-
-            try {
-                setFetching(true);
-                console.log("Sending reset-password:", { token, newPassword });
-
-                const res = await resetPassword( token, newPassword );
-
-                console.log("password reset successful:", res);
-                alert('password reset successful. Login with your new password.')
-                handleCloseModal();
-                modalCtx.showModal('signin');
-                return { errors: null };
-            } catch (err) {
-                return { errors: [err.message] };
-            } finally { 
-                setFetching(false);
-            }
-                
-            
+        handleCloseModal();
+        modalCtx.showModal('signin');            
     }
 
     return(

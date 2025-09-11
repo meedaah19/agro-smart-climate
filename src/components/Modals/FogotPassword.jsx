@@ -3,8 +3,6 @@ import Modal from '../UI/Modal';
 import { useContext, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
-import { forgotPassword} from '../http';
-
 
 export default function ForgotPassword() {
     const modalCtx = useContext(ModalContext);
@@ -16,7 +14,7 @@ export default function ForgotPassword() {
         modalCtx.hideModal();
     }
 
-     async function handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         const email = formData.get('email');
@@ -33,32 +31,9 @@ export default function ForgotPassword() {
             return;
         };
 
-
-        try{
-            setFetching(true);
-            const res = await forgotPassword(email);
-
-            console.log("forgot password:", res);
             handleCloseModal();
             modalCtx.showModal('resetPassword');
 
-            return { errors: null };
-        } catch (err) {
-             console.warn("Forgot password error:", err.message);
-
-            if (
-            err.message.includes("already") ||
-            err.message.includes("Internal Server Error")
-        ) {
-            handleCloseModal();
-            modalCtx.showModal('resetPassword');
-        } else {
-            setErrors([err.message]);
-        }
-        return { errors: [err.message] };
-        } finally {
-            setFetching(false);
-        }
     }
 
     return(

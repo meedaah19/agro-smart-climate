@@ -9,7 +9,6 @@ import { useContext, useActionState, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { login } from '../http';
 
 
 export default function Signin() {
@@ -53,24 +52,8 @@ export default function Signin() {
         setEnteredValue({ email, password });
         return;
     }
-
-            try {
-                setFetching(true);
-                const res = await login( email, password );
-
-                console.log("Signin successful:", res);
-                alert('Signin successful')
                 modalCtx.hideModal();
-                navigate('dashboard');
-
-                return { errors: null };
-            } catch (err) {
-                return { errors: [err.message] };
-            } finally { 
-                setFetching(false);
-            }
-                
-            
+                navigate('/dashboard');       
     }
 
     return(

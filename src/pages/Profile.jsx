@@ -17,7 +17,7 @@ export default function Profile(){
 
       <Sidebar />
 
-      <div className="relative z-[1] h-auto w-[320px] md:w-[800px] pr-3 lg:h-[1024px] flex flex-col gap-[12px] py-[12px] lg:w-[1030px]">
+      <div className="relative z-[1] lg:z-[100] h-auto w-[320px] md:w-[800px] pr-3 lg:h-[1024px] flex flex-col gap-[12px] py-[12px] lg:w-[1030px]">
         <h4 className="font-[Poppins] font-[400] text-[23.04px]">My profile</h4>
 
         <div className="relative z-[60] lg:w-[1020px] w-[320px] h-auto lg:h-[700px] rounded-[30px] p-[32px] flex flex-col gap-[32px] bg-[#FFFFFF]">

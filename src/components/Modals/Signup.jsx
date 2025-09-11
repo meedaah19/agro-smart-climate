@@ -9,7 +9,6 @@ import { useContext, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Register} from '../http';
 
 
 export default function Signup() {
@@ -61,20 +60,9 @@ export default function Signup() {
         return;
     }
 
-    try {
-        setFetching(true);
-        const res = await Register(name, email, password, cpassword);
-
-        console.log("Signup successful:", res);
-        alert('Signup successful')
-        console.log(name, email, password, cpassword)
+    
         handleCloseModal();
         navigate("/accountCreated");
-    } catch (err) {
-        setErrors([err.message]);
-    } finally {
-        setFetching(false);
-    }
             
         }
 
