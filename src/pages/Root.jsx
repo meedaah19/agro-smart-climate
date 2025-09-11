@@ -6,7 +6,7 @@ import { ModalContext } from '../components/store/ModalContext';
 import Signup from '../components/Modals/Signup';
 import Signin from '../components/Modals/Signin';
 import Kyc from '../components/Modals/KYC';
-import ResetPassword from '../components/Modals/resetPassword';
+import ResetPassword from '../components/Modals/ResetPassword';
 import ForgotPassword from '../components/Modals/FogotPassword';
 
 function Root(){
