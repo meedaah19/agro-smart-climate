@@ -37,12 +37,13 @@ app.post("/register", async (req, res) => {
   }
 
   try {
-    const { data, error } = await supabase.auth.admin.createUser({
-    email,
-    password,
-  });
+  const { data, error } = await supabase.auth.admin.createUser({
+      email,
+      password,
+      email_confirm: true, 
+    });
 
-  if (error) return res.status(400).json({ error: error.message });
+  if (error) return res.status(400).json({ success: false, message: error.message });
 
   const user = data.user;
 
@@ -53,12 +54,16 @@ app.post("/register", async (req, res) => {
     },
   ]);
 
-  if (insertError)
-    return res.status(400).json({ error: insertError.message });
+  if (insertError) {
+  return res.status(400).json({
+    success: false,
+    message: insertError.message
+  });
+}
 
   return res.json({ 
     success: true,
-    message: "User registered successfully", 
+    message: "Registration successful! Please check your email to confirm your account", 
     user  
     });
   } catch (err) {
@@ -80,12 +85,7 @@ app.post('/login', async (req, res) => {
   }
 
   try {
-    const publicSupabase = createClient(
-      process.env.SUPABASE_URL,
-      process.env.SUPABASE_ANON_KEY
-    );
-
-    const { data, error } = await publicSupabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -110,7 +110,34 @@ app.post('/login', async (req, res) => {
       .json({ success: false, message: "Internal server error" });
   }
 
-})
+});
+
+app.post('/forgot-password', async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ success: false, message: "Email is required" });
+  }
+
+  try {
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: 'http://localhost:3000', 
+    });
+
+    if (error) {
+      return res.status(400).json({ success: false, message: error.message });
+    }
+
+    return res.json({
+      success: true,
+      message: "Password reset email sent. Please check your inbox.",
+    });
+  } catch (err) {
+    console.error("Unexpected error:", err);
+    return res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
 
 
 app.listen(5000, () => console.log("Server running on port 5000"));

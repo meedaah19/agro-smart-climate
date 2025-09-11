@@ -52,7 +52,8 @@ export default function Kyc() {
     e.preventDefault();
 
       handleCloseModal();
-      navigate("dashboard");
+      alert("KYC completed successfully. Please sign in to continue.");
+      modalCtx.showModal('signin');
 
       setLiveFormValues({
         language: "",

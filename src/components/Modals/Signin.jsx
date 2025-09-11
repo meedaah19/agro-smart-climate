@@ -9,6 +9,7 @@ import { useContext, useActionState, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { loginUser } from '../api';
 
 
 export default function Signin() {
@@ -39,21 +40,26 @@ export default function Signin() {
 
         let errors = [];
 
-        if(!email.includes('@')){
-            errors.push('Invalid email address');
-        }
-
-        if(password.length < 6){
-            errors.push('You must provide a password with at least six characters.');
-        }
-
         if (errors.length > 0) {
         setErrors(errors);
         setEnteredValue({ email, password });
         return;
     }
+
+        try {
+            setFetching(true);
+            const result = await loginUser(email, password);
+            if (result.success) {
                 modalCtx.hideModal();
-                navigate('/dashboard');       
+                navigate('/dashboard');  
+                alert("Welcome back " + result.user.email);
+                console.log("Token:", result.token);
+            }
+            } catch (error) {
+                alert(error.message);
+            } finally{ 
+                setFetching(false);
+            }
     }
 
     return(

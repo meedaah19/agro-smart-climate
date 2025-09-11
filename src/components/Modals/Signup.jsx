@@ -9,6 +9,7 @@ import { useContext, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { registerUser } from '../api';
 
 
 export default function Signup() {
@@ -38,34 +39,34 @@ export default function Signup() {
 
     let newErrors = [];
 
-    if (!name.trim()) {
-        newErrors.push('Please provide your name');
-    }
-
-    if (!email.includes('@')) {
-        newErrors.push('Invalid email address');
-    }
-
-    if (password.length < 6) {
-        newErrors.push('You must provide a password with at least six characters.');
-    }
-
-    if (cpassword !== password) {
-        newErrors.push('Passwords do not match');
-    }
-
     if (newErrors.length > 0) {
         setErrors(newErrors);
         setEnteredValue({ name, email, password, cpassword });
         return;
     }
 
-    
-        handleCloseModal();
-        navigate("/accountCreated");
-            
+        try {
+            setFetching(true);
+            const result = await registerUser(name, email, password);
+            if (result.success) {
+            handleCloseModal();
+            navigate("/accountCreated");
+            alert(result.message);
+            }
+        } catch (error) {
+            alert(error.message);
+        }finally {
+            setFetching(false);
+            setEnteredValue({
+                name: '',
+                email: '',
+                password: '',
+                cpassword: ''
+            });
         }
-
+        
+        
+    }
     return(
     <Modal
     open={modalCtx.modalType === 'signup'}

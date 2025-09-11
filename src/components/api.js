@@ -1,5 +1,7 @@
-async function registerUser(name, email, password) {
-    const response = await fetch('http://localhost:5000/register', {
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
+export async function registerUser(name, email, password) {
+    const response = await fetch(`${API_BASE_URL}/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -10,16 +12,18 @@ async function registerUser(name, email, password) {
     const data = await response.json();
     console.log(data);
     
+    
     if (!response.ok) {
-        alert(data.message || 'Registration failed');
-        return;
+        alert(data.message || 'Registration failed,');
+        return data;
     };
     alert(data.message);
     console.log(data.user);
+    return data;
 }
 
-async function loginUser(email, password) {
-    const response = await fetch('http://localhost:5000/login', {
+export async function loginUser(email, password) {
+    const response = await fetch(`${API_BASE_URL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -32,7 +36,7 @@ async function loginUser(email, password) {
 
     if(!response.ok) {
         alert(data.message || "Login failed");
-        return;
+        return data;
     }
 
     alert(data.message);
@@ -40,4 +44,6 @@ async function loginUser(email, password) {
     console.log("Token:", data.token);
 
     localStorage.setItem("access_token", data.token);
+    return data;
+
 }
