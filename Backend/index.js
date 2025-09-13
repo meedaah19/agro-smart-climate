@@ -16,6 +16,10 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY,
 
 );
+const supabaseAnon = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_ANON_KEY
+  );
 
 app.post("/register", async (req, res) => {
   const { name, email, password} = req.body;
@@ -65,7 +69,7 @@ app.post("/register", async (req, res) => {
 
   return res.json({ 
     success: true,
-    message: "Registration successful! Please check your email to confirm your account", 
+    message: "Registration successful!", 
     user  
     });
   } catch (err) {
@@ -103,7 +107,7 @@ app.post('/login', async (req, res) => {
       success: true,
       message: "Login successful",
       user: data.user,
-      token: data.session?.access_token,
+      token: data.session.access_token,
     });
   } catch (err) {
     console.error("Unexpected error:", err);
@@ -140,6 +144,55 @@ app.post('/forgot-password', async (req, res) => {
   }
 });
 
+app.post('/kyc', async (req, res) => {
+  const { language, voice, role, tools, location, crops } = req.body;
+
+  if (!language || !voice || !role || !tools || !location || !crops) {
+    return res.status(400).json({ success: false, message: "All fields are required" });
+  }
+
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+      return res.status(401).json({ success: false, message: "Missing auth header" });
+    }
+
+    const token = authHeader.split(" ")[1];
+
+    const { data: { user }, error: verifyError } = await supabaseAnon.auth.getUser(token);
+
+    if (verifyError || !user) {
+      return res.status(401).json({ success: false, message: "Invalid or expired token" });
+    }
+
+    console.log("Authenticated user:", user.id);
+
+    const { data: kycData, error: insertError } = await supabase
+      .from('kycforms')
+      .insert([{
+        user_id: user.id,
+        language,
+        voice,
+        role,
+        tools,
+        location,
+        crops
+      }]);
+
+    if (insertError) {
+      return res.status(400).json({ success: false, message: insertError.message });
+    }
+
+    return res.json({
+      success: true,
+      message: "KYC form submitted successfully",
+      data: kycData
+    });
+  } catch (err) {
+    console.error("Unexpected error:", err);
+    return res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
 
 
 

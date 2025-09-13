@@ -1,11 +1,10 @@
-const API_BASE_URL = "http://localhost:5000";
-//import.meta.env.VITE_API_URL || 
+const API_BASE_URL = "http://localhost:5000" || import.meta.env.VITE_API_URL;
 
 export async function registerUser(name, email, password) {
     const response = await fetch(`${API_BASE_URL}/register`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({ name, email, password })
     });
@@ -63,7 +62,39 @@ export async function sendPasswordResetEmail (email){
         alert(data.message || "Request failed");
         return data;
     }
+    return data;
+};
 
+export async function KYCSubmission( language, voice, role, tools, location, crops) {
+    const token = localStorage.getItem("access_token");
+    console.log(localStorage.getItem("access_token"));
+
+
+    const response = await fetch(`${API_BASE_URL}/kyc`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            language, 
+            voice, 
+            role, 
+            tools, 
+            location, 
+            crops 
+        })
+    });     
+
+    const data = await response.json();
+    console.log(data);
+
+    if(!response.ok) {
+        alert(data.message || "KYC submission failed");
+        return data;
+    }       
+
+    alert(data.message);
     return data;
 
-};
+}

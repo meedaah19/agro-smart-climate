@@ -3,6 +3,7 @@ import { ModalContext } from "../store/ModalContext";
 import Modal from "../UI/Modal";
 import { FaTimes, FaTrash, FaChevronDown } from "react-icons/fa";
 import Input from "../UI/Input";
+import { KYCSubmission } from "../api";
 import { useNavigate } from "react-router-dom";
 
 export default function Kyc() {
@@ -35,37 +36,50 @@ export default function Kyc() {
   };
 
   useEffect(() => {
-    const { language, voice, role, tools, location } = liveFormValues;
-    const allCropsFilled = crops.every((crop) => crop.trim());
-    const allFilled =
-      language.trim() &&
-      voice.trim() &&
-      role.trim() &&
-      tools.trim() &&
-      location.trim() &&
-      allCropsFilled;
+  const { language, voice, role, tools, location } = liveFormValues;
 
-    setFormComplete(Boolean(allFilled));
-  }, [liveFormValues, crops]);
+  const allCropsFilled = crops.length > 0 && crops.every((crop) => crop.trim() !== "");
 
-   function validInput(e) {
+  const allFilled =
+    language.trim() &&
+    voice.trim() &&
+    role.trim() &&
+    tools.trim() &&
+    location.trim() &&
+    allCropsFilled;
+
+  setFormComplete(Boolean(allFilled));
+}, [liveFormValues, crops]);
+
+  async function validInput(e) {
     e.preventDefault();
 
-      handleCloseModal();
-      alert("KYC completed successfully. Please sign in to continue.");
-      modalCtx.showModal('signin');
+    const payload = {
+    language: liveFormValues.language,
+    voice: liveFormValues.voice,
+    role: liveFormValues.role,
+    tools: liveFormValues.tools,
+    location: liveFormValues.location, 
+    crops: crops, 
+  };
 
-      setLiveFormValues({
-        language: "",
-        voice: "",
-        role: "",
-        tools: "",
-        location: "",
-        crops: ""
-      });
-      setCrops([""]);
+  console.log("Submitting KYC payload:", payload);
 
-      return { errors: null };
+    try {
+      const { language, voice, role, tools, location } = liveFormValues;
+      setFetching(true);
+      const result = await KYCSubmission(language, voice, role, tools, location, crops);
+        if (result.success) {
+              handleCloseModal();
+              navigate('/Dashboard');
+            } else {
+              alert(result.message || "KYC submission failed");
+          }
+          } catch (error) {
+              alert(error.message);
+          } finally{ 
+              setFetching(false);
+          }
   }
 
   function handleCropChange(index, value) {

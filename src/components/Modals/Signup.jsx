@@ -15,7 +15,6 @@ import { registerUser } from '../api';
 export default function Signup() {
     const [showPassword, setShowPassword] = useState(false);
     const modalCtx = useContext(ModalContext);
-    const navigate = useNavigate();
     const [fetching, setFetching] = useState(false);
     const [errors, setErrors] = useState([]);
     const [enteredValue, setEnteredValue] = useState({});
@@ -50,7 +49,7 @@ export default function Signup() {
             const result = await registerUser(name, email, password);
             if (result.success) {
             handleCloseModal();
-            navigate("/accountCreated");
+           modalCtx.showModal('signin');
             alert(result.message);
             }
         } catch (error) {
