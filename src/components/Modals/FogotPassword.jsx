@@ -80,16 +80,6 @@ export default function ForgotPassword() {
                         defaultValue={enteredValue?.name}  
                         placeholder='johnjoe@gmail.com' />
 
-                         {errors.length > 0 && (
-                            <ul className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded">
-                                {errors.map((error, index) => (
-                                <li key={index}>{error}</li>
-                                ))}
-                            </ul>
-                            )}
-
-                        <p>Press enter, a token will be sent to your email</p>
-
                         <button
                          className="lg:w-[485px] h-[56px] rounded-[8px] bg-[#FF8E28] py-[8px] px-[16px] font-[Poppins] font-[700] text-[19.2px] cursor-pointer"
                          type='submit'

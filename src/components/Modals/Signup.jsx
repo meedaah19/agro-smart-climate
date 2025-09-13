@@ -100,14 +100,14 @@ export default function Signup() {
                         label='Enter name' 
                         id='name' 
                         type="text" 
-                        defaultValue={enteredValue?.name} />
+                        value={enteredValue?.name} />
 
                         <Input
                         className='p-3' 
                         label='Enter email address' 
                         id='email' 
                         type="email" 
-                        defaultValue={enteredValue?.email}
+                        value={enteredValue?.email}
                         placeholder='johnjoe@gmail.com' />
 
                         <div className='relative'>
@@ -116,7 +116,7 @@ export default function Signup() {
                             label='Enter password' 
                             id='password' 
                             type={showPassword ? "text" : "password"}
-                            defaultValue={enteredValue?.password}
+                            value={enteredValue?.password}
                             placeholder='..........' />
                             <span
                                 onClick={() => setShowPassword(!showPassword)}
@@ -132,7 +132,7 @@ export default function Signup() {
                             label='Confirm password' 
                             id='cpassword' 
                             type={showPassword ? "text" : "password"}
-                            defaultValue={enteredValue?.cpassword}
+                           value={enteredValue?.cpassword}
                             placeholder='..........' /> 
                             <span
                                 onClick={() => setShowPassword(!showPassword)}

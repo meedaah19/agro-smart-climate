@@ -94,7 +94,7 @@ export default function Signin() {
                         label='Enter email address' 
                         id='email' 
                         type='email'
-                        defaultValue={enteredValue?.name}  
+                        value={enteredValue?.name}  
                         placeholder='johnjoe@gmail.com' />
 
                         <div className='relative '>
@@ -103,7 +103,7 @@ export default function Signin() {
                             label='Enter password' 
                             id='password' 
                             type={showPassword ? "text" : "password"}
-                            defaultValue={enteredValue?.password}  
+                            value={enteredValue?.password}  
                             placeholder='..........' />
                            <span
                                 onClick={() => setShowPassword(!showPassword)}
