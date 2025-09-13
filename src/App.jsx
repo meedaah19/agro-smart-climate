@@ -11,6 +11,7 @@ import MiniDashboard from "./pages/MiniDashboard";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Settings from "./pages/Settings";
+import ResetPassword from "./pages/ResetPassword";
 
     const router = createBrowserRouter([
       {
@@ -32,7 +33,9 @@ import Settings from "./pages/Settings";
               {path: 'editProfile', element: <EditProfile/>}
             ]
           },
-          {path: 'settings', element:<Settings/>}
+          {path: 'settings', element:<Settings/>},
+          {path: 'reset-password', element:<ResetPassword/>}
+
           
 
     ]}

@@ -3,8 +3,11 @@ import Modal from '../UI/Modal';
 import { useContext, useState } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
+import { sendPasswordResetEmail } from '../api';
+import { useNavigate } from 'react-router-dom';
 
 export default function ForgotPassword() {
+    const navigate = useNavigate();
     const modalCtx = useContext(ModalContext);
     const [errors, setErrors] = useState([]);
     const [enteredValue, setEnteredValue] = useState({});
@@ -14,7 +17,7 @@ export default function ForgotPassword() {
         modalCtx.hideModal();
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         const email = formData.get('email');
@@ -30,10 +33,22 @@ export default function ForgotPassword() {
             setEnteredValue({email});
             return;
         };
-
-            handleCloseModal();
-            modalCtx.showModal('resetPassword');
-
+            try {
+                setFetching(true);
+                const result = await sendPasswordResetEmail(email);
+                if (!result.success) {
+                    alert(result.message || "Failed to send reset email");
+                    return;
+                } else {
+                    alert("Password reset email sent. Please check your inbox.");
+                    modalCtx.hideModal();
+                    navigate('/');}
+            } catch (error) {
+                alert(error.message);
+            } finally{ 
+                setFetching(false);
+            }
+            
     }
 
     return(

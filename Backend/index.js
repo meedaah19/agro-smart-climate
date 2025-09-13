@@ -9,6 +9,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+const FRONTEND_URL = process.env.VITE_FRONTEND_URL || "http://localhost:5173";
+
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SERVICE_ROLE_KEY,
@@ -121,7 +123,7 @@ app.post('/forgot-password', async (req, res) => {
 
   try {
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: 'http://localhost:3000', 
+      // redirectTo: `${FRONTEND_URL}/reset-password`, 
     });
 
     if (error) {
@@ -137,6 +139,7 @@ app.post('/forgot-password', async (req, res) => {
     return res.status(500).json({ success: false, message: "Internal server error" });
   }
 });
+
 
 
 
