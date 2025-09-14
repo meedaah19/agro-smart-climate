@@ -21,6 +21,77 @@ const supabaseAnon = createClient(
     process.env.SUPABASE_ANON_KEY
   );
 
+app.get("/profile", async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+      return res.status(401).json({ success: false, message: "No token provided" });
+    }
+
+    const token = authHeader.split(" ")[1];
+
+    const { data: { user }, error } = await supabase.auth.getUser(token);
+
+    if (error || !user) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    
+    const { data: profile, error: dbError } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("id", user.id) 
+      .single();
+
+    if (dbError) {
+      return res.status(400).json({ success: false, message: dbError.message });
+    }
+
+    return res.json({ 
+      success: true, 
+      profile: {...profile, email: user.email}, 
+      message: "Profile fetched successfully" });
+  } catch (err) {
+    return res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+app.get("/kycdata", async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+      return res.status(401).json({ success: false, message: "No token provided" });
+    }
+
+    const token = authHeader.split(" ")[1];
+
+    const { data: { user }, error } = await supabase.auth.getUser(token);
+
+    if (error || !user) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    
+    const { data, error: dbError } = await supabase
+      .from("kycforms")
+      .select("*")
+      .eq("user_id", user.id) 
+      .single();
+
+    if (dbError) {
+      return res.status(400).json({ success: false, message: dbError.message });
+    }
+
+    return res.json({ 
+      success: true, 
+      kyc: data, 
+      message: "KYC fetched successfully" });
+      
+  } catch (err) {
+    return res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
 app.post("/register", async (req, res) => {
   const { name, email, password} = req.body;
 
@@ -191,6 +262,59 @@ app.post('/kyc', async (req, res) => {
   } catch (err) {
     console.error("Unexpected error:", err);
     return res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+app.patch("/update-user", async (req, res) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) {
+    return res
+      .status(401)
+      .json({ success: false, message: "No token provided" });
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser(token);
+
+  if (error || !user) {
+    return res
+      .status(401)
+      .json({ success: false, message: "Unauthorized" });
+  }
+
+  const { profile, kyc } = req.body;
+
+  try {
+    if (profile) {
+      const { email, ...rest } = profile;
+      const { error: profileError } = await supabase
+        .from("profiles")
+        .update(rest)
+        .eq("id", user.id);
+
+      if (profileError) throw profileError;
+    }
+
+    if (kyc) {
+      const { error: kycError } = await supabase
+        .from("kycforms")
+        .update(kyc)
+        .eq("user_id", user.id); 
+
+      if (kycError) throw kycError;
+    }
+
+    res.json({
+      success: true,
+      message: "Profile and KYC updated successfully",
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
   }
 });
 

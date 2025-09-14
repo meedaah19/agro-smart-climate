@@ -98,3 +98,86 @@ export async function KYCSubmission( language, voice, role, tools, location, cro
     return data;
 
 }
+
+export async function UserProfile() {
+  const token = localStorage.getItem("access_token");
+
+  if (!token) {
+    alert("No access token found. Please log in again.");
+    return { success: false, message: "No token" };
+  }
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/profile`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+    });
+
+    const data = await response.json();
+    console.log("Profile response:", data);
+
+    if (!response.ok) {
+      alert(data.message || "Fetching profile failed");
+    }
+
+    return data;
+  } catch (err) {
+    console.error("Error fetching profile:", err);
+    return { success: false, message: err.message };
+  }
+}
+
+export async function kycData(){
+  const token = localStorage.getItem("access_token");
+
+  if (!token) {
+    alert("No access token found. Please log in again.");
+    return { success: false, message: "No token" };
+  }
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/kycdata`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+    });
+
+    const data = await response.json();
+    console.log("KYC response:", data);
+
+    if (!response.ok) {
+      alert(data.message || "Fetching KYC failed");
+    }
+
+    return data;
+  } catch (err) {
+    console.error("Error fetching KYC:", err);
+    return { success: false, message: err.message };
+  }
+}
+
+export async function updateUser(profile, kyc) {
+  const token = localStorage.getItem("access_token"); 
+  const response = await fetch(`${API_BASE_URL}/update-user`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    body: JSON.stringify({ profile, kyc }),
+  });
+
+  const data = await response.json();
+  console.log("Update response:", data);
+
+  if (!response.ok) {
+    throw new Error(data.message || "Updating user failed");
+  }
+
+  return data; 
+}
