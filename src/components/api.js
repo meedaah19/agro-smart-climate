@@ -1,5 +1,12 @@
 const API_BASE_URL = "http://localhost:5000" || import.meta.env.VITE_API_URL;
 
+
+export function isTokenValid() {
+  const token = localStorage.getItem("access_token");
+  const expiry = localStorage.getItem("tokenExpiry");
+  return token && expiry && Date.now() < expiry;
+}
+
 export async function registerUser(name, email, password) {
     const response = await fetch(`${API_BASE_URL}/register`, {
         method: 'POST',
@@ -44,6 +51,7 @@ export async function loginUser(email, password) {
     console.log("Token:", data.token);
 
     localStorage.setItem("access_token", data.token);
+    localStorage.setItem("tokenExpiry", Date.now() + 60 * 60 * 1000);
     return data;
 
 }
@@ -180,4 +188,15 @@ export async function updateUser(profile, kyc, profileImageBase64, fileType) {
   }
 
   return data; 
+}
+
+import { supabase } from "../supabaseClient";
+
+export async function logoutUser() {
+  const { error } = await supabase.auth.signOut();
+  if (error) throw new Error(error.message);
+
+  localStorage.removeItem("access_token");
+
+  return { success: true, message: "Logged out successfully" };
 }

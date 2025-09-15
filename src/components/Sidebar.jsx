@@ -1,13 +1,22 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import profile from '../assets/profile picture.jpg';
 import { MdDashboard, MdInsertChart } from 'react-icons/md';
 import { FaBars, FaRegQuestionCircle, FaShoppingBasket, FaTimes, FaUserCircle } from 'react-icons/fa';
 import { GiGraduateCap, GiHammerNails } from 'react-icons/gi';
 import { IoNotifications, IoSettings } from 'react-icons/io5';
 import { useState } from 'react';
+import { logoutUser } from './api';
 
 export default function Sidebar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const navigate = useNavigate();
+
+    function handleLogout(){    
+        logoutUser();
+        navigate('/');
+        setIsLoggedIn(false);
+    }
 
     return (
         <div>
@@ -21,7 +30,7 @@ export default function Sidebar() {
             </div>
 
             <div
-                className={`lg:w-[251px] h-auto lg:h-[1024px] py-[32px] flex flex-col gap-[128px] bg-[#ffffff] 
+                className={`lg:w-[250px] overflow-x-hidden h-auto lg:h-[1024px] py-[32px] flex flex-col gap-[128px] bg-[#ffffff] 
                  absolute overflow-y-auto top-45 left-0 z-50 p-4 transition-transform duration-300
                 ${menuOpen ? "translate-x-0" : "-translate-x-full"}
                 lg:static lg:translate-x-0`}
@@ -111,6 +120,11 @@ export default function Sidebar() {
                         >Settings
                             <IoSettings className='w-[25px]' />
                         </NavLink>
+
+                        <button
+                        className=' lg:w-[230px] h-auto lg:h-[64px] py-[16px] lg:px-[20px] px-5 flex lg:gap-27 cursor-pointer hover:bg-[#C6E4E1]'
+                        onClick={handleLogout}
+                        >{isLoggedIn ? 'Logging out' : 'Logout out'}</button>
                     </nav>
                 </div>
             </div>

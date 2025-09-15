@@ -46,7 +46,9 @@ export default function Profile(){
       <Sidebar />
 
       {!profile || !KYC ? (
-      <p className='text-center text-2xl flex items-center '>Loading...</p>
+      <div className="flex items-center justify-center h-screen">
+    <p className="text-lg font-semibold">Loading ...</p>
+  </div>
     ) : (
       <div className="relative z-[1] lg:z-[100] h-auto w-[320px] md:w-[800px] pr-3 lg:h-[1024px] flex flex-col gap-[12px] py-[12px] lg:w-[1030px]">
         <h4 className="font-[Poppins] font-[400] text-[23.04px]">My profile</h4>

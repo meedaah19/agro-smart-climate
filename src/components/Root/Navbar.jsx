@@ -4,9 +4,14 @@ import img1 from '../../assets/Frame 86.png';
 import {FaBars, FaTimes } from 'react-icons/fa';
 import { ModalContext } from "../store/ModalContext";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { isTokenValid } from "../api";
+import { useNavigate } from "react-router-dom";
 
 
 function Navbar(){ 
+    const loggedIn = isTokenValid();
+    const navigate = useNavigate();
+
     const [menuOpen, setMenuOpen] = useState(false);
 
     const modalCtx = useContext(ModalContext)
@@ -88,9 +93,13 @@ function Navbar(){
                         <button
                             className="text-xl lg:text-[19.2px] font-[700] text-black border border-[#FF7F18] hover:bg-[#FF8E28] rounded-[8px] lg:pl-2 px-6 lg:py-2 flex items-center justify-center h-[40px]"
                             onClick={() => {setMenuOpen(false);
-                            handleOpenModal()}}
+                            if (loggedIn) {
+                                navigate("/dashboard"); 
+                                } else {
+                                handleOpenModal();
+                                }}}
                         >
-                            Create Account
+                            {loggedIn ? "Dashboard" : "Create Account"}
                         </button>
                     </li>
                    

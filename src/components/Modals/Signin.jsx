@@ -5,12 +5,11 @@ import image4 from '../../assets/4ac7c386-857e-4361-95d2-9b04966521bb.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Modal from '../UI/Modal';
-import { useContext, useActionState, useState, useEffect } from 'react';
+import { useContext,useState, } from 'react';
 import { ModalContext } from '../store/ModalContext';
 import { FaTimes } from 'react-icons/fa';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { loginUser } from '../api';
-import { supabase } from '../../supabaseClient';
 
 
 export default function Signin() {
@@ -52,7 +51,7 @@ export default function Signin() {
             const result = await loginUser(email, password);
             if (result.success) {
                 modalCtx.hideModal();
-                navigate('/MiniDashboard');  
+                navigate('/dashboard');  
                 alert("Welcome back " + result.user.email);
                 console.log("Token:", result.token);
             }
@@ -62,16 +61,6 @@ export default function Signin() {
                 setFetching(false);
             }
     }
-
-    useEffect(() => {
-        const checkSession = async () => {
-        const { data: { session } } = await supabase.auth.getSession();
-        if (session) {
-            navigate("/dashboard");
-        }
-        };
-        checkSession();
-    }, [navigate]);
 
     return(
     <Modal
