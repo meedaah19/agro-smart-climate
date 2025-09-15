@@ -161,7 +161,7 @@ export async function kycData(){
   }
 }
 
-export async function updateUser(profile, kyc) {
+export async function updateUser(profile, kyc, profileImageBase64, fileType) {
   const token = localStorage.getItem("access_token"); 
   const response = await fetch(`${API_BASE_URL}/update-user`, {
     method: "PATCH",
@@ -169,7 +169,7 @@ export async function updateUser(profile, kyc) {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
-    body: JSON.stringify({ profile, kyc }),
+    body: JSON.stringify({ profile, kyc, profileImageBase64, fileType }),
   });
 
   const data = await response.json();

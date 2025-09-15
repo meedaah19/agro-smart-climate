@@ -1,6 +1,4 @@
-import { FaCamera, FaPen, FaTrash } from 'react-icons/fa6';
 import Sidebar from '../components/Sidebar';
-import profileImg from '../assets/profile picture.jpg'
 import { FaEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -60,7 +58,7 @@ export default function Profile(){
               <div>
                 <img
                   className="w-[100px] h-[100px] rounded-full"
-                  src={profileImg}
+                  src={profile.profile_pic}
                   alt="profile picture"
                 />
               </div>

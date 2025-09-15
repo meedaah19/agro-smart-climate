@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+import mime from "mime-types";
 import express from "express";
 import bodyParser from "body-parser";
 import dotenv from 'dotenv';
@@ -33,7 +35,7 @@ app.get("/profile", async (req, res) => {
     const { data: { user }, error } = await supabase.auth.getUser(token);
 
     if (error || !user) {
-      return res.status(401).json({ success: false, message: "Unauthorized" });
+      return res.status(401).json({ success: false, message: "Unauthorized, user is logged out. Pls log in again" });
     }
 
     
@@ -68,7 +70,7 @@ app.get("/kycdata", async (req, res) => {
     const { data: { user }, error } = await supabase.auth.getUser(token);
 
     if (error || !user) {
-      return res.status(401).json({ success: false, message: "Unauthorized" });
+      return res.status(401).json({ success: false, message: "Unauthorized, user is logged out. Pls log in again" });
     }
 
     
@@ -284,21 +286,46 @@ app.patch("/update-user", async (req, res) => {
   if (error || !user) {
     return res
       .status(401)
-      .json({ success: false, message: "Unauthorized" });
+      .json({ success: false, message: "Unauthorized, user is logged out. Pls log in again" });
   }
 
-  const { profile, kyc } = req.body;
+  const { profile, kyc, profileImageBase64, fileType } = req.body;
 
   try {
-    if (profile) {
-      const { email, ...rest } = profile;
+    let imageUrl = null;
+
+    if (profileImageBase64 && fileType) {
+      const buffer = Buffer.from(profileImageBase64, "base64");
+      const extension = mime.extension(fileType); // detect extension from MIME
+      const fileName = `${user.id}/${uuidv4()}.${extension}`;
+
+    const { error: uploadError } = await supabase.storage
+        .from("avatars")
+        .upload(fileName, buffer, {
+          contentType: fileType,
+          upsert: true,
+        });
+
+      if (uploadError) throw uploadError;
+
+      const { data } = supabase.storage.from("avatars").getPublicUrl(fileName);
+      imageUrl = data.publicUrl;
+    }
+
+    if (profile || imageUrl) {
+      const updates = { ...profile };
+      delete updates.email;
+      
+      if (imageUrl) updates.profile_pic = imageUrl;
+
       const { error: profileError } = await supabase
         .from("profiles")
-        .update(rest)
+        .update(updates)
         .eq("id", user.id);
 
       if (profileError) throw profileError;
     }
+
 
     if (kyc) {
       const { error: kycError } = await supabase

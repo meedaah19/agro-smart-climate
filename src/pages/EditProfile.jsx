@@ -11,6 +11,8 @@ export default function EditProfile(){
     const [KYC, setKYC] = useState(null);
     const [fetching, setFetching] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [profileImageBase64, setProfileImageBase64] = useState(null);
+    const [fileType, setFileType] = useState(null);
 
     function formatDate(dateString) {
       if (!dateString) return "Unknown";
@@ -21,10 +23,20 @@ export default function EditProfile(){
     function handleFileChange(e) {
     const file = e.target.files[0];
     if (file) {
+      // Preview
       const imageUrl = URL.createObjectURL(file);
       setSelectedImage(imageUrl);
 
-      console.log("Selected file:", file);
+      // Store MIME type
+      setFileType(file.type);
+
+      // Convert to Base64
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result.split(",")[1]; // remove "data:image/png;base64,"
+        setProfileImageBase64(base64String);
+      };
+      reader.readAsDataURL(file);
     }
   }
 
@@ -69,7 +81,7 @@ export default function EditProfile(){
         try {
         setFetching(true);
 
-        const result = await updateUser(profile, KYC);
+        const result = await updateUser(profile, KYC, profileImageBase64, fileType);
 
         if (result.success) {
         alert("Profile and KYC updated!");
@@ -91,7 +103,7 @@ export default function EditProfile(){
       <div className="lg:w-[1440px] w-full h-auto lg:h-[1100px] flex lg:gap-[32px] bg-gradient-to-b from-[#A9DCD7] pb-[0px] via-[#FFFFFF] to-[#A9DCD7]">
         <Sidebar/>
 
-        <div className='lg:w-[1150px] h-auto w-[320px] lg:h-[1024px] py-[32px] flex flex-col gap-[12px]'>
+        <div className='lg:w-[1150px] z-100 h-auto w-[320px] lg:h-[1024px] py-[32px] flex flex-col gap-[12px]'>
           <h4 className='font-[Poppins] font-[400] text-[23.04px]'>My profile</h4>
 
           <div className='lg:w-[1020px] w-full h-auto lg:h-[1000px] rounded-[30px] p-[32px] flex flex-col gap-[32px] bg-[#FFFFFF]'>
@@ -101,7 +113,7 @@ export default function EditProfile(){
                 <div className='relative'>
                   <img
                     className="w-[100px] h-[100px] rounded-full"
-                    src={selectedImage}
+                    src={selectedImage || profile?.profile_pic}
                     alt="profile picture"
                   />
                   <input
@@ -111,7 +123,7 @@ export default function EditProfile(){
                     onChange={handleFileChange}
                     className="hidden"
                     />
-                  <label htmlFor="fileInput">
+                  <label htmlFor="profile_pic">
                     <FaCamera className="absolute bottom-1 right-1 text-black bg-white p-1 rounded-full cursor-pointer text-3xl" />
                     </label>
                 </div>
