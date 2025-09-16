@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import image1 from '../assets/e67cbc0e8f83d97697281a3ab44e48063ad59ec7.jpg';
 import image2 from '../assets/cloud.png'; 
@@ -6,40 +6,39 @@ import { FaLocationDot } from "react-icons/fa6";
 import image3 from '../assets/cd2151bee3f37710af240a3dca744ea93e35e026.jpg';
 import WeatherTime from "./UI/WeatherTime";
 import WeatherDate from "./UI/WeatherDate";
+import { fetchWeather } from "./api";
 
 export default function WeatherReport(){ 
     const [volume, setVolume] = useState(true);
+    const [weather, setWeather] = useState(null);
+    const [forecast, setForecast] = useState([]);
     const today = new Date().toLocaleDateString("en-US", { weekday: "short" });
-
-     const week = [
-        { day: "Mon", degree: "18° / 24°" },
-        { day: "Tue", degree: "18° / 24°" },
-        { day: "Wed", degree: "18° / 24°" },
-        { day: "Thu", degree: "18° / 24°" },
-        { day: "Fri", degree: "18° / 24°" },
-        { day: "Sat", degree: "18° / 24°" },
-        { day: "Sun", degree: "18° / 24°" },
-        { day: "Mon", degree: "18° / 24°" },
-        { day: "Tue", degree: "18° / 24°" },
-        { day: "wed", degree: "18° / 24°" },
-    ];
-
-    const time = [
-        {degree:'18°', time:'10:00'},
-        {degree:'28°', time:'11:00'},
-        {degree:'28°', time:'12:00'},
-        {degree:'29°', time:'13:00'},
-        {degree:'24°', time:'14:00'},
-        {degree:'21°', time:'15:00'},
-        {degree:'28°', time:'16:00'},
-        {degree:'14°', time:'17:00'},
-        {degree:'28°', time:'18:00'},
-        {degree:'27°', time:'19:00'},
-    ];
 
     function handleClick(){
         setVolume(!volume);
     }
+
+    useEffect(() => {
+  async function loadWeather() {
+    try {
+      const data = await fetchWeather();
+      setWeather(data);      
+      setForecast(data.forecast || []);
+    } catch (err) {
+      console.error("Error loading weather:", err);
+    }
+  }
+  loadWeather();
+}, []);
+
+
+  if (!weather) {
+    return (
+      <div className="flex justify-center items-center h-[300px]">
+        <p>Loading weather...</p>
+      </div>
+    );
+  }
 
 
     return(
@@ -80,17 +79,17 @@ export default function WeatherReport(){
                             className="w-[96px] h-[80px]"
                             src={image2} alt="cloud" />
                             <div className="lg:w-[600px] h-auto lg:h-[80px] flex flex-col ">
-                                <h3 className="text-[33.1px] font-[Poppins]">18°C</h3>
+                                <h3 className="text-[33.1px] font-[Poppins]">{Math.round(weather.temp)}°C</h3>
                                 <div className="flex gap-[10px]">
                                 <FaLocationDot className="h-8"/>
-                                <p className="font-[Lora] font-[400] text-[13px]">Ishiagu Amaeze Amaelzu, <br /> Ebonyi state.</p>
+                                <p className="font-[Lora] font-[400] text-[13px]">{weather.city}, <br /> {weather.country}.</p>
                                 </div>
                             </div>
                         </div>
 
                         <div className="lg:w-[700px] h-auto lg:h-[29px] text-[19.2px] font-[Poppins] font-[400] grid gap-[19px]">
-                            <p>Rain fall and cloudy.</p>
-                            <p>12th May, 2025</p>
+                            <p>{weather.description}</p>
+                            <p>{new Date().toLocaleDateString()}</p>
                         </div>
                     </div>
 
@@ -102,11 +101,11 @@ export default function WeatherReport(){
                         alt="plant" />
                         <div className="w-[200px] h-[180px] flex flex-col gap-[8px]">
                         <div className="bg-[#C6E4E1] rounded-[8px] py-[8px] px-[16px] font-[700] text-[16px] font-[Poppins] ">
-                            <h3>Erosion: Danger period, Act fast</h3>
+                            <h3>Weather Alert</h3>
                         </div>
-                        <p>Precipitation: 100%</p>
-                        <p>Humidity: 100%</p>
-                        <p>Wind: 20%</p>
+                        <p>Precipitation: {weather.precipitation || 0}%</p>
+                        <p>Humidity: {weather.humidity}%</p>
+                        <p>Wind: {weather.wind}%</p>
                         </div>
                     </div>
                 
@@ -118,27 +117,24 @@ export default function WeatherReport(){
     
             {/* Time Row */}
             <div className="w-full h-auto flex gap-4 overflow-x-auto lg:overflow-visible lg:justify-between lg:h-[90px]">
-                {time.map((item, index) => (
-                    <WeatherTime
-                        key={index}
-                        time={item.time}
-                        degree={item.degree}
-                    />
-                ))}
+                  {weather.hourly.map((item, i) => (
+    <WeatherTime key={i} time={item.time} degree={`${Math.round(item.temp)}°`} />
+  ))}
+            </div>
+
             </div>
 
         {/* Week Row */}
             <div className="w-full h-auto flex gap-4 overflow-x-auto lg:overflow-visible lg:justify-between lg:h-[90px]">
-                {week.map((item, index) => (
-                    <WeatherDate
-                        key={index}
-                        day={item.day}
-                        degree={item.degree}
-                        isActive={item.day === today}
+                {weather.daily.map((item, i) => (
+  <WeatherDate
+    key={i}
+    day={item.day}
+    degree={`${Math.round(item.min)}° / ${Math.round(item.max)}°`}
+                    isActive={item.day === today}
                     />
                 ))}
             </div>
         </div>
-         </div>
     )
 }

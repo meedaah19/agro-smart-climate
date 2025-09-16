@@ -1,5 +1,6 @@
-const API_BASE_URL = "http://localhost:5000" || import.meta.env.VITE_API_URL;
+import {supabase} from "../supabaseClient";
 
+const API_BASE_URL = "http://localhost:5000" || import.meta.env.VITE_API_URL;
 
 export function isTokenValid() {
   const token = localStorage.getItem("access_token");
@@ -190,8 +191,6 @@ export async function updateUser(profile, kyc, profileImageBase64, fileType) {
   return data; 
 }
 
-import { supabase } from "../supabaseClient";
-
 export async function logoutUser() {
   const { error } = await supabase.auth.signOut();
   if (error) throw new Error(error.message);
@@ -200,3 +199,19 @@ export async function logoutUser() {
 
   return { success: true, message: "Logged out successfully" };
 }
+
+// api.js
+
+export async function fetchWeather() {
+  const token = localStorage.getItem("access_token");
+  const response = await fetch(`${API_BASE_URL}/weather`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.message || "Weather fetch failed");
+  return data; 
+}
+

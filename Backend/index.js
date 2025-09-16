@@ -23,6 +23,112 @@ const supabaseAnon = createClient(
     process.env.SUPABASE_ANON_KEY
   );
 
+app.get("/weather", async (req, res) => {
+ 
+  try {
+     const authHeader = req.headers.authorization;
+  if (!authHeader) {
+      return res.status(401).json({ success: false, message: "No token provided" });
+    }
+
+  const token = authHeader.split(" ")[1];
+
+  const { data: { user }, error } = await supabase.auth.getUser(token);
+
+  const { data: kyc } = await supabase
+      .from("kycforms")
+      .select("location")
+      .eq("user_id", user.id)
+      .single();
+
+    const apiKey = process.env.OPENWEATHER_KEY;
+    const locationInput = (req.query.city || kyc?.location || "").trim();
+    if (!locationInput) return res.status(400).json({ message: "No location provided" });
+
+    const latLonRegex = /^\s*-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?\s*$/;
+    let lat, lon, displayName;
+
+    if (latLonRegex.test(locationInput)) {
+      [lat, lon] = locationInput.split(",").map(s => s.trim());
+      displayName = `${lat},${lon}`;
+    } else {
+      const geoRes = await fetch(
+        `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(locationInput)}&limit=1&appid=${apiKey}`
+      );
+      const geoJson = await geoRes.json();
+      if (!geoJson[0]) return res.status(400).json({ message: "Could not resolve location" });
+      lat = geoJson[0].lat;
+      lon = geoJson[0].lon;
+      displayName = `${geoJson[0].name}, ${geoJson[0].country}`;
+    }
+
+    const currentRes = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+    );
+    const current = await currentRes.json();
+
+    const forecastRes = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+    );
+    const forecast = await forecastRes.json();
+
+    // Build daily forecast from 3-hourly data
+    const dailyMap = {};
+    forecast.list.forEach(f => {
+      const dateKey = new Date(f.dt * 1000).toISOString().split("T")[0]; // "YYYY-MM-DD"
+
+      if (!dailyMap[dateKey]) {
+        dailyMap[dateKey] = {
+          min: f.main.temp,
+          max: f.main.temp,
+          description: f.weather[0].description,
+          dt: f.dt
+        };
+      } else {
+        dailyMap[dateKey].min = Math.min(dailyMap[dateKey].min, f.main.temp);
+        dailyMap[dateKey].max = Math.max(dailyMap[dateKey].max, f.main.temp);
+      }
+    });
+
+    // Convert to array and limit to 7 days
+    const daily = Object.values(dailyMap).slice(0, 7).map(f => ({
+      day: new Date(f.dt * 1000).toLocaleDateString("en-US", { weekday: "short" }),
+      min: f.min,
+      max: f.max,
+      description: f.description,
+    }));
+
+    const normalized = {
+      temp: current?.main?.temp ?? null,
+      city: displayName || current?.name || null,
+      country: current?.sys?.country ?? null,
+      description: current?.weather?.[0]?.description ?? null,
+      humidity: current?.main?.humidity ?? null,
+      wind: current?.wind?.speed ?? null,
+      precipitation: current?.rain?.["1h"] ?? 0,
+
+      // Hourly (just take the first 7 entries = ~21h)
+      hourly: Array.isArray(forecast?.list)
+        ? forecast.list.slice(0, 6).map(f => ({
+            time: new Date(f.dt * 1000).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            }),
+            temp: f.main.temp,
+          }))
+        : [],
+
+      // Daily (week row)
+      daily,
+    };
+
+    res.json(normalized);
+  } catch (err) {
+    console.error("Weather API error:", err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
 app.get("/profile", async (req, res) => {
   try {
     const authHeader = req.headers.authorization;

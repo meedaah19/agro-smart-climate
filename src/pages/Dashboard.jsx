@@ -40,8 +40,6 @@ export default function Dashboard(){
 
             <div className='lg:w-[1157px] h-auto w-[320px] md:w-[800px] pr-3  lg:h-[1024px] flex flex-col gap-[32px] py-[20px]'>
 
-                <WeatherReport/>
-
                 {!KYC || !KYC.crops ? (
                    <div className="lg:w-[1020px] mt-10 w-full h-auto lg:h-[400px] bg-white rounded-[30px] p-[32px] flex flex-col gap-[32px] justify-center items-center ">
                     <div className="lg:w-[271px] h-auto lg:h-[290px] flex flex-col justify-center gap-[16px]  items-center ">
@@ -59,7 +57,10 @@ export default function Dashboard(){
                 </div>
                    
                 ) : (
+                    <>
+                    <WeatherReport/>
                     <CropActivities />
+                    </>
                 )}
 
             </div>
