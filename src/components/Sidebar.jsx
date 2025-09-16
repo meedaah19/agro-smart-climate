@@ -29,14 +29,6 @@ export default function Sidebar() {
         fetchProfile();
         }, []);
 
-        if (!profile) {
-            return (
-                <div className="flex items-center justify-center h-screen">
-                    <p className="text-lg font-semibold">Loading ...</p>
-                </div>
-            );
-        }
-
     return (
         <div>
             <div className="lg:hidden pt-[26px] px-2">
