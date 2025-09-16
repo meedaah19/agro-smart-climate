@@ -13,18 +13,16 @@ export default function Layout6() {
           </p>
         </div>
 
-        <div className="w-full rounded-[8px] border border-[#000000] bg-[#FFFFFF] flex flex-col h-[80px] lg:h-[60px] sm:flex-row overflow-hidden">
-
+        <div className="w-full rounded-[8px] border border-[#000000] bg-[#FFFFFF] flex flex-row h-[40px] lg:h-[61px] overflow-hidden">
           <input
-            className="flex-1 lg:h-[61px] px-4 text-[#443f3f] outline-none"
+            className="flex-1 px-4 text-[#443f3f] outline-none"
             type="email"
             placeholder="Enter your email..."
           />
 
-          <button className="font-[Poppins] font-[700] text-[16px] lg:text-[19.2px] bg-[#FF8E28] w-full sm:w-[163px] h-[40px] lg:h-[61px] flex items-center justify-center">
+          <button className="font-[Poppins] font-[700] text-[16px] lg:text-[19.2px] bg-[#FF8E28] w-[120px] sm:w-[163px] flex items-center justify-center">
             Subscribe
           </button>
-          
         </div>
       </div>
     </div>

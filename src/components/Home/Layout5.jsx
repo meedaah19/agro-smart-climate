@@ -51,21 +51,29 @@ export default function Layout5() {
                             <div className="lg:w-[32px] lg:h-[32px] w-[15px] h-[15px] rounded-full bg-[#FF7F18]"/>
                         </div>
 
-                        <div className="w-[96px] h-[32px] flex gap-[20px] lg:gap-[30px] ">
+                        <div className="w-[96px] h-[32px] flex gap-[20px] lg:gap-[30px]">
+                            <button
+                                onClick={goPrev}
+                                className={`lg:w-[24px] lg:h-[24px] w-[20px] h-[20px] border-[2px] rounded-full flex items-center justify-center transition-all 
+                                ${currentIndex > 0 
+                                    ? "border-[#000] text-[#000]" 
+                                    : "border-[#928d8d] text-[#928d8d]"}`
+                                }
+                            >
+                                <FaChevronLeft />
+                            </button>
 
-                        <button 
-                        onClick={goNext} 
-                        className="lg:w-[24px] lg:h-[24px] w-[20px] h-[20px] border-[2px] border-[#928d8d] rounded-full hover:border-[#2b2929]  text-[#928d8d] hover:text-[#2b2929] flex items-center justify-center transition-all">
-                            <FaChevronLeft  />
-                        </button>
-
-                        <button 
-                        onClick={goPrev} 
-                        className="lg:w-[24px] lg:h-[24px] w-[20px] h-[20px] border-[2px] border-[#928d8d] rounded-full hover:border-[#2b2929]  text-[#928d8d]  hover:text-[#2b2929] flex items-center justify-center transition-all">
-                            <FaChevronRight />
-                        </button>
-
-                        </div>
+                            <button
+                                onClick={goNext}
+                                className={`lg:w-[24px] lg:h-[24px] w-[20px] h-[20px] border-[2px] rounded-full flex items-center justify-center transition-all 
+                                ${currentIndex < images.length - 1
+                                    ? "border-[#000] text-[#000]" 
+                                    : "border-[#928d8d] text-[#928d8d]"}`
+                                }
+                            >
+                                <FaChevronRight />
+                            </button>
+    </div>
                     </div>
 
                     </div>

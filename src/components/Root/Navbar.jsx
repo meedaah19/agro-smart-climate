@@ -17,7 +17,7 @@ function Navbar(){
     const modalCtx = useContext(ModalContext)
 
     function handleOpenModal(){
-        modalCtx.showModal('signup');
+        modalCtx.showModal('signin');
     }
 
 
@@ -99,7 +99,7 @@ function Navbar(){
                                 handleOpenModal();
                                 }}}
                         >
-                            {loggedIn ? "Dashboard" : "Create Account"}
+                            {loggedIn ? "Dashboard" : "Login"}
                         </button>
                     </li>
                    
