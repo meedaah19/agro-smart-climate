@@ -3,8 +3,22 @@ import riceImage from '../assets/rice.jpg';
 import yamImage from '../assets/yam.jpg';
 import cucumber from '../assets/cucumber.jpg';
 import cassava from '../assets/cassava.jpg';
+import { useEffect, useState } from "react";
+import { kycData } from "./api";
 
 export default function CropActivities(){
+    const [KYC, setKYC] = useState({});
+
+    useEffect(() => {
+    async function fetchKYC() {
+      const result = await kycData();
+      if (result.success) {
+        setKYC(result.kyc);
+      }
+    }
+    fetchKYC();
+    }, []);
+
     return(
          <div className="lg:w-[1020px] w-full h-auto lg:h-[400px] overflow-y overflow-x-auto ">
             <h5 className="font-[Poppins] text-[23.04px] font-[400]"
@@ -16,7 +30,7 @@ export default function CropActivities(){
                 period='Planting Period' 
                 image={riceImage}
                 alt='rice image'
-                location='Ishiagu Amaeze Amaelzu, Ebonyi state.' 
+                location={KYC.location} 
                 list1='Prepare land: Clear and till the soil with tractor.'
                 list2='Soak the seeds: Soak rice seeds in water for 24-48 hours.'
                 list3='Pre-germinate: Drain and leave seeds to sprout for 1-2 days.'
@@ -26,7 +40,7 @@ export default function CropActivities(){
                 <Activities period='Caregiving & Vine Support period' 
                 image={yamImage} 
                 alt='yam image' 
-                location='Izza, Ebonyi state.' 
+                location={KYC.location}
                 list1=' Weed: Use hoe or hand (avoid damaging yam mounds).'
                 list2='Stake Vines: Support with strong sticks.'
                 list3='Fix Mounds: Use hoe to reshape broken mounds.'
@@ -36,7 +50,7 @@ export default function CropActivities(){
                 <Activities period='Active Growth & Pest Care period' 
                 image={cucumber} 
                 alt='cucumber image' 
-                location='Rivers state, Idemini.' 
+                location={KYC.location}
                 list1='Weed: Use hand or small hoe carefully.'
                 list2='Support Vines: Use sticks and ropes to lift.'
                 list3='Spray for Pests: Neem or organic pesticide.'
@@ -46,7 +60,7 @@ export default function CropActivities(){
                 <Activities period='Caregiving & Weeding period' 
                 image={cassava} 
                 alt='cassava image' 
-                location='Epe, Lagos, state.' 
+                location={KYC.location} 
                 list1='Weed: Use hoe or cutlass to clear weeds.'
                 list2='Improve Drainage: Use hoe to dig channels and prevent waterlogging.'
                 list3='Fertilize: Apply NPK or compost by hand.'
