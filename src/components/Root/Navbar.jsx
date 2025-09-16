@@ -33,7 +33,7 @@ function Navbar(){
                     <div className="lg:hidden pt-[8px] ">
                         <button 
                         onClick={() => setMenuOpen(!menuOpen)} 
-                        className="text-4xl py-7 lg:py-0 text-black">
+                        className="text-xl py-7 lg:py-0 text-black">
                         {menuOpen ? <FaTimes /> : <BsThreeDotsVertical />}
                         </button>
                     </div>
