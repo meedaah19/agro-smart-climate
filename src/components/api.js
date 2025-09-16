@@ -7,13 +7,6 @@ export function isTokenValid() {
   const expiry = localStorage.getItem("tokenExpiry");
   const valid = token && expiry && Date.now() < Number(expiry);
 
-  if (!valid) {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("tokenExpiry");
-
-    window.location.href = "/";
-  }
-
   return valid;
 }
 
