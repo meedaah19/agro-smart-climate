@@ -23,7 +23,11 @@ const supabaseAnon = createClient(
     process.env.SUPABASE_ANON_KEY
   );
 
-app.get("/weather", async (req, res) => {
+  app.get("/", (req, res) => {
+  res.send("🚀 Agro Smart Climate backend is running!");
+});
+
+  app.get("/weather", async (req, res) => {
  
   try {
      const authHeader = req.headers.authorization;
