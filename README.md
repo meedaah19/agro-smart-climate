@@ -81,17 +81,19 @@ Backend → Host on Render.
 
 ## 📂 Project Structure
 
-agro-smart-climate/                  # React frontend
-│   ├── src/
-│   │   ├── components/      # Navbar, Sidebar, WeatherReport, etc.
-│   │   ├── pages/           # Dashboard, Home, etc.
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   └── package.json
-├── Backend/                  # Express backend
-│   ├── index.js             # Main API routes
-│   ├── package.json
-└── README.md
+agro-smart-climate/
+├── src/ # React frontend source code
+│ ├── components/ # Navbar, Sidebar, WeatherReport, etc.
+│ ├── pages/ # Dashboard, Home, etc.
+│ ├── App.jsx
+│ └── main.jsx
+│
+├── Backend/ # Express backend
+│ ├── index.js # Main API routes
+│ ├── package.json
+│
+├── package.json # Frontend dependencies
+└── README.md # Project documentation
 
 ## 🤝 Contributing
 
