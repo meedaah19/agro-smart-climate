@@ -72,7 +72,6 @@ app.get("/weather", async (req, res) => {
     );
     const forecast = await forecastRes.json();
 
-    // Build daily forecast from 3-hourly data
     const dailyMap = {};
     forecast.list.forEach(f => {
       const dateKey = new Date(f.dt * 1000).toISOString().split("T")[0]; // "YYYY-MM-DD"
@@ -90,7 +89,6 @@ app.get("/weather", async (req, res) => {
       }
     });
 
-    // Convert to array and limit to 7 days
     const daily = Object.values(dailyMap).slice(0, 7).map(f => ({
       day: new Date(f.dt * 1000).toLocaleDateString("en-US", { weekday: "short" }),
       min: f.min,
@@ -107,7 +105,6 @@ app.get("/weather", async (req, res) => {
       wind: current?.wind?.speed ?? null,
       precipitation: current?.rain?.["1h"] ?? 0,
 
-      // Hourly (just take the first 7 entries = ~21h)
       hourly: Array.isArray(forecast?.list)
         ? forecast.list.slice(0, 6).map(f => ({
             time: new Date(f.dt * 1000).toLocaleTimeString([], {
@@ -118,7 +115,6 @@ app.get("/weather", async (req, res) => {
           }))
         : [],
 
-      // Daily (week row)
       daily,
     };
 

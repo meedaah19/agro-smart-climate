@@ -1,11 +1,20 @@
 import {supabase} from "../supabaseClient";
 
-const API_BASE_URL = "http://localhost:5000" || import.meta.env.VITE_API_URL;
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000" ;
 
 export function isTokenValid() {
   const token = localStorage.getItem("access_token");
   const expiry = localStorage.getItem("tokenExpiry");
-  return token && expiry && Date.now() < expiry;
+  const valid = token && expiry && Date.now() < Number(expiry);
+
+  if (!valid) {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("tokenExpiry");
+
+    window.location.href = "/";
+  }
+
+  return valid;
 }
 
 export async function registerUser(name, email, password) {
@@ -200,7 +209,6 @@ export async function logoutUser() {
   return { success: true, message: "Logged out successfully" };
 }
 
-// api.js
 
 export async function fetchWeather() {
   const token = localStorage.getItem("access_token");

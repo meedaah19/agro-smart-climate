@@ -115,22 +115,20 @@ export default function WeatherReport(){
 
            <div className="w-full h-auto flex flex-col gap-4 lg:w-[1020px] lg:h-[200px]">
     
-            {/* Time Row */}
             <div className="w-full h-auto flex gap-4 overflow-x-auto lg:overflow-visible lg:justify-between lg:h-[90px]">
-                  {weather.hourly.map((item, i) => (
-    <WeatherTime key={i} time={item.time} degree={`${Math.round(item.temp)}°`} />
-  ))}
+                {weather.hourly.map((item, i) => (
+                        <WeatherTime key={i} time={item.time} degree={`${Math.round(item.temp)}°`} />
+                ))}
             </div>
 
             </div>
 
-        {/* Week Row */}
             <div className="w-full h-auto flex gap-4 overflow-x-auto lg:overflow-visible lg:justify-between lg:h-[90px]">
-                {weather.daily.map((item, i) => (
-  <WeatherDate
-    key={i}
-    day={item.day}
-    degree={`${Math.round(item.min)}° / ${Math.round(item.max)}°`}
+                 {weather.daily.map((item, i) => (
+                    <WeatherDate
+                        key={i}
+                        day={item.day}
+                        degree={`${Math.round(item.min)}° / ${Math.round(item.max)}°`}
                     isActive={item.day === today}
                     />
                 ))}
