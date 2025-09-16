@@ -96,10 +96,13 @@ export default function EditProfile(){
     }
 }
 
-
+if (fetching) {
+  return (
     <div className="flex items-center justify-center h-screen">
-    <p className="text-lg font-semibold">Loading...</p>
-  </div>
+      <p className="text-lg font-semibold">Loading ...</p>
+    </div>
+  );
+}
 
     return (
       <div className="lg:w-[1440px] w-full h-auto lg:h-[1100px] flex lg:gap-[32px] bg-gradient-to-b from-[#A9DCD7] pb-[0px] via-[#FFFFFF] to-[#A9DCD7]">

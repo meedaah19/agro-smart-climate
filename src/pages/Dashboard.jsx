@@ -28,10 +28,12 @@ export default function Dashboard(){
   }, []);
 
   if (loading) {
+  return (
     <div className="flex items-center justify-center h-screen">
-    <p className="text-lg font-semibold">Loading dashboard...</p>
-  </div>
-  }
+      <p className="text-lg font-semibold">Loading dashboard...</p>
+    </div>
+  );
+}
 
     return(
         <div className="lg:w-[1440px] w-full h-auto lg:h-[1100px] flex lg:gap-[32px] bg-gradient-to-b from-[#A9DCD7] pb-[0px] via-[#FFFFFF] to-[#A9DCD7]  ">

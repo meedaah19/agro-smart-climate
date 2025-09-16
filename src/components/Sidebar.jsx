@@ -1,15 +1,16 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import profile from '../assets/profile picture.jpg';
 import { MdDashboard, MdInsertChart } from 'react-icons/md';
 import { FaBars, FaRegQuestionCircle, FaShoppingBasket, FaTimes, FaUserCircle } from 'react-icons/fa';
 import { GiGraduateCap, GiHammerNails } from 'react-icons/gi';
 import { IoNotifications, IoSettings } from 'react-icons/io5';
-import { useState } from 'react';
-import { logoutUser } from './api';
+import { useEffect, useState } from 'react';
+import { logoutUser, UserProfile } from './api';
 
 export default function Sidebar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(true);
+      const [profile, setProfile] = useState(null);
+
     const navigate = useNavigate();
 
     function handleLogout(){    
@@ -17,6 +18,24 @@ export default function Sidebar() {
         navigate('/');
         setIsLoggedIn(false);
     }
+
+    useEffect(() => {
+        async function fetchProfile() {
+          const result = await UserProfile();
+          if (result.success) {
+            setProfile(result.profile);
+          }
+        }
+        fetchProfile();
+        }, []);
+
+        if (!profile) {
+            return (
+                <div className="flex items-center justify-center h-screen">
+                    <p className="text-lg font-semibold">Loading ...</p>
+                </div>
+            );
+        }
 
     return (
         <div>
@@ -41,7 +60,7 @@ export default function Sidebar() {
                     <div className="lg:w-[251px] h-auto lg:h-[114px] font-[lora] text-[16px] text-center flex flex-col justify-center items-center gap-1">
                         <img
                             className="w-[64px] h-[64px] rounded-full"
-                            src={profile}
+                            src={profile.profile_pic}
                             alt="profile picture" />
                         <h1 className="font-[400]">Welcome Hameedat</h1>
                         <h2 className="font-[700]">Private farmer</h2>
