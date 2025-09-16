@@ -9,7 +9,7 @@ import { logoutUser, UserProfile } from './api';
 export default function Sidebar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(true);
-      const [profile, setProfile] = useState(null);
+      const [profile, setProfile] = useState({});
 
     const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ export default function Sidebar() {
                     <div className="lg:w-[251px] h-auto lg:h-[114px] font-[lora] text-[16px] text-center flex flex-col justify-center items-center gap-1">
                         <img
                             className="w-[64px] h-[64px] rounded-full"
-                            src={profile.profile_pic}
+                            src={profile?.profile_pic}
                             alt="profile picture" />
                         <h1 className="font-[400]">Welcome Hameedat</h1>
                         <h2 className="font-[700]">Private farmer</h2>
