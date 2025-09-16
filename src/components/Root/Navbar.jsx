@@ -82,16 +82,16 @@ function Navbar(){
                         </li>
                         <li>
                             <NavLink 
-                            className={({isActive}) =>  ` lg:pl-5 pl-2  p-[10px] rounded-xl ${
+                            className={({isActive}) =>  ` lg:pl-5 pl-2  p-[10px] pt-5 rounded-xl ${
                                 isActive ? 'bg-[#FF8E28]' : 'hover:bg-[#FF8E28]'
                             }`} 
                             to="/smart-farming" 
                             onClick={() => setMenuOpen(false)}>Smart Farming
                             </NavLink>
                         </li>
-                        <li className="lg:ml-auto">
+                        <li className="lg:ml-auto -mt-2 ">
                         <button
-                            className="text-xl lg:text-[19.2px] font-[700] text-black border border-[#FF7F18] hover:bg-[#FF8E28] rounded-[8px] lg:pl-2 px-6 lg:py-2 flex items-center justify-center h-[40px]"
+                            className="text-xl  lg:text-[19.2px] font-[700] text-black border border-[#FF7F18] hover:bg-[#FF8E28] rounded-[8px] lg:pl-2 px-6 lg:py-2 flex items-center justify-center h-[40px]"
                             onClick={() => {setMenuOpen(false);
                             if (loggedIn) {
                                 navigate("/dashboard"); 
