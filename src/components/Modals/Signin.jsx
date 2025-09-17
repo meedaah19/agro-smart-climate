@@ -52,8 +52,6 @@ export default function Signin() {
             if (result.success) {
                 modalCtx.hideModal();
                 navigate('/dashboard');  
-                alert("Welcome back " + result.user.email);
-                console.log("Token:", result.token);
             }
             } catch (error) {
                 alert(error.message);

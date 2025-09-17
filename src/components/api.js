@@ -23,7 +23,6 @@ export async function registerUser(name, email, password) {
     
     
     if (!response.ok) {
-        alert(data.message || 'Registration failed,');
         return data;
     };
     alert(data.message);
@@ -42,12 +41,8 @@ export async function loginUser(email, password) {
     const data = await response.json();
 
     if(!response.ok) {
-        alert(data.message || "Login failed");
         return data;
     }
-
-    alert(data.message);
-
     localStorage.setItem("access_token", data.token);
     localStorage.setItem("tokenExpiry", Date.now() + 60 * 60 * 1000);
     return data;
@@ -62,10 +57,7 @@ export async function sendPasswordResetEmail (email){
     });
 
     const data = await response.json();
-    alert(data.message);
-
     if(!response.ok) {
-        alert(data.message || "Request failed");
         return data;
     }
     return data;
@@ -93,7 +85,6 @@ export async function KYCSubmission( language, voice, role, tools, location, cro
     const data = await response.json();
 
     if(!response.ok) {
-        alert(data.message || "KYC submission failed");
         return data;
     }       
 

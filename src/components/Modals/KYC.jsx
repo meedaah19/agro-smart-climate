@@ -72,9 +72,7 @@ export default function Kyc() {
         if (result.success) {
               handleCloseModal();
               navigate('/Dashboard');
-            } else {
-              alert(result.message || "KYC submission failed");
-          }
+            } 
           } catch (error) {
               alert(error.message);
           } finally{ 

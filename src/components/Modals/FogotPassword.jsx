@@ -36,10 +36,7 @@ export default function ForgotPassword() {
             try {
                 setFetching(true);
                 const result = await sendPasswordResetEmail(email);
-                if (!result.success) {
-                    alert(result.message || "Failed to send reset email");
-                    return;
-                } else {
+                if (result.success) {
                     alert("Password reset email sent. Please check your inbox.");
                     modalCtx.hideModal();
                     navigate('/');}

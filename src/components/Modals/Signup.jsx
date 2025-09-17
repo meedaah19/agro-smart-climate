@@ -50,7 +50,6 @@ export default function Signup() {
             if (result.success) {
             handleCloseModal();
            modalCtx.showModal('signin');
-            alert(result.message);
             }
         } catch (error) {
             alert(error.message);
