@@ -4,12 +4,13 @@ import { FaBars, FaRegQuestionCircle, FaShoppingBasket, FaTimes, FaUserCircle } 
 import { GiGraduateCap, GiHammerNails } from 'react-icons/gi';
 import { IoNotifications, IoSettings } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
-import { logoutUser, UserProfile } from './api';
+import { kycData, logoutUser, UserProfile } from './api';
 
 export default function Sidebar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(true);
-      const [profile, setProfile] = useState({});
+    const [profile, setProfile] = useState({});
+    const [KYC, setKYC] = useState({});
 
     const navigate = useNavigate();
 
@@ -28,6 +29,17 @@ export default function Sidebar() {
         }
         fetchProfile();
         }, []);
+
+         useEffect(() => {
+            async function fetchKYC() {
+              const result = await kycData();
+              if (result.success) {
+                setKYC(result.kyc);
+              }
+            }
+            fetchKYC();
+            }, []);
+        
 
     return (
         <div>
@@ -55,7 +67,7 @@ export default function Sidebar() {
                             src={profile?.profile_pic}
                             alt="profile picture" />
                         <h1 className="font-[400]">Welcome {profile?.name}</h1>
-                        <h2 className="font-[700]">{profile?.role}</h2>
+                        <h2 className="font-[700]">{KYC?.name}</h2>
                     </div>
 
                     <nav className='lg-w-[251px] h-auto lg:h-[537px] flex flex-col gap-5 justify-between font-[lora] text-[16px]'>
