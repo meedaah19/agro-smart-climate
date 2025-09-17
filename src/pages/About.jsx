@@ -2,10 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import image from '../assets/765aef0e597f450af751170944ee1ba2dfd5296a.jpg';
 import { useContext } from 'react';
 import { ModalContext } from '../components/store/ModalContext';
+import { isTokenValid } from '../components/api';
 
 export default function About(){
     const modalCtx = useContext(ModalContext);
     const navigate = useNavigate();
+    const loggedIn = isTokenValid();
 
     function handleOpenModal(){
         modalCtx.showModal('signup')
@@ -61,7 +63,13 @@ export default function About(){
                         onClick={handleClick}
                         className='lg:w-[271px] h-[45px] w-[150px] rounded-[8px] border-[1px] border-[#FF8E28] hover:bg-[#b86014]  lg:px-[90px] px-13.5 py-[8px] flex gap-10px '>Back</button>
                         <button
-                        onClick={handleOpenModal}
+                        onClick={()=> {
+                            if(loggedIn){
+                                navigate("/dashboard"); 
+                            } else{
+                                handleOpenModal();
+                            }
+                        }}
                         className='lg:w-[271px] h-[45px] w-[150px]  rounded-[8px] border-[1px] px-7 lg:px-[60px] py-[8px] flex gap-10px border-[#FF8E28] hover:bg-[#b86014] bg-[#FF8E28]'>Lets Start</button>
                     </div>
                 </div>

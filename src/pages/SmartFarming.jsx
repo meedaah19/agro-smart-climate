@@ -4,10 +4,12 @@ import image3 from '../assets/eb368055f2a22d9567d0bc2c200b5334cf1829fa.jpg';
 import { useContext } from 'react';
 import { ModalContext } from '../components/store/ModalContext';
 import { useNavigate } from 'react-router-dom';
+import { isTokenValid } from '../components/api';
 
 export default function SmartFarmimg(){
      const modalCtx = useContext(ModalContext);
     const navigate = useNavigate();
+    const loggedIn = isTokenValid();
 
     function handleOpenModal(){
         modalCtx.showModal('signup')
@@ -97,7 +99,13 @@ export default function SmartFarmimg(){
                         onClick={handleClick}
                         className='lg:w-[250px] h-[45px] w-[150px] rounded-[8px] border-[1px] border-[#FF8E28] hover:bg-[#b86014]  lg:px-[16px] px-13.5 py-[8px]'>Back</button>
                         <button
-                        onClick={handleOpenModal}
+                         onClick={()=> {
+                            if(loggedIn){
+                                navigate("/dashboard"); 
+                            } else{
+                                handleOpenModal();
+                            }
+                        }}
                         className='lg:w-[250px] h-[45px] w-[150px]  rounded-[8px] border-[1px] px-7 lg:px-[16px] py-[8px] border-[#FF8E28] hover:bg-[#b86014] bg-[#FF8E28]'>Lets Start</button>
                     </div>
             </div>

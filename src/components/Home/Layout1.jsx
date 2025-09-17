@@ -1,13 +1,20 @@
 import image1 from '../../assets/91a6c2164942199e7ce3a61e72780df756577e2d.jpg';
 import { useContext } from 'react';
 import { ModalContext } from '../store/ModalContext';
+import { useNavigate } from 'react-router-dom';
+import { isTokenValid } from '../api';
+
 
 export default function Layout1(){
     const modalCtx = useContext(ModalContext);
+    const loggedIn = isTokenValid();
+    const navigate = useNavigate();
+    
 
     function handleShowModal(){
         modalCtx.showModal('signup');
     }
+
 
     return(
         <div 
@@ -31,7 +38,13 @@ export default function Layout1(){
                 <div className='flex justify-center'>
                     <button 
                         className='lg:w-[156px] lg:h-[61px] w-[120px] h-[50px] rounded-[8px] lg:py-[16px] lg:px-[32px]   py-3 gap-[10px] bg-[#FF8E28] font-[700] text-[19px] lg:text-[19.2px] cursor-pointer' 
-                        onClick={handleShowModal}
+                        onClick={()=> {
+                            if(loggedIn){
+                                navigate("/dashboard"); 
+                            } else{
+                                handleShowModal();
+                            }
+                        }}
                     >
                         Lets start
                     </button>
