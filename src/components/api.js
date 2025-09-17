@@ -20,7 +20,6 @@ export async function registerUser(name, email, password) {
     });
 
     const data = await response.json();
-    console.log(data);
     
     
     if (!response.ok) {
@@ -28,7 +27,6 @@ export async function registerUser(name, email, password) {
         return data;
     };
     alert(data.message);
-    console.log(data.user);
     return data;
 }
 
@@ -42,7 +40,6 @@ export async function loginUser(email, password) {
     });
 
     const data = await response.json();
-    console.log(data);
 
     if(!response.ok) {
         alert(data.message || "Login failed");
@@ -50,8 +47,6 @@ export async function loginUser(email, password) {
     }
 
     alert(data.message);
-    console.log("User:", data.user);
-    console.log("Token:", data.token);
 
     localStorage.setItem("access_token", data.token);
     localStorage.setItem("tokenExpiry", Date.now() + 60 * 60 * 1000);
@@ -78,8 +73,6 @@ export async function sendPasswordResetEmail (email){
 
 export async function KYCSubmission( language, voice, role, tools, location, crops) {
     const token = localStorage.getItem("access_token");
-    console.log(localStorage.getItem("access_token"));
-
 
     const response = await fetch(`${API_BASE_URL}/kyc`, {
         method: 'POST',
@@ -98,7 +91,6 @@ export async function KYCSubmission( language, voice, role, tools, location, cro
     });     
 
     const data = await response.json();
-    console.log(data);
 
     if(!response.ok) {
         alert(data.message || "KYC submission failed");
@@ -128,7 +120,6 @@ export async function UserProfile() {
     });
 
     const data = await response.json();
-    console.log("Profile response:", data);
 
     if (!response.ok) {
       alert(data.message || "Fetching profile failed");
@@ -136,7 +127,6 @@ export async function UserProfile() {
 
     return data;
   } catch (err) {
-    console.error("Error fetching profile:", err);
     return { success: false, message: err.message };
   }
 }
@@ -159,7 +149,6 @@ export async function kycData(){
     });
 
     const data = await response.json();
-    console.log("KYC response:", data);
 
     if (!response.ok) {
       alert(data.message || "Fetching KYC failed");
@@ -167,7 +156,6 @@ export async function kycData(){
 
     return data;
   } catch (err) {
-    console.error("Error fetching KYC:", err);
     return { success: false, message: err.message };
   }
 }
@@ -184,7 +172,6 @@ export async function updateUser(profile, kyc, profileImageBase64, fileType) {
   });
 
   const data = await response.json();
-  console.log("Update response:", data);
 
   if (!response.ok) {
     throw new Error(data.message || "Updating user failed");

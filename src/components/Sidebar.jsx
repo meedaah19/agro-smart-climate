@@ -54,8 +54,8 @@ export default function Sidebar() {
                             className="w-[64px] h-[64px] rounded-full"
                             src={profile?.profile_pic}
                             alt="profile picture" />
-                        <h1 className="font-[400]">Welcome Hameedat</h1>
-                        <h2 className="font-[700]">Private farmer</h2>
+                        <h1 className="font-[400]">Welcome {profile?.name}</h1>
+                        <h2 className="font-[700]">{profile?.role}</h2>
                     </div>
 
                     <nav className='lg-w-[251px] h-auto lg:h-[537px] flex flex-col gap-5 justify-between font-[lora] text-[16px]'>
