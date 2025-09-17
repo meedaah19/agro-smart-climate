@@ -60,7 +60,7 @@ export default function Profile(){
               <div>
                 <img
                   className="w-[100px] h-[100px] rounded-full"
-                  src={profile.profile_pic}
+                  src={profile?.profile_pic}
                   alt="profile picture"
                 />
               </div>
@@ -81,7 +81,7 @@ export default function Profile(){
             </div>
 
             <p className="font-[500] font-[Lora] pt-5 lg:pt-0 text-[16px]">
-              Date joined: {formatDate(profile.created_at)}
+              Date joined: {formatDate(profile?.created_at)}
             </p>
           </div>
 
@@ -92,11 +92,11 @@ export default function Profile(){
                   <h6 className="font-[Poppins] font-[400] text-[19.2px]">Personal informations</h6>
                   <div className="lg:w-[400px] h-auto lg:h-[114px] gap-[16px]">
                     <p className="font-[Lora] font-[400] text-[13.33px]">Full Name</p>
-                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{profile.name}</p>
+                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{profile?.name}</p>
                     <p className="font-[Lora] font-[400] text-[13.33px] pt-3">Email Address</p>
-                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{profile.email}</p>
+                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{profile?.email}</p>
                     <p className="font-[Lora] font-[400] text-[13.33px] pt-3">Phone Number</p>
-                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{profile.phone_number}</p>
+                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{profile?.phone_number}</p>
                   </div>
                 </div>
 
@@ -104,9 +104,9 @@ export default function Profile(){
                   <h6 className="font-[Poppins] font-[400] text-[19.2px]">Function and equipment</h6>
                   <div className="lg:w-[400px] h-auto lg:h-[114px] gap-[16px]">
                     <p className="font-[Lora] font-[400] text-[13.33px]">Role for this Climate journey</p>
-                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{KYC.role}</p>
+                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{KYC?.role}</p>
                     <p className="font-[Lora] font-[400] text-[13.33px] pt-3">General tools I work with</p>
-                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{KYC.tools}</p>
+                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{KYC?.tools}</p>
                   </div>
                 </div>
               </div>
@@ -119,9 +119,9 @@ export default function Profile(){
                 <div className="lg:w-[400px] h-auto lg:h-[194px] flex flex-col gap-[32px]">
                   <div className="lg:w-[400px] h-auto lg:h-[114px] gap-[16px]">
                     <p className="font-[Lora] font-[400] text-[13.33px]">Location</p>
-                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{KYC.location}</p>
+                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{KYC?.location}</p>
                     <p className="font-[Lora] font-[400] text-[13.33px] pt-3">Crop at this location</p>
-                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{KYC.crops}</p>
+                    <p className="font-[700] font-[Lora] text-[16px] border-b-[1px]">{KYC?.crops}</p>
                   </div>
                 </div>
 
