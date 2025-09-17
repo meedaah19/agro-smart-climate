@@ -15,7 +15,7 @@ export default function Kyc() {
     modalCtx.hideModal();
   }
 
-  const [crops, setCrops] = useState("");
+  const [crops, setCrops] = useState([]);
 
   const [liveFormValues, setLiveFormValues] = useState({
     language: "",
