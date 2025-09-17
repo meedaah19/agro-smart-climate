@@ -5,7 +5,7 @@ import image4 from '../../assets/0b1384c1c9426a24dddd670a26d7efdf40343ed0.jpg';
 
 export default function Layout2() {
     return(
-        <div className='bg-gradient-to-b from-[#A9DCD7] vai-[#C6E4E1] to-[#FFFFFF] lg:w-[1440px] h-auto lg:h-[629.86px]  lg:p-[32px] grid gap-[10px] px-[16px] py-[16px] text-center'>  
+        <div className='bg-gradient-to-b from-[#A9DCD7] via-[#C6E4E1] to-[#FFFFFF] lg:w-[1440px] h-auto lg:h-[629.86px]  lg:p-[32px] grid gap-[10px] px-[16px] py-[16px] text-center'>  
 
                     <div className=' lg:w-[1376px] h-auto lg:h-[536.65px] grid gap-[32px] '>
 
