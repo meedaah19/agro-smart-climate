@@ -191,7 +191,7 @@ export default function Signup() {
                                 <p>Have an account? 
                                     <button
                                 onClick={handleSignIn}
-                                className='cursor-pointer'
+                                className='cursor-pointer underline hover:text-[#A1530C]'
                                 >Login!</button></ p>
                                 
                             </div>

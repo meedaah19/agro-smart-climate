@@ -60,7 +60,7 @@ export default function Climate(){
                     src={image} 
                     alt="soil measurement" />
 
-                    <div className='lg:w-[500px] h-auto lg:h-[45px] font-[700] text-[19.2px] flex lg:gap-[32px] gap-[20px]'>
+                    <div className='lg:w-[500px] h-auto lg:h-[45px] font-[700] text-[15px] lg:text-[19.2px] flex lg:gap-[32px] gap-[20px]'>
                         <button
                         onClick={handleClick}
                         className='lg:w-[271px] h-[45px] w-[150px] rounded-[8px] border-[1px] border-[#FF8E28] hover:bg-[#b86014]  lg:px-[90px] px-13.5 py-[8px] flex gap-10px '>Back</button>

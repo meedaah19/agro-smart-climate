@@ -165,7 +165,7 @@ export default function Signin() {
                             <div className='font-[lora] font-[400] pt-9'>
                                 <p>Don't have an account? <button
                                  onClick={handleSignUp}
-                                 className='cursor-pointer'>
+                                 className='cursor-pointer underline hover:text-[#A1530C]'>
                                  Sign up!</button></ p>
                                 
                             </div>
