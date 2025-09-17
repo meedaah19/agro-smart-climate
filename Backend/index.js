@@ -48,7 +48,7 @@ const supabaseAnon = createClient(
       .from("kycforms")
       .select("location")
       .eq("user_id", user.id)
-      .single();
+      .maybeSingle();
 
     const apiKey = process.env.OPENWEATHER_KEY;
     const locationInput = (req.query.city || kyc?.location || "").trim();
@@ -154,7 +154,7 @@ app.get("/profile", async (req, res) => {
       .from("profiles")
       .select("*")
       .eq("id", user.id) 
-      .single();
+      .maybeSingle();
 
     if (dbError) {
       return res.status(400).json({ success: false, message: dbError.message });
@@ -189,7 +189,7 @@ app.get("/kycdata", async (req, res) => {
       .from("kycforms")
       .select("*")
       .eq("user_id", user.id) 
-      .single();
+      .maybeSingle();
 
     if (dbError) {
       return res.status(400).json({ success: false, message: dbError.message });
