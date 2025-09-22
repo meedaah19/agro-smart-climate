@@ -43,7 +43,7 @@ export default function Sidebar() {
 
     return (
         <div>
-            <div className="lg:hidden pt-[26px] px-2">
+            <div className="lg:hidden ml-9">
                 <button
                     onClick={() => setMenuOpen(!menuOpen)}
                     className="text-xl text-black"
