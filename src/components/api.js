@@ -23,6 +23,7 @@ export async function registerUser(name, email, password) {
     
     
     if (!response.ok) {
+        alert(data.message);
         return data;
     };
     alert(data.message);
@@ -41,6 +42,7 @@ export async function loginUser(email, password) {
     const data = await response.json();
 
     if(!response.ok) {
+      alert(data.message);
         return data;
     }
     localStorage.setItem("access_token", data.token);
@@ -58,6 +60,7 @@ export async function sendPasswordResetEmail (email){
 
     const data = await response.json();
     if(!response.ok) {
+        alert(data.message);
         return data;
     }
     return data;
@@ -85,6 +88,7 @@ export async function KYCSubmission( language, voice, role, tools, location, cro
     const data = await response.json();
 
     if(!response.ok) {
+        alert(data.message);
         return data;
     }       
 

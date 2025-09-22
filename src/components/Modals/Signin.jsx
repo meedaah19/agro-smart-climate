@@ -18,7 +18,7 @@ export default function Signin() {
     const modalCtx = useContext(ModalContext);
     const [fetching, setFetching] = useState(false);
     const [errors, setErrors] = useState([]);
-    const [enteredValue, setEnteredValue] = useState({});
+    const [enteredValue, setEnteredValue] = useState({email: "", password: ""});
 
     function handleCloseModal(){
         modalCtx.hideModal();
@@ -92,7 +92,8 @@ export default function Signin() {
                         label='Enter email address' 
                         id='email' 
                         type='email'
-                        value={enteredValue?.name}  
+                        value={enteredValue.email ?? ""}
+                        onChange={(e) => setEnteredValue({ ...enteredValue, email: e.target.value })}
                         placeholder='johnjoe@gmail.com' />
 
                         <div className='relative '>
@@ -101,7 +102,8 @@ export default function Signin() {
                             label='Enter password' 
                             id='password' 
                             type={showPassword ? "text" : "password"}
-                            value={enteredValue?.password}  
+                            value={enteredValue.password ?? ""}
+                            onChange={(e) => setEnteredValue({ ...enteredValue, password: e.target.value })}  
                             placeholder='..........' />
                            <span
                                 onClick={() => setShowPassword(!showPassword)}

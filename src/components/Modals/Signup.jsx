@@ -17,7 +17,12 @@ export default function Signup() {
     const modalCtx = useContext(ModalContext);
     const [fetching, setFetching] = useState(false);
     const [errors, setErrors] = useState([]);
-    const [enteredValue, setEnteredValue] = useState({});
+    const [enteredValue, setEnteredValue] = useState({
+        name: "",
+        email: "",
+        password: "",
+        cpassword: ""
+    });
 
     function handleCloseModal() {
     modalCtx.hideModal();
@@ -39,6 +44,13 @@ export default function Signup() {
     let newErrors = [];
 
     if (newErrors.length > 0) {
+        setErrors(newErrors);
+        setEnteredValue({ name, email, password, cpassword });
+        return;
+    }
+
+    if (password !== cpassword) {
+        newErrors.push("Passwords do not match");
         setErrors(newErrors);
         setEnteredValue({ name, email, password, cpassword });
         return;
@@ -98,14 +110,16 @@ export default function Signup() {
                         label='Enter name' 
                         id='name' 
                         type="text" 
-                        value={enteredValue?.name} />
+                        value={enteredValue.name ?? ""}
+                        onChange={(e) => setEnteredValue({ ...enteredValue, name: e.target.value })}/>
 
                         <Input
                         className='p-3' 
                         label='Enter email address' 
                         id='email' 
                         type="email" 
-                        value={enteredValue?.email}
+                        value={enteredValue.email ?? ""}
+                        onChange={(e) => setEnteredValue({ ...enteredValue, email: e.target.value })}
                         placeholder='johnjoe@gmail.com' />
 
                         <div className='relative'>
@@ -114,7 +128,8 @@ export default function Signup() {
                             label='Enter password' 
                             id='password' 
                             type={showPassword ? "text" : "password"}
-                            value={enteredValue?.password}
+                            value={enteredValue.password ?? ""}
+                            onChange={(e) => setEnteredValue({ ...enteredValue, password: e.target.value })}
                             placeholder='..........' />
                             <span
                                 onClick={() => setShowPassword(!showPassword)}
@@ -130,7 +145,8 @@ export default function Signup() {
                             label='Confirm password' 
                             id='cpassword' 
                             type={showPassword ? "text" : "password"}
-                           value={enteredValue?.cpassword}
+                            value={enteredValue.cpassword ?? ""}
+                            onChange={(e) => setEnteredValue({ ...enteredValue, cpassword: e.target.value })}
                             placeholder='..........' /> 
                             <span
                                 onClick={() => setShowPassword(!showPassword)}

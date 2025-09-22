@@ -9,7 +9,9 @@ export default function Input({label, id, type, onChange, value, placeholder, cl
         name={id}  
         placeholder={placeholder}  
         value={value}
-        onChange={onChange}/>
+        onChange={onChange}
+        required/>
+        
         </p> 
     )
 }

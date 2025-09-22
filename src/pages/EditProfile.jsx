@@ -108,7 +108,7 @@ if (fetching) {
       <div className="lg:w-[1440px] w-full h-auto lg:h-[1100px] flex lg:gap-[32px] bg-gradient-to-b from-[#A9DCD7] pb-[0px] via-[#FFFFFF] to-[#A9DCD7]">
         <Sidebar/>
 
-        <div className='lg:w-[1150px] lg:z-100 h-auto w-[320px] lg:h-[1024px] py-[32px] flex flex-col gap-[12px]'>
+        <div className='lg:w-[1150px] -ml-7 lg:z-100 h-auto w-[320px] lg:h-[1024px] py-[32px] flex flex-col gap-[12px]'>
           <h4 className='font-[Poppins] font-[400] text-[23.04px]'>My profile</h4>
 
           <div className=' lg:w-[1020px] w-full h-auto lg:h-[1000px] rounded-[30px] p-[32px] flex flex-col gap-[32px] bg-[#FFFFFF]'>

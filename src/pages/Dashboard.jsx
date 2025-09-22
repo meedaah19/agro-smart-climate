@@ -40,7 +40,7 @@ export default function Dashboard(){
 
             <Sidebar/>
 
-            <div className='lg:w-[1157px] -ml-5 h-auto w-[320px] md:w-[800px]  lg:h-[1024px] flex flex-col gap-[32px] py-[20px]'>
+            <div className='lg:w-[1157px] -ml-7 h-auto w-[320px] md:w-[800px]  lg:h-[1024px] flex flex-col gap-[32px] py-[20px]'>
 
                 {!KYC || !KYC.crops ? (
                    <div className="lg:w-[1020px] mt-10 w-full h-auto lg:h-[400px] bg-white rounded-[30px] p-[32px] flex flex-col gap-[32px] justify-center items-center ">
