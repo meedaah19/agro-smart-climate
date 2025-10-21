@@ -5,10 +5,12 @@ import { FaTimes, FaTrash, FaChevronDown } from "react-icons/fa";
 import Input from "../UI/Input";
 import { KYCSubmission } from "../api";
 import { useNavigate } from "react-router-dom";
+import { useDashboard } from "../store/DashboardContext";
 
 export default function Kyc() {
   const navigate = useNavigate();
   const modalCtx = useContext(ModalContext);
+  const {triggerDashboardRefresh} = useDashboard();
   const [fetching, setFetching] = useState(false);
 
   function handleCloseModal() {
@@ -70,8 +72,8 @@ export default function Kyc() {
       setFetching(true);
       const result = await KYCSubmission(language, voice, role, tools, location, crops);
         if (result.success) {
+              triggerDashboardRefresh();
               handleCloseModal();
-              navigate('/Dashboard');
             } 
           } catch (error) {
               alert(error.message);

@@ -5,11 +5,13 @@ import WeatherReport from '../components/WeatherReport';
 import { ModalContext } from '../components/store/ModalContext';
 import { kycData } from '../components/api';
 import image from '../assets/a62669654854d3f4c553783f64fabd7918b25d87.jpg';
+import { useDashboard } from '../components/store/DashboardContext';
 
 export default function Dashboard(){
     const [KYC, setKYC] = useState(null);
     const [loading, setLoading] = useState(true);
     const modalCtx = useContext(ModalContext);
+    const {refreshDashboard} = useDashboard();
 
     useEffect(() => {
     async function fetchKYC() {
@@ -25,7 +27,7 @@ export default function Dashboard(){
       }
     }
     fetchKYC();
-  }, []);
+  }, [refreshDashboard]);
 
   if (loading) {
   return (
