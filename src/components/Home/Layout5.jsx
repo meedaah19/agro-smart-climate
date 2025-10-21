@@ -25,7 +25,7 @@ export default function Layout5() {
     return(
         <div className='bg-gradient-to-b from-[#C5E3E0] via-[#E3F1F0] to-[#FFFFFF] lg:w-[1440px] h-auto lg:h-[929px] lg:pt-[100px] lg:p-[32px] grid gap-[10px] px-[16px] py-[16px] text-center'>  
 
-                    <div className=' lg:w-[1376px] h-auto lg:h-[706px] grid gap-[32px] '>
+                    <div className=' max-w-[1440px] h-auto lg:h-[706px] grid gap-[32px] '>
 
                     <div className='flex flex-col h-auto lg:h-[215px] lg:gap-[32px] gap-[19px] justify-center items-center'>
                         <h1 className='font-[Poppins] font-[600] text-[28px] lg:text-[39.81px] '>Testimonials</h1>

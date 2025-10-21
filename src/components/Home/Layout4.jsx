@@ -5,7 +5,7 @@ export default function Layout4() {
     return(
         <div className='bg-gradient-to-b from-[#FFFFFF] via-[#C6E4E1] to-[#C6E4E1] lg:w-[1440px] h-auto lg:h-[666px]  lg:p-[32px] grid gap-[10px] px-[16px] py-[16px] text-center'>  
 
-                    <div className=' lg:w-[1376px] h-auto lg:h-[565.86px] grid gap-[32px] '>
+                    <div className=' max-w-[1440px] h-auto lg:h-[565.86px] grid gap-[32px] '>
 
                     <div className='flex flex-col h-auto lg:h-[215px] lg:gap-[32px] gap-[19px] justify-center items-center'>
                         <h1 className='font-[Poppins] font-[600] text-[28px] lg:text-[39.81px] '>Built for Every Farmer, Backed by Community.</h1>

@@ -7,7 +7,7 @@ export default function Layout2() {
     return(
         <div className='bg-gradient-to-b from-[#A9DCD7] via-[#C6E4E1] to-[#FFFFFF] lg:w-[1440px] h-auto lg:h-[629.86px]  lg:p-[32px] grid gap-[10px] px-[16px] py-[16px] text-center'>  
 
-                    <div className=' lg:w-[1376px] h-auto lg:h-[536.65px] grid gap-[32px] '>
+                    <div className=' max-w-[1440px] h-auto lg:h-[536.65px] grid gap-[32px] '>
 
                     <div className='flex flex-col h-auto lg:h-[215px] lg:gap-[32px] gap-[19px] justify-center items-center'>
                         <h1 className='font-[Poppins] font-[600] text-[28px] lg:text-[39.81px] '>The challenges Farmers face today.</h1>

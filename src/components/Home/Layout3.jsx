@@ -2,7 +2,7 @@ import image3 from '../../assets/f5fbc5a4f44543ea95fc553cdfce6679696440c3.jpg';
 
 export default function Layout3() {
     return(
-        <div className='bg-[#FFFFFF] lg:w-[1440px] h-auto lg:h-[536.65px]  lg:p-[32px] flex flex-col justify-center items-center gap-[10px] px-[16px] py-[16px] j text-center'>  
+        <div className='bg-[#FFFFFF] max-w-[1440px] h-auto lg:h-[536.65px]  lg:p-[32px] flex flex-col justify-center items-center gap-[10px] px-[16px] py-[16px] j text-center'>  
 
                     <div className=' lg:w-[1120px] h-auto lg:h-[472.65px] grid gap-[32px] '>
 
